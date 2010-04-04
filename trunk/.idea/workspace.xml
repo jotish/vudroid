@@ -1,0 +1,2145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CCaseConfig">
+    <option name="checkoutReserved" value="false" />
+    <option name="markExternalChangeAsUpToDate" value="true" />
+    <option name="checkInUseHijack" value="true" />
+    <option name="useUcmModel" value="true" />
+    <option name="synchOutside" value="false" />
+    <option name="isHistoryResticted" value="true" />
+    <option name="useIdenticalSwitch" value="true" />
+    <option name="synchActivitiesOnRefresh" value="true" />
+    <option name="lastScr" value="" />
+    <option name="scrTextFileName" value="" />
+    <option name="historyRevisionsNumber" value="4" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="fbcd3174-ba6c-4550-a567-c5cb11c3a64d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/compiler/win-lcc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/install.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/wrrle.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afmodule.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdtrans.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/config.sub" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuPort.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/missing" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/vc2008/freetype.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/install-sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/ftsystem.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otvbase.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/pshmod.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/pshmod.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttinterp.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GRect.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/bdf/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/ft2build.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svkern.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type42/t42types.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttinterp.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/compiler/visualc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makeproj.mac" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jcmarker.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/zconf.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jconfig.cfg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/pcftypes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/docmaker/docbeauty.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-raster.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/mupdf-overlay/mupdf/pdf_fontfile.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jccolor.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/wrjpgcom.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afmodule.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/symbian" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/codec" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/events/ZoomChangedEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftmac.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/libjpeg.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuNavDir.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/unix-def.in" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/autohint.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/Makefile.in" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/DEBUG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jconfig.dj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/wrjpgcom.1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttdriver.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdinput.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxverror.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GThreads.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/winfonts/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttdriver.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/wrrle.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftdbgmem.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/codec/CodecContext.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/testorig.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/beos/beos-def.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makejdsp.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/mac/FreeType.ppc_carbon.make.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuFile.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1load.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-gx_validation.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdcoefct.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/rdppm.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1load.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttpload.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftsnames.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttpload.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuInfo.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GScaler.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/glnames.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/winfonts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1parse.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1parse.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/codec/CodecPage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/atari/ATARI.H" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdapimin.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/mac" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/configure.ac" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/vc2008/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jctrans.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/inftrees.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/depcomp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga/makefile.os4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/mkinstalldirs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdmaster.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/ZPCodec.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/aftypes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/atari" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/inftrees.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/bdf/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVmDoc.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/Makefile.in" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/configure.raw" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/inffixed.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftpic.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jconfig.manx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jidctflt.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-list_processing.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttpic.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttpic.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/vms" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/XMLTags.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/ckconfig.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/ftserv.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftbbox.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/events/BringUpZoomControlsListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/IFFByteStream.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/djvudroid" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/wrtarga.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga/src/base/ftsystem.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/BSEncodeByteStream.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuMessage.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/compiler/gcc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuMessageLite.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffpic.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/VuDroidLibraryLoader.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffpic.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/Arrays.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GThreads.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/mac/ascii2mpw.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVmDir0.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga/include/freetype/config/ftconfig.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jconfig.vms" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/cidtoken.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jerror.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/rdbmp.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftxf86.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-winfnt_fonts.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otvmod.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makewdsp.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/internal.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/XMLParser.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otvmod.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otvgdef.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/ant.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-bitmap_handling.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/config/ftstdlib.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/pshnterr.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svpfr.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makermak.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makerdsp.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otvgpos.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otvgpos.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/maketdsp.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-sfnt_names.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/vms/ftconfig.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-ot_validation.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type42/t42objs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdsample.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jcinit.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/fttype1.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/sfdriver.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type42/t42objs.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/JB2Image.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/stamp-h1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/pdfdroid/codec" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/zutil.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/sfdriver.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jcmaster.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/debug.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/zutil.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuPalette.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmort0.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1errors.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makefile.manx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/config/ftconfig.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/atomic.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jidctint.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/visualc/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jconfig.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/compiler/bcc-dev.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdtrans.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/pdfdroid/PdfViewerActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdatasrc.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makewmak.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/detect.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/wince/vc2008-ce/freetype.vcproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/Makefile.am" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuMessageLite.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type42/type42.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/miniexp.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/w32-vcc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jcapimin.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/files.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/presentation/BrowserAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftbdf.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/dos/dos-wat.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/visualce/freetype.dsw" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-type1_tables.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/mac/FreeType.ppc_classic.make.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/docmaker" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makejdep.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/visualce/freetype.dsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/config.status" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/smooth/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype-overlay/include/freetype/config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jcdctmgr.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-font_formats.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdinput.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdcolor.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jpegtran.1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdcolor.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/rdbmp.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftcid.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/cderror.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/os2/os2-dev.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/wince/ftdebug.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdhuff.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/modules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftpatent.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttgxvar.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GContainer.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftccback.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/views" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/utils" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga/smakefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/MMRDecoder.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-glyph_stroker.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jcarith.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttgxvar.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/INSTALL.CROSS" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/inflate.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jconfig.st" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftrfork.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuPalette.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/ftdriver.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/JB2Image.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/smooth/ftspic.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/smooth/ftspic.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/raster.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otvmath.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/formats.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/ByteStream.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftmodapi.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttgload.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jmemmgr.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/ftrandom/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/wrgif.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuDocEditor.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/wrbmp.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makefile.mc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/raster" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/ciderrs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVmNav.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/wince/vc2005-ce/freetype.vcproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/ftcalc.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/fttrace.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/INSTALL.GNU" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttgload.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vudroid.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/atari/FREETYPE.PRJ" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/ftdebug.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/mac/FreeType.m68k_far.make.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jpegtran.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/compiler/visualage.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdpostct.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/smooth" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/pshrec.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdct.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/newline" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/bdf/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/pshrec.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/compiler/emx.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/dos/dos-def.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/wrppm.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jcarith.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/mac/ftmac.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/unix.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/transupp.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/os2/os2-def.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/transupp.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makefile.dj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/miniexp.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmort5.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/sfnt.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ttunpat.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/maktjpeg.st" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/testimg.bmp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/testimg.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuFileCache.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/link_dos.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/tttables.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/PATENTS" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/rdcolmap.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdmaster.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/config.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmort2.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/os2/detect.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvfeat.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jcmainct.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/IW44EncodeCodec.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/maketmak.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuAnno.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/fttrigon.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvfeat.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1gload.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makefile.bcc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1gload.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/projectCodeStyle.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/win32-def.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/dos" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svgldict.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/events" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttcmap.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/atari/FNames.SIC" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/coderules.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-truetype_tables.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otvcommn.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otvcommn.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttcmap.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cff.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/raster/ftmisc.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jctrans.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/BaseBrowserActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/djvudroid/codec/DjvuContext.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/ftrandom/ftrandom.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftcmru.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffcmap.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/ft-munmap.m4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/mupdf-overlay/mupdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffcmap.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makefile.vms" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jcsample.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftcmru.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/fttypes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-pfr_fonts.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/Android.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/link_std.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jchuff.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GIFFManager.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/raster/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jconfig.vc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/BSByteStream.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/autofit.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makecvcp.vc9" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-glyph_variants.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftimage.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makefile.mms" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttsbit0.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga/include/freetype/config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga/src" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/psaux.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftincrem.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftxf86.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/symbian/bld.inf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/djvudroid/DjvuViewerActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmod.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/config/ftmodule.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga/include/freetype/config/ftmodule.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuNavDir.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmod.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svwinfnt.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/Android.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdmarker.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/BSByteStream.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/detect.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/debug.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/infutil.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftccache.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf/pcfread.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/cidobjs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftccache.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuGlobal.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftlzw.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/compiler/bcc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/cidobjs.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf/pcfread.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jfdctint.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afindic.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afindic.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/infutil.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuToPS.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jversion.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/wince/vc2008-ce/freetype.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftcmanag.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftcmanag.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/pshinter.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/raster/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvalid.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jcprepct.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvalid.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/type1.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/maketvcp.vc9" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/smooth/smooth.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/rdtarga.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftfstype.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/views/PageViewZoomControls.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdmarker.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVmDir.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/DecodeService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jmemnobs.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DataPool.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/ftmemory.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/testprog.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/ftstream.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/w32-dev.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/FTL.TXT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/type1cid.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/ftrandom/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftgzip.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jutils.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/ft2unix.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GException.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/mac/FreeType.m68k_cfm.make.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svpsinfo.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftglyph.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/events/ZoomListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/MMRDecoder.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/org/vudroid/R.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-system_interface.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cfftypes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/toplevel.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftmoderr.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-truetype_engine.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/pshalgo.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/maketdep.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makljpeg.st" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftobjs.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrdrivr.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/pshalgo.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/dos/dos-gcc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/djpeg.1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrdrivr.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/ansi2knr.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jquant2.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jccoefct.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jfdctfst.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/ansi/ansi.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuDumpHelper.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/visualc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftutil.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/aferrors.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afloader.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/beos" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GUnicode.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-sizes_management.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVmNav.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/visualc/freetype.dsw" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/winfonts/winfnt.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/visualc/freetype.dsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvlcar.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/ansi2knr.1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/vudroid/pdfdroidbridge.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afloader.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/usage.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-gzip.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/ftrfork.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/install.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/detect.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/Makefile.dep" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/winfonts/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/devel" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/djpeg.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/libtool" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GPixmap.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga/src/base" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/ddjvuapi.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/lzw/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/lzw/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/winfonts/winfnt.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/djpeg.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GString.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrload.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makcjpeg.st" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrload.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/tttypes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrerror.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvcommn.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvcommn.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jmemmgr.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/fterrors.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/ftdebug.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-glyph_management.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvbsln.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-lcd_filtering.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svsfnt.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/LICENSE.TXT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/devel/ftoption.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/pdfdroid/codec/PdfPage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffobjs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuGlobal.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/events/Event.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/smooth/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/compiler/ansi-cc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/dos/dos-emx.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jinclude.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftstream.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrsbit.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/raster/rasterrs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrsbit.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/vc2008/freetype.vcproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/book.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/IW44Image.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psnames/psmodule.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psnames/psmodule.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/libjpeg.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/DocumentView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/testimg.ppm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/aflatin.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/aflatin.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/smooth/ftsmooth.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/ftrandom" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/VERSION.DLL" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/smooth/ftsmooth.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GIFFManager.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/models/ZoomModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/visualce/freetype.vcproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jcmainct.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/rdcolmap.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvtrak.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/t1tables.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/pshpic.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/pshpic.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makdjpeg.st" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/wrtarga.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/config.guess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmorx5.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jmemsys.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/wrppm.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuPort.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftmm.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrcmap.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdmainct.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/psauxmod.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-bdf_fonts.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttcmapc.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/config.sub" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/bdf/bdferror.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmorx1.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/UPGRADE.UNIX" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/psauxmod.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jcapistd.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jchuff.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrcmap.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/fterrdef.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfr.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makecdep.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/ftpic.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/cdjpeg.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psnames/psnames.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/cdjpeg.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/ViewerPreferences.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/lzw" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/mupdf-overlay/mupdf/pdf_cmap_load.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/ZPCodec.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psnames/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/presentation" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuText.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type42/t42drivr.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/cidload.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type42/t42drivr.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/ByteStream.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffgload.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-gasp_table.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffgload.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/raster/ftraster.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdmainct.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuMessage.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/w32-gcc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuDocument.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdarith.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/raster/ftraster.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jutils.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/rdgif.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-incremental.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdcoefct.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftlcdfil.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/wrbmp.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/devel/ft2build.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DataPool.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftsnames.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdatadst.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-basic_types.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttbdf.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvprop.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttbdf.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf/pcferror.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/psaux.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makefile.wat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftotval.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/cidload.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/mupdf-overlay/fitz/base_error.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makedmak.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftccmap.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/folderopen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type42/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/JPEGDecoder.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makecdsp.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/raster/rastpic.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/lzw/ftzopen.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GOS.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/lzw/ftzopen.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/ddjvuapi.pc.in" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/unix-lcc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/ftgzip.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmorx.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/raster/rastpic.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/wince/vc2008-ce" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmorx.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/wince" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/psconv.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GBitmap.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftcbasic.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftcid.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrtypes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdpostct.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/cjpeg.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/aclocal.m4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftglyph.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jconfig.bcc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/psconv.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftdebug.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/freetype.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/IFFByteStream.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otvgsub.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftcsbits.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftcsbits.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttsbit.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftgxval.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makejsln.vc9" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/cidgload.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otvalid.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/docmaker/formatter.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-quick_advance.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttsbit.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/cidgload.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otvalid.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/vc2005/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svttglyf.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/djvudroid/codec/DjvuPage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svttcmap.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/cjpeg.1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/os2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psnames/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jmorecfg.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffdrivr.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/exports.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffdrivr.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/INSTALL.VMS" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jmemansi.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jcprepct.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/ansi" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/filelist.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-user_allocation.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/bdf/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttobjs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/wrgif.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/objs/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/rdppm.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuFileCache.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type42/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/ttobjs.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/GoToPageDialog.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-mac_specific.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svtteng.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuDocument.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makewdep.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/UnicodeByteStream.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftotval.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuErrorList.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/TODO" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jidctfst.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/wince/vc2008-ce/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/os2/os2-gcc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/TRUETYPE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/MMX.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffobjs.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/GPL.TXT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/INSTALL.UNIX" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/truetype.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftoutln.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GPixmap.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jccoefct.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jquant1.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/org/vudroid" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1tokens.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftgloadr.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/armeabi/libvudroid.so" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afdummy.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/ltmain.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afdummy.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdsample.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga/include/freetype" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjvuDroidTrace.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/beos/beos.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/test_bbox.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/events/SafeEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/events/BringUpZoomControlsEvent.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/rdrle.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svmm.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/UnicodeByteStream.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/raster/raster.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/aflatin2.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffload.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmort1.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/browser.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/rdjpgcom.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/docmaker/tohtml.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/aflatin2.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffload.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/example.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/INSTALL" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdmerge.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svcid.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jcapimin.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jidctint.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVmDir.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/rdtarga.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftrender.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/models" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/winfonts/fnterrs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuImage.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/freetype.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/Template.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftmm.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-base_interface.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/djvudroid/codec" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype-overlay/include" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/ansi/ansi-def.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jmemname.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psnames/psnamerr.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jconfig.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftcglyph.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/fttrigon.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttkern.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftcglyph.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdapistd.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttkern.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/JB2EncodeCodec.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jcomapi.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jconfig.mac" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psnames/pstables.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/symbian/freetype.mmp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jddctmgr.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/rdjpgcom.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/configure.ac" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/wince/vc2005-ce" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/pdfdroid" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jccolor.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jconfig.mc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/t1cmap.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdapistd.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/PROBLEMS" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makerdep.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jcdctmgr.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/sferrors.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/XMLParser.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/t1cmap.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmort.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftsystem.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuImage.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/codec/CodecDocument.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuText.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/pdfdroid/codec/PdfDocument.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/DecodeServiceBase.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftgxval.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/change.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/pdfdroid/codec/PdfContext.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WDD_Ravenna_Icons.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/INSTALL.MAC" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmort.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/configure" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jmemdosa.asm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/gotopage.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afglobal.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/transupp.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cfferrs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makecmak.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jaricom.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/docmaker/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/INSTALL.ANY" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/sfobjs.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afglobal.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/sfobjs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makeddsp.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/test_trig.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type42" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jpeglib.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/t1decode.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jconfig.wat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/visualce/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/config/ftheader.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/t1decode.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-cache_subsystem.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svpostnm.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/MainBrowserActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jcparam.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jcmaster.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/wince/vc2005-ce/freetype.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GURL.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuToPS.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/IW44Image.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psnames" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svbdf.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/rdjpgcom.1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jfdctint.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-lzw.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmort4.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/rdrle.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdhuff.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/apinames.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/w32-intl.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/rdswitch.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-module_management.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-outline_processing.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/mac/ftlib.prj.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/compiler/gcc-dev.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/utils/MD5StringUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/docmaker/docmaker.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftsynth.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/unix-dev.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/smooth/ftsmerrs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/vc2008" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/vc2005" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvjust.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftbitmap.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffparse.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GRect.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftcimage.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuDocEditor.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type42/t42error.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makewvcp.vc9" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/freetype2.in" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/bdf/bdf.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftcimage.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/bdf/bdf.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makejvcp.vc9" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makefile.sas" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/w32-lcc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftstroke.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afwarp.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftchapters.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/JPEGDecoder.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afwarp.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svotval.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftcerror.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jidctfst.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/docmaker/utils.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jcparam.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type42/t42parse.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/vudroid" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftsynth.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/psobjs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jcomapi.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/psobjs.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/djvudroid/codec/DjvuDocument.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf/pcfdrivr.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/atari/README.TXT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/vudroid/Android.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf/pcfdrivr.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftlist.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/XMLTags.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvopbd.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftcalc.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GSmartPointer.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/bdf/bdfdrivr.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/ltmain.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cffparse.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/t1types.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/infblock.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/bdf/bdfdrivr.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/freetype2.m4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/freetype-config.in" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftwinfnt.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/visualc/freetype.vcproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/atari/deflinejoiner.awk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makeadsw.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/infblock.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuFile.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/vc2005/freetype.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttmtx.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/testimgp.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftwinfnt.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttmtx.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type42/t42parse.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/wince/vc2005-ce/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jfdctflt.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/objs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftadvanc.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makefile.ansi" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afcjk.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/install-sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftgasp.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/w32-icc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/ftobjs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftgasp.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/smooth/ftgrays.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftbitmap.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/infcodes.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftbdf.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/sfnt.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/smooth/ftgrays.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/wizard.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GSmartPointer.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-toc.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psnames/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cache/ftcache.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/vms/ftsystem.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/config/ftoption.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/config.log" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/tttags.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf/pcf.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svpscmap.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf/pcf.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype-overlay/include/freetype/config/ftmodule.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/infcodes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GContainer.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/zlib.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jaricom.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/mupdf-overlay/fitz" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jerror.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/objs/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jerror.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jpegint.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttload.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/lzw/ftlzw.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/compiler/unix-lcc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/rdswitch.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/chktrcmp.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttload.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/CUSTOMIZE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/psauxerr.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1afm.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/VuDroidLogo.cdr" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrobjs.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdarith.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/unix-cc.in" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psnames/pspic.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuErrorList.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1afm.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-version.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/smooth/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVmDoc.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GString.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftapi.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psnames/pspic.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/cidparse.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvkern.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/afmparse.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afcjk.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/MAKEPP" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftbbox.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/vc2005/freetype.vcproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/afmparse.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdmerge.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuDumpHelper.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrobjs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/release" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1objs.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1objs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/docmaker/sources.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/cidparse.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttpost.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jddctmgr.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otvjstf.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/atari/gen-purec-patch.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/ttpost.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga/makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/raster/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GBitmap.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/CHANGES" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/raster/ftrend1.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/compiler/intelc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jfdctfst.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svgxval.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/dos/detect.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/raster/ftrend1.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type42/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jcmarker.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/bdf/bdflib.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftmac.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype-overlay/include/freetype/config/ftoption.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype-overlay/include/freetype" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/config.guess" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/psaux/module.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftstroke.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/arrowup.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf/pcfutil.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/basepic.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/w32-mingw32.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/basepic.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/pshglob.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdatasrc.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GScaler.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pcf/pcfutil.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuGlobalMemory.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/pshglob.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jquant1.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pshinter/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makejdsw.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jfdctflt.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GException.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-header_file_macros.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afhints.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jmemnobs.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makejmak.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-cid_fonts.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/structure.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makeasln.vc9" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/w32-wat.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afhints.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/mupdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/cdjpeg.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/ddjvuapi.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/aclocal.m4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jcapistd.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/compiler/watcom.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jcsample.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/visualce" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ttnameid.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/test_afm.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/vudroid/DjvuDroidBridge.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftoutln.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga/src/base/ftdebug.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makeddep.vc6" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jmemdos.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-multiple_masters.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/w32-bccd.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jdatadst.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/beos/detect.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftlcdfil.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/pshints.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/atomic.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GURL.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/MMX.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/winfonts/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afangles.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jconfig.sas" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afangles.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/cidriver.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/cjpeg.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftsystem.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftinit.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuAnno.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/docmaker/content.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GMapAreas.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makvms.opt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/cidriver.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftadvanc.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jcinit.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/configure" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/mupdf-overlay/mupdf/pdf_debug.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/unixddef.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/bdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/Android.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/otvalid/otverror.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makefile.unix" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/rdgif.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/amiga/include" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvfgen.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makefile.vc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftsizes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftpfr.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/w32-bcc.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cid/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/ftcache.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/compiler" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/jmemmac.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/tools/cordic.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/truetype/tterrors.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/win32/visualc/freetype.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GMapAreas.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/cfftoken.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmorx4.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/ftvalid.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/ftgloadr.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/GOS.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftpfr.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftbase.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gzip/adler32.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makedvcp.vc9" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/makervcp.vc9" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/wrjpgcom.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/unix/ftconfig.in" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1driver.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/ftbase.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jpegtran.Po" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jdapimin.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/type1/t1driver.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/browseritem.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jidctflt.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/cff/rules.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmorx0.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/builds/mac/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/jpeg/.deps/jquant2.Plo" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afpic.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVuInfo.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/sfntpic.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/events/EventDispatcher.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrgload.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/BaseViewerActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/autofit/afpic.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/sfnt/sfntpic.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/org/vudroid/core/presentation/UriBrowserAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/gxvalid/gxvmorx2.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/include/freetype/internal/services/svxf86nm.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/pfr/pfrgload.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/docs/reference/ft2-computations.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/mupdf/freetype/src/base/Jamfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/Arrays.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/djvudroid/DjVmDir0.h" />
+    </list>
+    <ignored path="$USER_HOME_GRIFFON$/" />
+    <ignored path="$USER_HOME_GRAILS$/" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+    <option name="REVERSE_PATCH" value="false" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DebuggerManager">
+    <line_breakpoints>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/org/vudroid/pdfdroid/codec/PdfPage.java" line="43" class="org.viewdroid.pdfdroid.codec.PdfPage" package="org.viewdroid.pdfdroid.codec">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
+    <breakpoint_any>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <breakpoint_rules />
+    <ui_properties />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="project" />
+  </component>
+  <component name="FileColors" enabled="true" enabledForTabs="true" />
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="MainBrowserActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/MainBrowserActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="55" selection-start="338" selection-end="338" vertical-scroll-proportion="-6.375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseBrowserActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/BaseBrowserActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="29" selection-start="400" selection-end="400" vertical-scroll-proportion="0.5279503">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ViewerPreferences.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/ViewerPreferences.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="22" selection-start="1113" selection-end="1113" vertical-scroll-proportion="-7.5833335">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseViewerActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/BaseViewerActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51" column="26" selection-start="2059" selection-end="2059" vertical-scroll-proportion="-21.916666">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BrowserAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/presentation/BrowserAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="48" column="79" selection-start="1147" selection-end="1147" vertical-scroll-proportion="-10.125">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoToPageDialog.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/GoToPageDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="24" selection-start="331" selection-end="331" vertical-scroll-proportion="-4.4583335">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UriBrowserAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/presentation/UriBrowserAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="39" column="28" selection-start="1094" selection-end="1094" vertical-scroll-proportion="-27.625">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Instrumentation.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../../../../android-sdk-windows/platforms/android-3/android.jar!/android/app/Instrumentation.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="154" column="0" selection-start="8118" selection-end="8118" vertical-scroll-proportion="-6.375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="browser.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/browser.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="15" selection-start="370" selection-end="370" vertical-scroll-proportion="-5.375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="browseritem.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/browseritem.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.8333333">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/org/viewdroid/djvudroid/codec/LibraryExtracter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/viewdroid/core/BaseViewerActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/viewdroid/djvudroid/DjvuViewerActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/viewdroid/core/MainBrowserActivity.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/vudroid/djvudroid/codec/DjvuContext.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/vudroid/core/VuDroidLibraryLoader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/vudroid/pdfdroid/codec/PdfContext.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/vudroid/core/BaseViewerActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/vudroid/djvudroid/DjvuViewerActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/vudroid/core/MainBrowserActivity.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/vudroid/core/BaseBrowserActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/vudroid/core/presentation/BrowserAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/vudroid/core/GoToPageDialog.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/vudroid/core/presentation/UriBrowserAdapter.java" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+      </PATH>
+    </treeState>
+  </component>
+  <component name="ModuleEditorState">
+    <option name="LAST_EDITED_MODULE_NAME" />
+    <option name="LAST_EDITED_TAB_NAME" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state />
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <OptionsSetting value="true" id="Undo Check Out" />
+    <OptionsSetting value="true" id="Get Latest Version" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages ProjectPane="false" />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages ProjectPane="false" />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vudroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jni" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jni" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vudroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jni" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mupdf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vudroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Favorites" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="org.viewdroid.pdfdroid" />
+      <recent name="org.viewdroid.pdfdroid.codec" />
+    </key>
+    <key name="IntroduceConstantDialog.RECENTS_KEY">
+      <recent name="org.viewdroid.pdfdroid.codec.PdfCodecDocument" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.viewdroid.pdfdroid.codec" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.viewdroid.core" />
+      <recent name="org.viewdroid.core.codec" />
+      <recent name="org.viewdroid" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Android Application.PdfDroid">
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="CHOOSE_DEVICE_MANUALLY" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" air_descriptor_path="" air_program_params="" air_publisher_id="" air_root_dir_path="" air_run_mode="AppDescriptor" class_name="" html_or_swf_file_path="" main_class_name="" method_name="" module_name="" output_log_level="" package_name="" port="0" run_mode="HtmlOrSwfFile" scope="Class" socket_policy_port="0" url_to_launch="http://">
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" />
+      <extension name="snapshooter" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" />
+      <extension name="snapshooter" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" />
+      <extension name="snapshooter" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CHOOSE_DEVICE_MANUALLY" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
+    <configuration default="false" name="PdfDroid" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="vudroid" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CHOOSE_DEVICE_MANUALLY" value="false" />
+      <option name="PREFERRED_AVD" value="SimpleWithSD" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <RunnerSettings RunnerId="AndroidDebugRunner" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Android Application.PdfDroid" />
+    </list>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="StarteamConfiguration">
+    <option name="SERVER" value="" />
+    <option name="PORT" value="49201" />
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="PROJECT" value="" />
+    <option name="VIEW" value="" />
+    <option name="ALTERNATIVE_WORKING_PATH" value="" />
+    <option name="LOCK_ON_CHECKOUT" value="false" />
+    <option name="UNLOCK_ON_CHECKIN" value="false" />
+  </component>
+  <component name="SvnConfiguration" maxAnnotateRevisions="500">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="UPDATE_RUN_STATUS" value="false" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="DETECT_NESTED_COPIES" value="true" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <configuration useDefault="false">C:\Users\Cool\AppData\Roaming\Subversion</configuration>
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\develop\android-ndk-1.6_r1\apps\pdfdroid\project" />
+          <option name="myCopyRoot" value="D:\develop\android-ndk-1.6_r1\apps\pdfdroid\project" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\develop\android-ndk-1.6_r1\apps\pdfdroid\project" />
+          <option name="myCopyRoot" value="D:\develop\android-ndk-1.6_r1\apps\pdfdroid\project" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fbcd3174-ba6c-4550-a567-c5cb11c3a64d" name="Default" comment="" />
+      <created>1269783798316</created>
+      <updated>1269783798316</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32866043" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.4939173" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47663552" sideWeight="0.48418492" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32866043" sideWeight="0.4939173" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.55607474" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43552312" sideWeight="0.66043615" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4330218" sideWeight="0.4566099" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4330218" sideWeight="0.5377129" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
+    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
+    <option name="ENABLE_BACKGROUND_PROCESSES" value="false" />
+    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+    <option name="ACTIVE_VCS_NAME" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
+    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+  </component>
+  <component name="VssConfiguration">
+    <option name="CLIENT_PATH" value="" />
+    <option name="SRCSAFEINI_PATH" value="" />
+    <option name="USER_NAME" value="" />
+    <option name="PWD" value="" />
+    <CheckoutOptions>
+      <option name="COMMENT" value="" />
+      <option name="DO_NOT_GET_LATEST_VERSION" value="false" />
+      <option name="REPLACE_WRITABLE" value="false" />
+      <option name="RECURSIVE" value="false" />
+    </CheckoutOptions>
+    <CheckinOptions>
+      <option name="COMMENT" value="" />
+      <option name="KEEP_CHECKED_OUT" value="false" />
+      <option name="RECURSIVE" value="false" />
+    </CheckinOptions>
+    <AddOptions>
+      <option name="STORE_ONLY_LATEST_VERSION" value="false" />
+      <option name="CHECK_OUT_IMMEDIATELY" value="false" />
+    </AddOptions>
+    <UndocheckoutOptions>
+      <option name="MAKE_WRITABLE" value="false" />
+      <option name="REPLACE_LOCAL_COPY" value="2" />
+      <option name="RECURSIVE" value="false" />
+    </UndocheckoutOptions>
+    <GetOptions>
+      <option name="REPLACE_WRITABLE" value="0" />
+      <option name="MAKE_WRITABLE" value="false" />
+      <option name="ANSWER_NEGATIVELY" value="false" />
+      <option name="ANSWER_POSITIVELY" value="false" />
+      <option name="RECURSIVE" value="false" />
+      <option name="VERSION" />
+    </GetOptions>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/pdfdroid/codec/PdfContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="31" selection-start="335" selection-end="335" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/djvudroid/DjvuViewerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="5" selection-start="400" selection-end="400" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/djvudroid/codec/DjvuContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="30" selection-start="653" selection-end="653" vertical-scroll-proportion="-9.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="12" selection-start="987" selection-end="987" vertical-scroll-proportion="0.6925926">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="22" selection-start="663" selection-end="663" vertical-scroll-proportion="-7.0833335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/gotopage.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="14" selection-start="273" selection-end="273" vertical-scroll-proportion="-4.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/browseritem.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.8333333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/browser.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="15" selection-start="370" selection-end="370" vertical-scroll-proportion="-5.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../../../android-sdk-windows/platforms/android-3/android.jar!/android/app/Instrumentation.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="154" column="0" selection-start="8118" selection-end="8118" vertical-scroll-proportion="-6.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/GoToPageDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="24" selection-start="331" selection-end="331" vertical-scroll-proportion="-4.4583335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/presentation/UriBrowserAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="28" selection-start="1094" selection-end="1094" vertical-scroll-proportion="-27.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/presentation/BrowserAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="79" selection-start="1147" selection-end="1147" vertical-scroll-proportion="-10.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/MainBrowserActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="55" selection-start="338" selection-end="338" vertical-scroll-proportion="-6.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/BaseViewerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="26" selection-start="2059" selection-end="2059" vertical-scroll-proportion="-21.916666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/ViewerPreferences.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="22" selection-start="1113" selection-end="1113" vertical-scroll-proportion="-7.5833335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/vudroid/core/BaseBrowserActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="29" selection-start="400" selection-end="400" vertical-scroll-proportion="0.5279503">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <UIState>
+          <splitter-proportions>
+            <SplitterProportionsDataImpl>
+              <option name="proportions">
+                <list>
+                  <option value="0.2" />
+                </list>
+              </option>
+            </SplitterProportionsDataImpl>
+          </splitter-proportions>
+          <settings />
+        </UIState>
+      </state>
+      <state key="Copyright.UI">
+        <UIState>
+          <splitter-proportions>
+            <SplitterProportionsDataImpl />
+          </splitter-proportions>
+        </UIState>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <UIState>
+          <splitter-proportions>
+            <SplitterProportionsDataImpl />
+          </splitter-proportions>
+          <settings />
+        </UIState>
+      </state>
+    </states>
+  </component>
+</project>
+
