@@ -1,42 +1,33 @@
 package org.vudroid.core;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.view.*;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import android.widget.*;
+import android.graphics.*;
+import android.view.MotionEvent;
+import android.view.VelocityTracker;
+import android.view.View;
+import android.widget.Scroller;
 import org.vudroid.core.events.ZoomListener;
 import org.vudroid.core.models.ZoomModel;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
-public class DocumentView extends ScrollView implements ZoomListener
+public class DocumentView extends View implements ZoomListener
 {
     private final ZoomModel zoomModel;
     private DecodeService decodeService;
-    private final Map<Integer, FrameLayout> pages = new HashMap<Integer, FrameLayout>();
-    private final Map<Integer, Bitmap> visiblePageNumToBitmap = new HashMap<Integer, Bitmap>();
-    private final Set<Integer> decodingPageNums = new HashSet<Integer>();
+    private final HashMap<Integer, Page> pages = new HashMap<Integer, Page>();
     private boolean isInitialized = false;
     private int pageToGoTo;
     private float lastX;
+    private float lastY;
     private VelocityTracker velocityTracker;
     private final Scroller scroller;
-    private final HashMap<Integer, Float> pageIndexToAspectRatio = new HashMap<Integer, Float>();
-    private Animation.AnimationListener animationListener;
-    private final Rect tempRect = new Rect();
-    private final HashMap<Integer,Bitmap> pendingBitmaps = new HashMap<Integer, Bitmap>();
 
     public DocumentView(Context context, ZoomModel zoomModel)
     {
         super(context);
         this.zoomModel = zoomModel;
-        initLayout();
         setKeepScreenOn(true);
         scroller = new Scroller(getContext());
     }
@@ -52,49 +43,30 @@ public class DocumentView extends ScrollView implements ZoomListener
         {
             return;
         }
-        final LinearLayout linearLayout = getMainLayout();
         final int width = decodeService.getEffectivePagesWidth();
         final int height = decodeService.getEffectivePagesHeight();
         for (int i = 0; i < decodeService.getPageCount(); i++)
         {
-            addPageToMainLayoutIfNotAvailable(linearLayout, width, height, i);
+            addPageToMainLayoutIfNotAvailable(width, height, i);
         }
+        invalidatePageSizes();
         goToPageImpl(pageToGoTo);
         isInitialized = true;
     }
 
-    private void addPageToMainLayoutIfNotAvailable(LinearLayout mainLayout, int width, int height, int pageIndex)
+    private void addPageToMainLayoutIfNotAvailable(int width, int height, int pageIndex)
     {
         if (pages.containsKey(pageIndex))
         {
             return;
         }
-        final FrameLayout frameLayout = new FrameLayout(getContext());
-        frameLayout.setLayoutParams(new LayoutParams(width, height));
+        pages.put(pageIndex, new Page(pageIndex));
         setAspectRatio(width, height, pageIndex);
-        frameLayout.addView(createPageNumView(pageIndex));
-        pages.put(pageIndex, frameLayout);
-        mainLayout.addView(frameLayout);
     }
 
     private void setAspectRatio(int width, int height, int pageIndex)
     {
-        pageIndexToAspectRatio.put(pageIndex, width * 1.0f / height);
-    }
-
-    private LinearLayout getMainLayout()
-    {
-        return (LinearLayout) findViewWithTag(LinearLayout.class);
-    }
-
-    private LinearLayout initLayout()
-    {
-        final LinearLayout linearLayout = new LinearLayout(getContext());
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        linearLayout.setTag(LinearLayout.class);
-        linearLayout.setAnimationCacheEnabled(false);
-        addView(linearLayout);
-        return linearLayout;
+        pages.get(pageIndex).setAspectRatio(width * 1.0f / height);
     }
 
     private void goToPageImpl(final int toPage)
@@ -136,13 +108,13 @@ public class DocumentView extends ScrollView implements ZoomListener
 
     private void startDecodingVisiblePages(boolean invalidate)
     {
-        for (final Map.Entry<Integer, FrameLayout> pageNumToPage : pages.entrySet())
+        for (final Map.Entry<Integer, Page> pageNumToPage : pages.entrySet())
         {
-            final FrameLayout page = pageNumToPage.getValue();
+            final Page page = pageNumToPage.getValue();
             if (isPageVisible(page))
             {
                 final Integer pageNum = pageNumToPage.getKey();
-                if (visiblePageNumToBitmap.containsKey(pageNum) && !invalidate)
+                if (page.getBitmap() != null && !invalidate)
                 {
                     continue;
                 }
@@ -153,7 +125,7 @@ public class DocumentView extends ScrollView implements ZoomListener
 
     private void removeImageFromInvisiblePages()
     {
-        for (Integer visiblePageNum : new HashMap<Integer, Bitmap>(visiblePageNumToBitmap).keySet())
+        for (Integer visiblePageNum : pages.keySet())
         {
             if (!isPageVisible(pages.get(visiblePageNum)))
             {
@@ -164,9 +136,9 @@ public class DocumentView extends ScrollView implements ZoomListener
 
     private void stopDecodingInvisiblePages()
     {
-        for (Integer decodingPageNum : new HashSet<Integer>(decodingPageNums))
+        for (Integer decodingPageNum : pages.keySet())
         {
-            if (!isPageVisible(pages.get(decodingPageNum)))
+            if (!isPageVisible(pages.get(decodingPageNum)) && pages.get(decodingPageNum).decodingNow)
             {
                 stopDecodingPage(decodingPageNum);
             }
@@ -175,9 +147,12 @@ public class DocumentView extends ScrollView implements ZoomListener
 
     private void stopDecodingAllPages()
     {
-        for (Integer decodingPageNum : new HashSet<Integer>(decodingPageNums))
+        for (Integer decodingPageNum : pages.keySet())
         {
-            stopDecodingPage(decodingPageNum);
+            if (pages.get(decodingPageNum).decodingNow)
+            {
+                stopDecodingPage(decodingPageNum);
+            }
         }
     }
 
@@ -189,11 +164,11 @@ public class DocumentView extends ScrollView implements ZoomListener
 
     private void decodePage(final Integer pageNum)
     {
-        if (decodingPageNums.contains(pageNum))
+        if (pages.containsKey(pageNum) && pages.get(pageNum).decodingNow)
         {
             return;
         }
-        addPageToMainLayoutIfNotAvailable(getMainLayout(), getWidth(), getHeight(), pageNum);
+        addPageToMainLayoutIfNotAvailable(getWidth(), getHeight(), pageNum);
         setDecodingStatus(pageNum);
         decodeService.decodePage(pageNum, new DecodeService.DecodeCallback()
         {
@@ -212,128 +187,55 @@ public class DocumentView extends ScrollView implements ZoomListener
 
     private void setDecodingStatus(Integer pageNum)
     {
-        if (!decodingPageNums.contains(pageNum) && pages.containsKey(pageNum) && !visiblePageNumToBitmap.containsKey(pageNum))
+        if (!pages.get(pageNum).decodingNow && pages.containsKey(pageNum) && pages.get(pageNum).getBitmap() == null)
         {
-            final ProgressBar bar = new ProgressBar(getContext());
-            bar.setIndeterminate(true);
-            bar.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
-            bar.setTag(ProgressBar.class);
-            pages.get(pageNum).addView(bar);
+            pages.get(pageNum).decodingNow = true;
         }
-        decodingPageNums.add(pageNum);
     }
 
     private void removeDecodingStatus(Integer decodingPageNum)
     {
-        if (decodingPageNums.contains(decodingPageNum) && pages.containsKey(decodingPageNum))
+        if (pages.get(decodingPageNum).decodingNow && pages.containsKey(decodingPageNum))
         {
-            final FrameLayout page = pages.get(decodingPageNum);
-            page.removeView(page.findViewWithTag(ProgressBar.class));
+            pages.get(decodingPageNum).decodingNow = false;
         }
-        decodingPageNums.remove(decodingPageNum);
     }
 
-    private boolean isPageVisible(FrameLayout page)
+    private boolean isPageVisible(Page page)
     {
-        return page.getGlobalVisibleRect(tempRect);
+        float pageTop = page.getTop();
+        float pageBottom = page.bounds.bottom;
+        int top = getScrollY();
+        int bottom = top + getHeight();
+
+        return top <= pageTop && pageTop <= bottom ||
+                top <= pageBottom && pageBottom <= bottom ||
+                top <= pageTop && pageBottom <= bottom ||
+                pageTop <= top && bottom <= pageBottom;
     }
 
     private void submitBitmap(final Integer pageNum, final Bitmap bitmap)
     {
-        if (isAnimationRunning())
-        {
-            final Bitmap oldBitmap = pendingBitmaps.put(pageNum, bitmap);
-            if (oldBitmap != null)
-            {
-                oldBitmap.recycle();
-            }
-            return;
-        }
         addImageToPage(pageNum, bitmap);
         removeDecodingStatus(pageNum);
-    }
-
-    private void submitPendingBitmaps()
-    {
-        for (Map.Entry<Integer, Bitmap> pageBitmapEntry : pendingBitmaps.entrySet())
-        {
-            submitBitmap(pageBitmapEntry.getKey(), pageBitmapEntry.getValue());
-        }
-        pendingBitmaps.clear();
-    }
-
-    private boolean isAnimationRunning()
-    {
-        return getMainLayout().getAnimation() != null;
     }
 
     private void addImageToPage(Integer pageNum, final Bitmap bitmap)
     {
         init();
-        final FrameLayout page = pages.get(pageNum);
-        ImageView imageView = (ImageView) page.findViewWithTag(ImageView.class);
-        if (imageView == null)
-        {
-            imageView = createImageView(bitmap);
-            page.addView(imageView);
-        }
-        else
-        {
-            imageView.setImageBitmap(bitmap);
-        }
+        final Page page = pages.get(pageNum);
+        page.setBitmap(bitmap);
         setPageSize(pageNum, bitmap);
-        final Bitmap oldBitmap = visiblePageNumToBitmap.put(pageNum, bitmap);
-        if (oldBitmap != null)
-        {
-            oldBitmap.recycle();
-        }
     }
 
     private void setPageSize(Integer pageNum, Bitmap bitmap)
     {
         setAspectRatio(bitmap.getWidth(), bitmap.getHeight(), pageNum);
-        if (getMainLayout().getAnimation() == null)
-        {
-            setPageSizeByAspectRatio(pageNum);
-        }
-    }
-
-    private void setPageSizeByAspectRatio(Integer pageNum)
-    {
-        setPageSizeByAspectRatio(getWidth(), pages.get(pageNum), pageNum, zoomModel.getZoom(), null, 0);
     }
 
     private void removeImageFromPage(Integer fromPage)
     {
-        final FrameLayout page = pages.get(fromPage);
-        final View imageView = page.findViewWithTag(ImageView.class);
-        if (imageView == null)
-        {
-            return;
-        }
-        page.removeView(imageView);
-        final Bitmap bitmap = visiblePageNumToBitmap.remove(fromPage);
-        bitmap.recycle();
-    }
-
-    private ImageView createImageView(Bitmap bitmap)
-    {
-        final ImageView imageView = new ImageView(getContext());
-        imageView.setImageBitmap(bitmap);
-        imageView.setTag(ImageView.class);
-        imageView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
-        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        return imageView;
-    }
-
-    private TextView createPageNumView(int i)
-    {
-        TextView pageNumTextView = new TextView(getContext());
-        pageNumTextView.setText("Page " + (i + 1));
-        pageNumTextView.setTextSize(32);
-        pageNumTextView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-        pageNumTextView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
-        return pageNumTextView;
+        pages.get(fromPage).setBitmap(null);
     }
 
     public void showDocument()
@@ -353,8 +255,7 @@ public class DocumentView extends ScrollView implements ZoomListener
         if (isInitialized)
         {
             goToPageImpl(toPage);
-        }
-        else
+        } else
         {
             pageToGoTo = toPage;
         }
@@ -362,7 +263,7 @@ public class DocumentView extends ScrollView implements ZoomListener
 
     public int getCurrentPage()
     {
-        for (Map.Entry<Integer, FrameLayout> entry : pages.entrySet())
+        for (Map.Entry<Integer, Page> entry : pages.entrySet())
         {
             if (isPageVisible(entry.getValue()))
             {
@@ -376,114 +277,16 @@ public class DocumentView extends ScrollView implements ZoomListener
     {
         stopDecodingAllPages();
         startDecodingVisiblePages(true);
-        applyScaleAnimation(newZoom, oldZoom);
-    }
-
-    private void applyScaleAnimation(final float newZoom, final float oldZoom)
-    {
-        if (isAnimationRunning())
-        {
-            animationListener.onAnimationEnd(getAnimation());
-        }
         final float ratio = newZoom / oldZoom;
-        final ScaleAnimation animation = new ScaleAnimation(1.0f, ratio, 1.0f, ratio, getScrollX() + getWidth()/2, getScrollY() + getHeight()/2);
-
-        animation.setDuration(150);
-        animation.setFillAfter(true);
-        animationListener = new Animation.AnimationListener()
-        {
-            public void onAnimationEnd(Animation animation)
-            {
-                removeAnimation();
-                submitPendingBitmaps();
-                final int width = getWidth();
-                final int currentPage = getCurrentPage();
-                HeightAccum heightAccum = new HeightAccum();
-                for (Map.Entry<Integer, FrameLayout> pageIndexToPage : pages.entrySet())
-                {
-                    final FrameLayout page = pageIndexToPage.getValue();
-                    final Integer pageIndex = pageIndexToPage.getKey();
-                    setPageSizeByAspectRatio(width, page, pageIndex, newZoom, heightAccum, currentPage);
-                }
-                lastUpdateScrollByZoom = new UpdateScrollByZoom(newZoom, oldZoom, heightAccum, getScrollY());
-            }
-
-            public void onAnimationStart(Animation animation)
-            {
-            }
-
-            public void onAnimationRepeat(Animation animation)
-            {
-            }
-        };
-        animation.setAnimationListener(animationListener);
-        getMainLayout().startAnimation(animation);
-    }
-
-    private class HeightAccum
-    {
-        private int currentPageHeight;
-        private int newPageHeight;
-    }
-
-    private class UpdateScrollByZoom
-    {
-        private final float newZoom;
-        private final float oldZoom;
-        private final HeightAccum heightAccum;
-        private final float currentScrollY;
-
-        private UpdateScrollByZoom(float newZoom, float oldZoom, HeightAccum heightAccum, float currentScrollY)
-        {
-            this.newZoom = newZoom;
-            this.oldZoom = oldZoom;
-            this.heightAccum = heightAccum;
-            this.currentScrollY = currentScrollY;
-        }
-    }
-
-    private UpdateScrollByZoom lastUpdateScrollByZoom;
-
-    private void setPageSizeByAspectRatio(int mainWidth, FrameLayout page, Integer pageIndex, float zoom, HeightAccum heightAccum, int currentPage)
-    {
-        final int newHeight = Math.round(mainWidth / pageIndexToAspectRatio.get(pageIndex) * zoom);
-        final int height = page.getHeight();
-        page.setLayoutParams(new LinearLayout.LayoutParams(
-                Math.round(mainWidth * zoom),
-                newHeight
-        ));
-        if (heightAccum != null && currentPage > pageIndex)
-        {
-            heightAccum.currentPageHeight += height;
-            heightAccum.newPageHeight += newHeight;
-        }
-    }
-
-    private void removeAnimation()
-    {
-        animationListener = null;
-        getMainLayout().clearAnimation();
-    }
-
-    private void updateScrollWhileZoom(float newZoom, float oldZoom, HeightAccum heightAccum, float currentScrollY)
-    {                                       
-        final float ratio = newZoom / oldZoom;
-        final float halfWidth = getWidth() / 2.0f;
-        final float halfHeight = getHeight() / 2.0f;
-        scrollTo(Math.round(ratio * (getScrollX() + halfWidth) - halfWidth),
-                Math.round(ratio * (currentScrollY + halfHeight - heightAccum.currentPageHeight) - halfHeight + heightAccum.newPageHeight));
+        scrollTo((int) ((getScrollX() + getWidth() / 2) * ratio - getWidth()/2), (int) ((getScrollY()+getHeight()/2) * ratio - getHeight()/2));
+        invalidatePageSizes();
+        invalidate();
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev)
     {
         zoomModel.bringUpZoomControls();
-
-        final boolean b = super.onTouchEvent(ev);
-        if (!zoomModel.isHorizontalScrollEnabled())
-        {
-            return b;
-        }
 
         if (velocityTracker == null)
         {
@@ -499,15 +302,16 @@ public class DocumentView extends ScrollView implements ZoomListener
                     scroller.abortAnimation();
                 }
                 lastX = ev.getX();
+                lastY = ev.getY();
                 break;
             case MotionEvent.ACTION_MOVE:
-                final int delta = (int) (lastX - ev.getX());
-                scrollBy(delta, 0);
+                scrollBy((int) (lastX - ev.getX()), (int) (lastY - ev.getY()));
                 lastX = ev.getX();
+                lastY = ev.getY();
                 break;
             case MotionEvent.ACTION_UP:
                 velocityTracker.computeCurrentVelocity(1000);
-                scroller.fling(getScrollX(), 0, (int) -velocityTracker.getXVelocity(), 0, 0, getMainLayout().getWidth(), 0, 0);
+                scroller.fling(getScrollX(), getScrollY(), (int) -velocityTracker.getXVelocity(), (int) -velocityTracker.getYVelocity(), 0, (int) (getWidth() * zoomModel.getZoom()), 0, (int) pages.get(pages.size()-1).bounds.bottom);
                 velocityTracker.recycle();
                 velocityTracker = null;
                 break;
@@ -518,33 +322,93 @@ public class DocumentView extends ScrollView implements ZoomListener
     @Override
     public void computeScroll()
     {
-        // save scrollX as it killed by scroller inside ScrollView.computeScroll()
-        final int scrollX = getScrollX();
-        super.computeScroll();
         if (scroller.computeScrollOffset())
         {
-            scrollTo(scroller.getCurrX(), getScrollY());
-        }
-        else
-        {
-            scrollTo(scrollX, getScrollY());
-        }
-        if (lastUpdateScrollByZoom != null)
-        {
-            updateScrollWhileZoom(lastUpdateScrollByZoom.newZoom, lastUpdateScrollByZoom.oldZoom, lastUpdateScrollByZoom.heightAccum, lastUpdateScrollByZoom.currentScrollY);
-            lastUpdateScrollByZoom = null;
+            scrollTo(scroller.getCurrX(), scroller.getCurrY());
         }
     }
 
     @Override
-    protected void measureChild(View child, int parentWidthMeasureSpec, int parentHeightMeasureSpec)
+    protected void onDraw(Canvas canvas)
     {
-        super.measureChild(child, MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), parentHeightMeasureSpec);
+        super.onDraw(canvas);
+        for (Page page : pages.values())
+        {
+            page.draw(canvas);
+        }
     }
 
-    @Override
-    protected void measureChildWithMargins(View child, int parentWidthMeasureSpec, int widthUsed, int parentHeightMeasureSpec, int heightUsed)
+    private void invalidatePageSizes()
     {
-        super.measureChildWithMargins(child, MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), widthUsed, parentHeightMeasureSpec, heightUsed);
+        float heightAccum = 0;
+        int width = getWidth();
+        float zoom = zoomModel.getZoom();
+        for (int i = 0; i < pages.size(); i++)
+        {
+            Page page = pages.get(i);
+            float pageHeight = page.getPageHeight(width, zoom);
+            page.bounds = new RectF(0, heightAccum, width * zoom, heightAccum + pageHeight);
+            heightAccum += pageHeight;
+        }
+    }
+
+    private class Page
+    {
+        private final int index;
+        private RectF bounds;
+
+        private Page(int index)
+        {
+            this.index = index;
+        }
+
+        private float aspectRatio;
+        private Bitmap bitmap;
+        private boolean decodingNow;
+
+        private float getPageHeight(int mainWidth, float zoom)
+        {
+            return mainWidth / getAspectRatio() * zoom;
+        }
+
+        public int getTop()
+        {
+            return Math.round(bounds.top);
+        }
+
+        public void draw(Canvas canvas)
+        {
+            if (getBitmap() == null)
+            {
+                return;
+            }
+            canvas.drawBitmap(getBitmap(), new Rect(0, 0, getBitmap().getWidth(), getBitmap().getHeight()), bounds, new Paint());
+        }
+
+        public Bitmap getBitmap()
+        {
+            return bitmap;
+        }
+
+        public void setBitmap(Bitmap bitmap)
+        {
+            if (this.bitmap != null)
+            {
+                this.bitmap.recycle();
+            }
+            this.bitmap = bitmap;
+            invalidate();
+        }
+
+        public float getAspectRatio()
+        {
+            return aspectRatio;
+        }
+
+        public void setAspectRatio(float aspectRatio)
+        {
+            this.aspectRatio = aspectRatio;
+            invalidatePageSizes();
+        }
     }
 }
