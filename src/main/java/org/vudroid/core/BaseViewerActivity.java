@@ -6,10 +6,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.FrameLayout;
+import org.vudroid.core.events.DecodingProgressListener;
+import org.vudroid.core.models.DecodingProgressModel;
 import org.vudroid.core.models.ZoomModel;
 import org.vudroid.core.views.PageViewZoomControls;
 
-public abstract class BaseViewerActivity extends Activity
+public abstract class BaseViewerActivity extends Activity implements DecodingProgressListener
 {
     private static final int MENU_EXIT = 0;
     private static final int MENU_GOTO = 1;
@@ -29,7 +31,9 @@ public abstract class BaseViewerActivity extends Activity
         super.onCreate(savedInstanceState);
         initDecodeService();
         final ZoomModel zoomModel = new ZoomModel();
-        documentView = new DocumentView(this, zoomModel);
+        final DecodingProgressModel progressModel = new DecodingProgressModel();
+        progressModel.addEventListener(this);
+        documentView = new DocumentView(this, zoomModel, progressModel);
         zoomModel.addEventListener(documentView);
         documentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
         decodeService.setContentResolver(getContentResolver());
@@ -52,12 +56,21 @@ public abstract class BaseViewerActivity extends Activity
         viewerPreferences.addRecent(getIntent().getData());
     }
 
+    public void decodingProgressChanged(int currentlyDecoding)
+    {
+        getWindow().setFeatureInt(Window.FEATURE_INDETERMINATE_PROGRESS, currentlyDecoding == 0 ? 10000 : currentlyDecoding);
+    }
+
     private void setFullScreen()
     {
         if (viewerPreferences.isFullScreen())
         {
             getWindow().requestFeature(Window.FEATURE_NO_TITLE);
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+        else
+        {
+            getWindow().requestFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         }
     }
 

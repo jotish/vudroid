@@ -112,6 +112,7 @@ public class DecodeServiceBase implements DecodeService
         Log.d(DECODE_SERVICE, "Converting map to bitmap finished");
         if (isTaskDead(currentDecodeTask))
         {
+            bitmap.recycle();
             return;
         }
         finishDecoding(currentDecodeTask, bitmap);

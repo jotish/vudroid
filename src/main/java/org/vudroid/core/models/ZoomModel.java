@@ -3,6 +3,7 @@ package org.vudroid.core.models;
 import org.vudroid.core.events.BringUpZoomControlsEvent;
 import org.vudroid.core.events.EventDispatcher;
 import org.vudroid.core.events.ZoomChangedEvent;
+import org.vudroid.core.events.ZoomListener;
 
 public class ZoomModel extends EventDispatcher
 {
@@ -54,5 +55,10 @@ public class ZoomModel extends EventDispatcher
     public boolean canDecrement()
     {
         return zoom > 1.0f;
+    }
+
+    public void commit()
+    {
+        dispatch(new ZoomListener.CommitZoomEvent());
     }
 }

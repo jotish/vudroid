@@ -2,11 +2,13 @@ package org.vudroid.core;
 
 import android.content.Context;
 import android.graphics.*;
+import android.text.TextPaint;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.widget.Scroller;
 import org.vudroid.core.events.ZoomListener;
+import org.vudroid.core.models.DecodingProgressModel;
 import org.vudroid.core.models.ZoomModel;
 
 import java.util.HashMap;
@@ -23,11 +25,14 @@ public class DocumentView extends View implements ZoomListener
     private float lastY;
     private VelocityTracker velocityTracker;
     private final Scroller scroller;
+    private boolean isMoved;
+    private DecodingProgressModel progressModel;
 
-    public DocumentView(Context context, ZoomModel zoomModel)
+    public DocumentView(Context context, final ZoomModel zoomModel, DecodingProgressModel progressModel)
     {
         super(context);
         this.zoomModel = zoomModel;
+        this.progressModel = progressModel;
         setKeepScreenOn(true);
         scroller = new Scroller(getContext());
     }
@@ -138,7 +143,7 @@ public class DocumentView extends View implements ZoomListener
     {
         for (Integer decodingPageNum : pages.keySet())
         {
-            if (!isPageVisible(pages.get(decodingPageNum)) && pages.get(decodingPageNum).decodingNow)
+            if (!isPageVisible(pages.get(decodingPageNum)) && pages.get(decodingPageNum).isDecodingNow())
             {
                 stopDecodingPage(decodingPageNum);
             }
@@ -149,7 +154,7 @@ public class DocumentView extends View implements ZoomListener
     {
         for (Integer decodingPageNum : pages.keySet())
         {
-            if (pages.get(decodingPageNum).decodingNow)
+            if (pages.get(decodingPageNum).isDecodingNow())
             {
                 stopDecodingPage(decodingPageNum);
             }
@@ -164,7 +169,7 @@ public class DocumentView extends View implements ZoomListener
 
     private void decodePage(final Integer pageNum)
     {
-        if (pages.containsKey(pageNum) && pages.get(pageNum).decodingNow)
+        if (pages.containsKey(pageNum) && pages.get(pageNum).isDecodingNow())
         {
             return;
         }
@@ -187,31 +192,23 @@ public class DocumentView extends View implements ZoomListener
 
     private void setDecodingStatus(Integer pageNum)
     {
-        if (!pages.get(pageNum).decodingNow && pages.containsKey(pageNum) && pages.get(pageNum).getBitmap() == null)
+        if (pages.containsKey(pageNum))
         {
-            pages.get(pageNum).decodingNow = true;
+            pages.get(pageNum).setDecodingNow(true);
         }
     }
 
     private void removeDecodingStatus(Integer decodingPageNum)
     {
-        if (pages.get(decodingPageNum).decodingNow && pages.containsKey(decodingPageNum))
+        if (pages.containsKey(decodingPageNum))
         {
-            pages.get(decodingPageNum).decodingNow = false;
+            pages.get(decodingPageNum).setDecodingNow(false);
         }
     }
 
     private boolean isPageVisible(Page page)
     {
-        float pageTop = page.getTop();
-        float pageBottom = page.bounds.bottom;
-        int top = getScrollY();
-        int bottom = top + getHeight();
-
-        return top <= pageTop && pageTop <= bottom ||
-                top <= pageBottom && pageBottom <= bottom ||
-                top <= pageTop && pageBottom <= bottom ||
-                pageTop <= top && bottom <= pageBottom;
+        return page.isVisible();
     }
 
     private void submitBitmap(final Integer pageNum, final Bitmap bitmap)
@@ -275,18 +272,22 @@ public class DocumentView extends View implements ZoomListener
 
     public void zoomChanged(float newZoom, float oldZoom)
     {
-        stopDecodingAllPages();
-        startDecodingVisiblePages(true);
         final float ratio = newZoom / oldZoom;
-        scrollTo((int) ((getScrollX() + getWidth() / 2) * ratio - getWidth()/2), (int) ((getScrollY()+getHeight()/2) * ratio - getHeight()/2));
+        scrollTo((int) ((getScrollX() + getWidth() / 2) * ratio - getWidth() / 2), (int) ((getScrollY() + getHeight() / 2) * ratio - getHeight() / 2));
         invalidatePageSizes();
         invalidate();
+    }
+
+    public void commitZoom()
+    {
+        stopDecodingAllPages();
+        startDecodingVisiblePages(true);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev)
     {
-        zoomModel.bringUpZoomControls();
+        super.onTouchEvent(ev);
 
         if (velocityTracker == null)
         {
@@ -303,20 +304,52 @@ public class DocumentView extends View implements ZoomListener
                 }
                 lastX = ev.getX();
                 lastY = ev.getY();
+                isMoved = false;
                 break;
             case MotionEvent.ACTION_MOVE:
                 scrollBy((int) (lastX - ev.getX()), (int) (lastY - ev.getY()));
                 lastX = ev.getX();
                 lastY = ev.getY();
+                isMoved = true;
                 break;
             case MotionEvent.ACTION_UP:
                 velocityTracker.computeCurrentVelocity(1000);
-                scroller.fling(getScrollX(), getScrollY(), (int) -velocityTracker.getXVelocity(), (int) -velocityTracker.getYVelocity(), 0, (int) (getWidth() * zoomModel.getZoom()), 0, (int) pages.get(pages.size()-1).bounds.bottom);
+                scroller.fling(getScrollX(), getScrollY(), (int) -velocityTracker.getXVelocity(), (int) -velocityTracker.getYVelocity(), getLeftLimit(), getRightLimit(), getTopLimit(), getBottomLimit());
                 velocityTracker.recycle();
                 velocityTracker = null;
+                if (!isMoved)
+                {
+                    zoomModel.bringUpZoomControls();
+                }
                 break;
         }
         return true;
+    }
+
+    private int getTopLimit()
+    {
+        return 0;
+    }
+
+    private int getLeftLimit()
+    {
+        return 0;
+    }
+
+    private int getBottomLimit()
+    {
+        return (int) pages.get(pages.size() - 1).bounds.bottom - getHeight();
+    }
+
+    private int getRightLimit()
+    {
+        return (int) (getWidth() * zoomModel.getZoom()) - getWidth();
+    }
+
+    @Override
+    public void scrollTo(int x, int y)
+    {
+        super.scrollTo(Math.min(Math.max(x, getLeftLimit()), getRightLimit()), Math.min(Math.max(y, getTopLimit()), getBottomLimit()));
     }
 
     @Override
@@ -378,11 +411,30 @@ public class DocumentView extends View implements ZoomListener
 
         public void draw(Canvas canvas)
         {
+            if (!isVisible())
+            {
+                return;
+            }
+            final Paint rectPaint = new Paint();
+            rectPaint.setColor(Color.GRAY);
+            rectPaint.setStrokeWidth(4);
+            rectPaint.setStyle(Paint.Style.FILL);
+            canvas.drawRect(bounds, rectPaint);
+            rectPaint.setColor(Color.BLACK);
+            rectPaint.setStyle(Paint.Style.STROKE);
+            canvas.drawRect(bounds, rectPaint);
+            
+            final TextPaint paint = new TextPaint();
+            paint.setColor(Color.BLACK);
+            paint.setAntiAlias(true);
+            paint.setTextSize(24);
+            paint.setTextAlign(Paint.Align.CENTER);
+            canvas.drawText("Page " + (index + 1), bounds.centerX(), bounds.centerY(), paint);
             if (getBitmap() == null)
             {
                 return;
             }
-            canvas.drawBitmap(getBitmap(), new Rect(0, 0, getBitmap().getWidth(), getBitmap().getHeight()), bounds, new Paint());
+            canvas.drawBitmap(getBitmap(), new Rect(0, 0, getBitmap().getWidth(), getBitmap().getHeight()), bounds, new Paint(Paint.FILTER_BITMAP_FLAG));
         }
 
         public Bitmap getBitmap()
@@ -397,7 +449,7 @@ public class DocumentView extends View implements ZoomListener
                 this.bitmap.recycle();
             }
             this.bitmap = bitmap;
-            invalidate();
+            postInvalidate();
         }
 
         public float getAspectRatio()
@@ -409,6 +461,40 @@ public class DocumentView extends View implements ZoomListener
         {
             this.aspectRatio = aspectRatio;
             invalidatePageSizes();
+        }
+
+        public boolean isVisible()
+        {
+            float pageTop = getTop();
+            float pageBottom = bounds.bottom;
+            int top = getScrollY();
+            int bottom = top + getHeight();
+
+            return top <= pageTop && pageTop <= bottom ||
+                    top <= pageBottom && pageBottom <= bottom ||
+                    top <= pageTop && pageBottom <= bottom ||
+                    pageTop <= top && bottom <= pageBottom;
+        }
+
+        public boolean isDecodingNow()
+        {
+            return decodingNow;
+        }
+
+        public void setDecodingNow(boolean decodingNow)
+        {
+            if (this.decodingNow != decodingNow)
+            {
+                this.decodingNow = decodingNow;
+                if (decodingNow)
+                {
+                    progressModel.increase();
+                }
+                else
+                {
+                    progressModel.decrease();
+                }
+            }
         }
     }
 }
