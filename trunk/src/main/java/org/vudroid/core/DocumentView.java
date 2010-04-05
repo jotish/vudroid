@@ -25,8 +25,9 @@ public class DocumentView extends View implements ZoomListener
     private float lastY;
     private VelocityTracker velocityTracker;
     private final Scroller scroller;
-    private boolean isMoved;
     private DecodingProgressModel progressModel;
+    private float firstX;
+    private float firstY;
 
     public DocumentView(Context context, final ZoomModel zoomModel, DecodingProgressModel progressModel)
     {
@@ -302,22 +303,23 @@ public class DocumentView extends View implements ZoomListener
                 {
                     scroller.abortAnimation();
                 }
+                firstX = ev.getX();
+                firstY = ev.getY();
                 lastX = ev.getX();
                 lastY = ev.getY();
-                isMoved = false;
                 break;
             case MotionEvent.ACTION_MOVE:
                 scrollBy((int) (lastX - ev.getX()), (int) (lastY - ev.getY()));
                 lastX = ev.getX();
                 lastY = ev.getY();
-                isMoved = true;
                 break;
             case MotionEvent.ACTION_UP:
                 velocityTracker.computeCurrentVelocity(1000);
                 scroller.fling(getScrollX(), getScrollY(), (int) -velocityTracker.getXVelocity(), (int) -velocityTracker.getYVelocity(), getLeftLimit(), getRightLimit(), getTopLimit(), getBottomLimit());
                 velocityTracker.recycle();
                 velocityTracker = null;
-                if (!isMoved)
+
+                if (Math.abs(firstX - ev.getX()) < 2 && Math.abs(firstY - ev.getY()) < 2)
                 {
                     zoomModel.bringUpZoomControls();
                 }
