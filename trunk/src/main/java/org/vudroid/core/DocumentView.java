@@ -53,26 +53,12 @@ public class DocumentView extends View implements ZoomListener
         final int height = decodeService.getEffectivePagesHeight();
         for (int i = 0; i < decodeService.getPageCount(); i++)
         {
-            addPageToMainLayoutIfNotAvailable(width, height, i);
+            pages.put(i, new Page(i));
+            pages.get(i).setAspectRatio(width, height);
         }
         invalidatePageSizes();
         goToPageImpl(pageToGoTo);
         isInitialized = true;
-    }
-
-    private void addPageToMainLayoutIfNotAvailable(int width, int height, int pageIndex)
-    {
-        if (pages.containsKey(pageIndex))
-        {
-            return;
-        }
-        pages.put(pageIndex, new Page(pageIndex));
-        setAspectRatio(width, height, pageIndex);
-    }
-
-    private void setAspectRatio(int width, int height, int pageIndex)
-    {
-        pages.get(pageIndex).setAspectRatio(width * 1.0f / height);
     }
 
     private void goToPageImpl(final int toPage)
@@ -117,14 +103,9 @@ public class DocumentView extends View implements ZoomListener
         for (final Map.Entry<Integer, Page> pageNumToPage : pages.entrySet())
         {
             final Page page = pageNumToPage.getValue();
-            if (isPageVisible(page))
+            if (page.isVisible())
             {
-                final Integer pageNum = pageNumToPage.getKey();
-                if (page.getBitmap() != null && !invalidate)
-                {
-                    continue;
-                }
-                decodePage(pageNum);
+                page.startDecodingVisibleNodes(invalidate);
             }
         }
     }
@@ -133,9 +114,9 @@ public class DocumentView extends View implements ZoomListener
     {
         for (Integer visiblePageNum : pages.keySet())
         {
-            if (!isPageVisible(pages.get(visiblePageNum)))
+            if (!pages.get(visiblePageNum).isVisible())
             {
-                removeImageFromPage(visiblePageNum);
+                pages.get(visiblePageNum).removeInvisibleBitmaps();
             }
         }
     }
@@ -144,7 +125,7 @@ public class DocumentView extends View implements ZoomListener
     {
         for (Integer decodingPageNum : pages.keySet())
         {
-            if (!isPageVisible(pages.get(decodingPageNum)) && pages.get(decodingPageNum).isDecodingNow())
+            if (!pages.get(decodingPageNum).isVisible() && pages.get(decodingPageNum).isDecodingNow())
             {
                 stopDecodingPage(decodingPageNum);
             }
@@ -164,76 +145,7 @@ public class DocumentView extends View implements ZoomListener
 
     private void stopDecodingPage(Integer decodingPageNum)
     {
-        decodeService.stopDecoding(decodingPageNum);
-        removeDecodingStatus(decodingPageNum);
-    }
-
-    private void decodePage(final Integer pageNum)
-    {
-        if (pages.containsKey(pageNum) && pages.get(pageNum).isDecodingNow())
-        {
-            return;
-        }
-        addPageToMainLayoutIfNotAvailable(getWidth(), getHeight(), pageNum);
-        setDecodingStatus(pageNum);
-        decodeService.decodePage(pageNum, new DecodeService.DecodeCallback()
-        {
-            public void decodeComplete(final Bitmap bitmap)
-            {
-                post(new Runnable()
-                {
-                    public void run()
-                    {
-                        submitBitmap(pageNum, bitmap);
-                    }
-                });
-            }
-        }, zoomModel.getZoom());
-    }
-
-    private void setDecodingStatus(Integer pageNum)
-    {
-        if (pages.containsKey(pageNum))
-        {
-            pages.get(pageNum).setDecodingNow(true);
-        }
-    }
-
-    private void removeDecodingStatus(Integer decodingPageNum)
-    {
-        if (pages.containsKey(decodingPageNum))
-        {
-            pages.get(decodingPageNum).setDecodingNow(false);
-        }
-    }
-
-    private boolean isPageVisible(Page page)
-    {
-        return page.isVisible();
-    }
-
-    private void submitBitmap(final Integer pageNum, final Bitmap bitmap)
-    {
-        addImageToPage(pageNum, bitmap);
-        removeDecodingStatus(pageNum);
-    }
-
-    private void addImageToPage(Integer pageNum, final Bitmap bitmap)
-    {
-        init();
-        final Page page = pages.get(pageNum);
-        page.setBitmap(bitmap);
-        setPageSize(pageNum, bitmap);
-    }
-
-    private void setPageSize(Integer pageNum, Bitmap bitmap)
-    {
-        setAspectRatio(bitmap.getWidth(), bitmap.getHeight(), pageNum);
-    }
-
-    private void removeImageFromPage(Integer fromPage)
-    {
-        pages.get(fromPage).setBitmap(null);
+        pages.get(decodingPageNum).stopDecoding();
     }
 
     public void showDocument()
@@ -243,7 +155,7 @@ public class DocumentView extends View implements ZoomListener
         {
             public void run()
             {
-                decodePage(0);
+                init();
             }
         });
     }
@@ -263,7 +175,7 @@ public class DocumentView extends View implements ZoomListener
     {
         for (Map.Entry<Integer, Page> entry : pages.entrySet())
         {
-            if (isPageVisible(entry.getValue()))
+            if (entry.getValue().isVisible())
             {
                 return entry.getKey();
             }
@@ -391,15 +303,20 @@ public class DocumentView extends View implements ZoomListener
     {
         private final int index;
         private RectF bounds;
+        private PageTreeNode[] nodes;
 
         private Page(int index)
         {
             this.index = index;
+            nodes = new PageTreeNode[] {
+                    new PageTreeNode(new RectF(0,0,0.5f,0.5f), this),
+                    new PageTreeNode(new RectF(0.5f,0,1.0f,0.5f), this),
+                    new PageTreeNode(new RectF(0,0.5f,0.5f,1.0f), this),
+                    new PageTreeNode(new RectF(0.5f,0.5f,1.0f,1.0f), this)
+            };
         }
 
         private float aspectRatio;
-        private Bitmap bitmap;
-        private boolean decodingNow;
 
         private float getPageHeight(int mainWidth, float zoom)
         {
@@ -425,33 +342,17 @@ public class DocumentView extends View implements ZoomListener
             rectPaint.setColor(Color.BLACK);
             rectPaint.setStyle(Paint.Style.STROKE);
             canvas.drawRect(bounds, rectPaint);
-            
+
             final TextPaint paint = new TextPaint();
             paint.setColor(Color.BLACK);
             paint.setAntiAlias(true);
             paint.setTextSize(24);
             paint.setTextAlign(Paint.Align.CENTER);
             canvas.drawText("Page " + (index + 1), bounds.centerX(), bounds.centerY(), paint);
-            if (getBitmap() == null)
+            for (PageTreeNode node : nodes)
             {
-                return;
+                node.draw(canvas);
             }
-            canvas.drawBitmap(getBitmap(), new Rect(0, 0, getBitmap().getWidth(), getBitmap().getHeight()), bounds, new Paint(Paint.FILTER_BITMAP_FLAG));
-        }
-
-        public Bitmap getBitmap()
-        {
-            return bitmap;
-        }
-
-        public void setBitmap(Bitmap bitmap)
-        {
-            if (this.bitmap != null)
-            {
-                this.bitmap.recycle();
-            }
-            this.bitmap = bitmap;
-            postInvalidate();
         }
 
         public float getAspectRatio()
@@ -478,6 +379,91 @@ public class DocumentView extends View implements ZoomListener
                     pageTop <= top && bottom <= pageBottom;
         }
 
+
+
+        public void setAspectRatio(int width, int height)
+        {
+            setAspectRatio(width * 1.0f / height);
+        }
+
+        public void setPageSizeByBitmap(Bitmap bitmap)
+        {
+            setAspectRatio(bitmap.getWidth(), bitmap.getHeight());
+        }
+
+        public void removeInvisibleBitmaps()
+        {
+            for (PageTreeNode node : nodes)
+            {
+                node.setBitmap(null);
+            }
+        }
+
+        private void startDecodingVisibleNodes(boolean invalidate)
+        {
+            for (PageTreeNode node : nodes)
+            {
+                if (node.getBitmap() != null && !invalidate)
+                {
+                    return;
+                }
+                node.decodePageTreeNode();
+            }
+        }
+
+        public boolean isDecodingNow()
+        {
+            for (PageTreeNode node : nodes)
+            {
+                if (node.isDecodingNow())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void stopDecoding()
+        {
+            for (PageTreeNode node : nodes)
+            {
+                node.stopDecoding();
+            }
+        }
+    }
+
+    private class PageTreeNode
+    {
+        private Bitmap bitmap;
+        private boolean decodingNow;
+        private final RectF pageSliceBounds;
+        private final Page page;
+
+        private PageTreeNode(RectF pageSliceBounds, Page page)
+        {
+            this.pageSliceBounds = pageSliceBounds;
+            this.page = page;
+        }
+
+        public void setBitmap(Bitmap bitmap)
+        {
+            if (this.bitmap != null)
+            {
+                this.bitmap.recycle();
+            }
+            this.bitmap = bitmap;
+//            if (bitmap != null)
+//            {
+//                setPageSizeByBitmap(bitmap);
+//            } //TODO
+            postInvalidate();
+        }
+
+        public Bitmap getBitmap()
+        {
+            return bitmap;
+        }
+
         public boolean isDecodingNow()
         {
             return decodingNow;
@@ -491,12 +477,54 @@ public class DocumentView extends View implements ZoomListener
                 if (decodingNow)
                 {
                     progressModel.increase();
-                }
-                else
+                } else
                 {
                     progressModel.decrease();
                 }
             }
+        }
+
+        private void decodePageTreeNode()
+        {
+            if (isDecodingNow())
+            {
+                return;
+            }
+            setDecodingNow(true);
+            decodeService.decodePage(this, page.index, new DecodeService.DecodeCallback()
+            {
+                public void decodeComplete(final Bitmap bitmap)
+                {
+                    post(new Runnable()
+                    {
+                        public void run()
+                        {
+                            setBitmap(bitmap);
+                            setDecodingNow(false);
+                        }
+                    });
+                }
+            }, zoomModel.getZoom(), pageSliceBounds);
+        }
+
+        public void draw(Canvas canvas)
+        {
+            if (getBitmap() == null)
+            {
+                return;
+            }
+            final Matrix matrix = new Matrix();
+            matrix.postScale(page.bounds.width(), page.bounds.height());
+            matrix.postTranslate(page.bounds.left, page.bounds.top);
+            final RectF targetRect = new RectF();
+            matrix.mapRect(targetRect, pageSliceBounds);
+            canvas.drawBitmap(getBitmap(), new Rect(0, 0, getBitmap().getWidth(), getBitmap().getHeight()), targetRect, new Paint(Paint.FILTER_BITMAP_FLAG));    
+        }
+
+        private void stopDecoding()
+        {
+            decodeService.stopDecoding(this);
+            setDecodingNow(false);
         }
     }
 }

@@ -2,6 +2,7 @@ package org.vudroid.core;
 
 import android.content.ContentResolver;
 import android.graphics.Bitmap;
+import android.graphics.RectF;
 import android.net.Uri;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +25,7 @@ public class DecodeServiceBase implements DecodeService
     private CodecDocument document;
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
     public static final String DECODE_SERVICE = "ViewDroidDecodeService";
-    private final Map<Integer, Future<?>> decodingFutures = new ConcurrentHashMap<Integer, Future<?>>();
+    private final Map<Object, Future<?>> decodingFutures = new ConcurrentHashMap<Object, Future<?>>();
 
     public DecodeServiceBase(CodecContext codecContext)
     {
@@ -46,9 +47,9 @@ public class DecodeServiceBase implements DecodeService
         document = codecContext.openDocument(fileUri);
     }
 
-    public void decodePage(int pageNum, final DecodeCallback decodeCallback, float zoom)
+    public void decodePage(Object decodeKey, int pageNum, final DecodeCallback decodeCallback, float zoom, RectF pageSliceBounds)
     {
-        final DecodeTask decodeTask = new DecodeTask(pageNum, decodeCallback, zoom);
+        final DecodeTask decodeTask = new DecodeTask(pageNum, decodeCallback, zoom, decodeKey, pageSliceBounds);
         synchronized (decodingFutures)
         {
             final Future<?> future = executorService.submit(new Runnable()
@@ -65,7 +66,7 @@ public class DecodeServiceBase implements DecodeService
                     }
                 }
             });
-            final Future<?> removed = decodingFutures.put(pageNum, future);
+            final Future<?> removed = decodingFutures.put(decodeKey, future);
             if (removed != null)
             {
                 removed.cancel(false);
@@ -73,9 +74,9 @@ public class DecodeServiceBase implements DecodeService
         }
     }
 
-    public void stopDecoding(int pageNum)
+    public void stopDecoding(Object decodeKey)
     {
-        final Future<?> future = decodingFutures.remove(pageNum);
+        final Future<?> future = decodingFutures.remove(decodeKey);
         if (future != null)
         {
             future.cancel(false);
@@ -108,7 +109,7 @@ public class DecodeServiceBase implements DecodeService
         }
         Log.d(DECODE_SERVICE, "Start converting map to bitmap");
         float scale = calculateScale(vuPage) * currentDecodeTask.zoom;
-        final Bitmap bitmap = vuPage.renderBitmap(getScaledWidth(vuPage, scale), getScaledHeight(vuPage, scale));
+        final Bitmap bitmap = vuPage.renderBitmap(getScaledWidth(currentDecodeTask, vuPage, scale), getScaledHeight(currentDecodeTask, vuPage, scale), currentDecodeTask.pageSliceBounds);
         Log.d(DECODE_SERVICE, "Converting map to bitmap finished");
         if (isTaskDead(currentDecodeTask))
         {
@@ -116,6 +117,16 @@ public class DecodeServiceBase implements DecodeService
             return;
         }
         finishDecoding(currentDecodeTask, bitmap);
+    }
+
+    private int getScaledHeight(DecodeTask currentDecodeTask, CodecPage vuPage, float scale)
+    {
+        return Math.round(getScaledHeight(vuPage, scale) * currentDecodeTask.pageSliceBounds.height());
+    }
+
+    private int getScaledWidth(DecodeTask currentDecodeTask, CodecPage vuPage, float scale)
+    {
+        return Math.round(getScaledWidth(vuPage, scale) * currentDecodeTask.pageSliceBounds.width());
     }
 
     private int getScaledHeight(CodecPage vuPage, float scale)
@@ -180,7 +191,7 @@ public class DecodeServiceBase implements DecodeService
     {
         synchronized (decodingFutures)
         {
-            return !decodingFutures.containsKey(currentDecodeTask.pageNumber);
+            return !decodingFutures.containsKey(currentDecodeTask.decodeKey);
         }
     }
 
@@ -191,15 +202,19 @@ public class DecodeServiceBase implements DecodeService
 
     private class DecodeTask
     {
+        private final Object decodeKey;
         private final int pageNumber;
         private final float zoom;
         private final DecodeCallback decodeCallback;
+        private final RectF pageSliceBounds;
 
-        private DecodeTask(int pageNumber, DecodeCallback decodeCallback, float zoom)
+        private DecodeTask(int pageNumber, DecodeCallback decodeCallback, float zoom, Object decodeKey, RectF pageSliceBounds)
         {
             this.pageNumber = pageNumber;
             this.decodeCallback = decodeCallback;
             this.zoom = zoom;
+            this.decodeKey = decodeKey;
+            this.pageSliceBounds = pageSliceBounds;
         }
     }
 

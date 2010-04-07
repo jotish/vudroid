@@ -1,6 +1,7 @@
 package org.vudroid.djvudroid.codec;
 
 import android.graphics.Bitmap;
+import android.graphics.RectF;
 import org.vudroid.core.codec.CodecPage;
 
 import java.nio.Buffer;
@@ -57,7 +58,7 @@ public class DjvuPage implements CodecPage
         return getHeight(pageHandle);
     }
 
-    public Bitmap renderBitmap(int width, int height)
+    public Bitmap renderBitmap(int width, int height, RectF pageSliceBounds)
     {
         final ByteBuffer buffer = ByteBuffer.allocateDirect(width * height * 2);
         renderPage(pageHandle, width, height, buffer);
