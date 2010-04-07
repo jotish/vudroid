@@ -39,11 +39,13 @@ public class PdfPage implements CodecPage
         return (int) getMediaBox().height();
     }
 
-    public Bitmap renderBitmap(int width, int height)
+    public Bitmap renderBitmap(int width, int height, RectF pageSliceBounds)
     {
         Matrix matrix = new Matrix();
         matrix.postScale(width / getMediaBox().width(), -height / getMediaBox().height());
         matrix.postTranslate(0, height);
+        matrix.postTranslate(-pageSliceBounds.left*width, -pageSliceBounds.top*height);
+        matrix.postScale(1/pageSliceBounds.width(), 1/pageSliceBounds.height());
         return render(new Rect(0,0,width,height), matrix);
     }
 

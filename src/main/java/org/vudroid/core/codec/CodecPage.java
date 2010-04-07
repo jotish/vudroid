@@ -1,6 +1,7 @@
 package org.vudroid.core.codec;
 
 import android.graphics.Bitmap;
+import android.graphics.RectF;
 
 public interface CodecPage
 {
@@ -12,5 +13,5 @@ public interface CodecPage
 
     int getHeight();
 
-    Bitmap renderBitmap(int width, int height);
+    Bitmap renderBitmap(int width, int height, RectF pageSliceBounds);
 }
