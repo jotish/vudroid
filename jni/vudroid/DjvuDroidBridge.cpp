@@ -168,6 +168,10 @@ Java_org_vudroid_djvudroid_codec_DjvuPage_renderPage(JNIEnv *env,
                                     jlong pageHangle,
                                     jint targetWidth,
                                     jint targetHeight,
+                                    jfloat pageSliceX,
+                                    jfloat pageSliceY,
+                                    jfloat pageSliceWidth,
+                                    jfloat pageSliceHeight,
                                     jobject buffer)
 {
 	DEBUG_WRITE("Rendering page");
@@ -175,12 +179,17 @@ Java_org_vudroid_djvudroid_codec_DjvuPage_renderPage(JNIEnv *env,
     ddjvu_rect_t pageRect;
     pageRect.x = 0;
     pageRect.y = 0;
-    pageRect.w = targetWidth;
-    pageRect.h = targetHeight;
-    ddjvu_rect_t targetRect = pageRect;
+    pageRect.w = targetWidth / pageSliceWidth;
+    pageRect.h = targetHeight / pageSliceHeight;
+    ddjvu_rect_t targetRect;
+    targetRect.x = pageSliceX * targetWidth / pageSliceWidth;
+    targetRect.y = pageSliceY * targetHeight / pageSliceHeight;
+    targetRect.w = targetWidth;
+    targetRect.h = targetHeight;
     unsigned int masks[] = {0xF800, 0x07E0, 0x001F};
     ddjvu_format_t* pixelFormat = ddjvu_format_create(DDJVU_FORMAT_RGBMASK16, 3, masks);
     ddjvu_format_set_row_order(pixelFormat, TRUE);
+    ddjvu_format_set_y_direction(pixelFormat, TRUE);
     jboolean result = ddjvu_page_render(page, DDJVU_RENDER_COLOR, &pageRect, &targetRect, pixelFormat, targetWidth * 2, (char*)env->GetDirectBufferAddress(buffer));
     ddjvu_format_release(pixelFormat);
     return result;
