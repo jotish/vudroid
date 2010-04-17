@@ -29,7 +29,10 @@ public class DjvuPage implements CodecPage
 
     private static native boolean isDecodingDone(long pageHandle);
 
-    private static native boolean renderPage(long pageHandle, int targetWidth, int targetHeight, Buffer buffer);
+    private static native boolean renderPage(long pageHandle, int targetWidth, int targetHeight, float pageSliceX,
+                                    float pageSliceY,
+                                    float pageSliceWidth,
+                                    float pageSliceHeight, Buffer buffer);
 
     private static native void free(long pageHandle);
 
@@ -61,7 +64,7 @@ public class DjvuPage implements CodecPage
     public Bitmap renderBitmap(int width, int height, RectF pageSliceBounds)
     {
         final ByteBuffer buffer = ByteBuffer.allocateDirect(width * height * 2);
-        renderPage(pageHandle, width, height, buffer);
+        renderPage(pageHandle, width, height, pageSliceBounds.left, pageSliceBounds.top, pageSliceBounds.width(), pageSliceBounds.height(), buffer);
         final Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
         bitmap.copyPixelsFromBuffer(buffer);
         return bitmap;
