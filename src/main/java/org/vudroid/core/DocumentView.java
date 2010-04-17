@@ -140,6 +140,7 @@ public class DocumentView extends View implements ZoomListener
             public void run()
             {
                 init();
+                updatePageVisibility();
             }
         });
     }
