@@ -11,6 +11,8 @@ import org.vudroid.core.codec.CodecDocument;
 import org.vudroid.core.codec.CodecPage;
 
 import java.io.IOException;
+import java.lang.ref.SoftReference;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
@@ -26,6 +28,7 @@ public class DecodeServiceBase implements DecodeService
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
     public static final String DECODE_SERVICE = "ViewDroidDecodeService";
     private final Map<Object, Future<?>> decodingFutures = new ConcurrentHashMap<Object, Future<?>>();
+    private final HashMap<Integer, SoftReference<CodecPage>> pages = new HashMap<Integer, SoftReference<CodecPage>>();
 
     public DecodeServiceBase(CodecContext codecContext)
     {
@@ -92,7 +95,7 @@ public class DecodeServiceBase implements DecodeService
             return;
         }
         Log.d(DECODE_SERVICE, "Starting decode of page: " + currentDecodeTask.pageNumber);
-        CodecPage vuPage = document.getPage(currentDecodeTask.pageNumber);
+        CodecPage vuPage = getPage(currentDecodeTask.pageNumber);
         preloadNextPage(currentDecodeTask.pageNumber);
 
         while (vuPage.isDecoding())
@@ -157,7 +160,16 @@ public class DecodeServiceBase implements DecodeService
         {
             return;
         }
-        document.getPage(nextPage);
+        getPage(nextPage);
+    }
+
+    private CodecPage getPage(int pageIndex)
+    {
+        if (!pages.containsKey(pageIndex) || pages.get(pageIndex).get() == null)
+        {
+            pages.put(pageIndex, new SoftReference<CodecPage>(document.getPage(pageIndex)));
+        }
+        return pages.get(pageIndex).get();
     }
 
     private void waitForDecode(CodecPage vuPage)
@@ -172,13 +184,13 @@ public class DecodeServiceBase implements DecodeService
 
     public int getEffectivePagesWidth()
     {
-        final CodecPage page = document.getPage(0);
+        final CodecPage page = getPage(0);
         return getScaledWidth(page, calculateScale(page));
     }
 
     public int getEffectivePagesHeight()
     {
-        final CodecPage page = document.getPage(0);
+        final CodecPage page = getPage(0);
         return getScaledHeight(page, calculateScale(page));
     }
 
