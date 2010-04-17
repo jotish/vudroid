@@ -11,6 +11,7 @@ import org.vudroid.core.events.ZoomListener;
 import org.vudroid.core.models.DecodingProgressModel;
 import org.vudroid.core.models.ZoomModel;
 
+import java.lang.ref.SoftReference;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +29,7 @@ public class DocumentView extends View implements ZoomListener
     private DecodingProgressModel progressModel;
     private float firstX;
     private float firstY;
+    private RectF viewRect;
 
     public DocumentView(Context context, final ZoomModel zoomModel, DecodingProgressModel progressModel)
     {
@@ -102,11 +104,7 @@ public class DocumentView extends View implements ZoomListener
     {
         for (final Map.Entry<Integer, Page> pageNumToPage : pages.entrySet())
         {
-            final Page page = pageNumToPage.getValue();
-            if (page.isVisible())
-            {
-                page.startDecodingVisibleNodes(invalidate);
-            }
+            pageNumToPage.getValue().startDecodingVisibleNodes(invalidate);
         }
     }
 
@@ -114,10 +112,7 @@ public class DocumentView extends View implements ZoomListener
     {
         for (Integer visiblePageNum : pages.keySet())
         {
-            if (!pages.get(visiblePageNum).isVisible())
-            {
-                pages.get(visiblePageNum).removeInvisibleBitmaps();
-            }
+            pages.get(visiblePageNum).removeInvisibleBitmaps();
         }
     }
 
@@ -125,10 +120,7 @@ public class DocumentView extends View implements ZoomListener
     {
         for (Integer decodingPageNum : pages.keySet())
         {
-            if (!pages.get(decodingPageNum).isVisible() && pages.get(decodingPageNum).isDecodingNow())
-            {
-                stopDecodingPage(decodingPageNum);
-            }
+            pages.get(decodingPageNum).stopDecodingInvisibleNodes();
         }
     }
 
@@ -136,16 +128,8 @@ public class DocumentView extends View implements ZoomListener
     {
         for (Integer decodingPageNum : pages.keySet())
         {
-            if (pages.get(decodingPageNum).isDecodingNow())
-            {
-                stopDecodingPage(decodingPageNum);
-            }
+            pages.get(decodingPageNum).stopDecoding();
         }
-    }
-
-    private void stopDecodingPage(Integer decodingPageNum)
-    {
-        pages.get(decodingPageNum).stopDecoding();
     }
 
     public void showDocument()
@@ -188,7 +172,7 @@ public class DocumentView extends View implements ZoomListener
         final float ratio = newZoom / oldZoom;
         scrollTo((int) ((getScrollX() + getWidth() / 2) * ratio - getWidth() / 2), (int) ((getScrollY() + getHeight() / 2) * ratio - getHeight() / 2));
         invalidatePageSizes();
-        invalidate();
+        postInvalidate();
     }
 
     public void commitZoom()
@@ -264,6 +248,16 @@ public class DocumentView extends View implements ZoomListener
     public void scrollTo(int x, int y)
     {
         super.scrollTo(Math.min(Math.max(x, getLeftLimit()), getRightLimit()), Math.min(Math.max(y, getTopLimit()), getBottomLimit()));
+        viewRect = null;
+    }
+
+    private RectF getViewRect()
+    {
+        if (viewRect == null)
+        {
+            viewRect = new RectF(getScrollX(), getScrollY(), getScrollX() + getWidth(), getScrollY() + getHeight());
+        }
+        return viewRect;
     }
 
     @Override
@@ -294,7 +288,7 @@ public class DocumentView extends View implements ZoomListener
         {
             Page page = pages.get(i);
             float pageHeight = page.getPageHeight(width, zoom);
-            page.bounds = new RectF(0, heightAccum, width * zoom, heightAccum + pageHeight);
+            page.setBounds(new RectF(0, heightAccum, width * zoom, heightAccum + pageHeight));
             heightAccum += pageHeight;
         }
     }
@@ -303,17 +297,12 @@ public class DocumentView extends View implements ZoomListener
     {
         private final int index;
         private RectF bounds;
-        private PageTreeNode[] nodes;
+        private PageTreeNode node;
 
         private Page(int index)
         {
             this.index = index;
-            nodes = new PageTreeNode[] {
-                    new PageTreeNode(new RectF(0,0,0.5f,0.5f), this),
-                    new PageTreeNode(new RectF(0.5f,0,1.0f,0.5f), this),
-                    new PageTreeNode(new RectF(0,0.5f,0.5f,1.0f), this),
-                    new PageTreeNode(new RectF(0.5f,0.5f,1.0f,1.0f), this)
-            };
+            node = new PageTreeNode(new RectF(0,0,1,1), this, 1, null);
         }
 
         private float aspectRatio;
@@ -349,10 +338,7 @@ public class DocumentView extends View implements ZoomListener
             paint.setTextSize(24);
             paint.setTextAlign(Paint.Align.CENTER);
             canvas.drawText("Page " + (index + 1), bounds.centerX(), bounds.centerY(), paint);
-            for (PageTreeNode node : nodes)
-            {
-                node.draw(canvas);
-            }
+            node.draw(canvas);
         }
 
         public float getAspectRatio()
@@ -362,24 +348,17 @@ public class DocumentView extends View implements ZoomListener
 
         public void setAspectRatio(float aspectRatio)
         {
-            this.aspectRatio = aspectRatio;
-            invalidatePageSizes();
+            if (this.aspectRatio != aspectRatio)
+            {
+                this.aspectRatio = aspectRatio;
+                invalidatePageSizes();
+            }
         }
 
         public boolean isVisible()
         {
-            float pageTop = getTop();
-            float pageBottom = bounds.bottom;
-            int top = getScrollY();
-            int bottom = top + getHeight();
-
-            return top <= pageTop && pageTop <= bottom ||
-                    top <= pageBottom && pageBottom <= bottom ||
-                    top <= pageTop && pageBottom <= bottom ||
-                    pageTop <= top && bottom <= pageBottom;
+            return RectF.intersects(getViewRect(), bounds);
         }
-
-
 
         public void setAspectRatio(int width, int height)
         {
@@ -393,75 +372,89 @@ public class DocumentView extends View implements ZoomListener
 
         public void removeInvisibleBitmaps()
         {
-            for (PageTreeNode node : nodes)
-            {
-                node.setBitmap(null);
-            }
+            node.removeInvisibleBitmaps();
         }
 
         private void startDecodingVisibleNodes(boolean invalidate)
         {
-            for (PageTreeNode node : nodes)
-            {
-                if (node.getBitmap() != null && !invalidate)
-                {
-                    return;
-                }
-                node.decodePageTreeNode();
-            }
+            node.startDecodingVisibleNodes(invalidate);
         }
 
-        public boolean isDecodingNow()
+        private void stopDecodingInvisibleNodes()
         {
-            for (PageTreeNode node : nodes)
-            {
-                if (node.isDecodingNow())
-                {
-                    return true;
-                }
-            }
-            return false;
+            node.stopDecodingInvisibleNodes();
         }
 
         private void stopDecoding()
         {
-            for (PageTreeNode node : nodes)
-            {
-                node.stopDecoding();
-            }
+            node.stopDecoding();
         }
+
+        private void setBounds(RectF pageBounds)
+        {
+            bounds = pageBounds;
+            node.invalidateNodeBounds();
+        }
+
     }
 
     private class PageTreeNode
     {
         private Bitmap bitmap;
+        private SoftReference<Bitmap> bitmapWeakReference;
         private boolean decodingNow;
         private final RectF pageSliceBounds;
         private final Page page;
+        private RectF targetRect;
+        private PageTreeNode[] children;
+        private final float childrenZoomThreshold;
+        private Matrix matrix = new Matrix();
 
-        private PageTreeNode(RectF pageSliceBounds, Page page)
+        private PageTreeNode(RectF localPageSliceBounds, Page page, float childrenZoomThreshold, PageTreeNode parent)
         {
-            this.pageSliceBounds = pageSliceBounds;
+            this.pageSliceBounds = evaluatePageSliceBounds(localPageSliceBounds,parent);
             this.page = page;
+            this.childrenZoomThreshold = childrenZoomThreshold;
+        }
+
+        private RectF evaluatePageSliceBounds(RectF localPageSliceBounds, PageTreeNode parent)
+        {
+            if (parent == null)
+            {
+                return localPageSliceBounds;
+            }
+            final Matrix matrix = new Matrix();
+            matrix.postScale(parent.pageSliceBounds.width(), parent.pageSliceBounds.height());
+            matrix.postTranslate(parent.pageSliceBounds.left, parent.pageSliceBounds.top);
+            final RectF sliceBounds = new RectF();
+            matrix.mapRect(sliceBounds, localPageSliceBounds);
+            return sliceBounds;
         }
 
         public void setBitmap(Bitmap bitmap)
         {
-            if (this.bitmap != null)
+            if (this.bitmap != bitmap)
             {
-                this.bitmap.recycle();
-            }
-            this.bitmap = bitmap;
+                if (bitmap != null)
+                {
+                    if (this.bitmap != null)
+                    {
+                        this.bitmap.recycle();
+                    }
+                    bitmapWeakReference = new SoftReference<Bitmap>(bitmap);
+                    postInvalidate();
+                }
+                this.bitmap = bitmap;
 //            if (bitmap != null)
 //            {
 //                setPageSizeByBitmap(bitmap);
 //            } //TODO
-            postInvalidate();
+            }
         }
 
         public Bitmap getBitmap()
         {
-            return bitmap;
+            return bitmapWeakReference != null ? bitmapWeakReference.get() : null;
         }
 
         public boolean isDecodingNow()
@@ -501,6 +494,7 @@ public class DocumentView extends View implements ZoomListener
                         {
                             setBitmap(bitmap);
                             setDecodingNow(false);
+                            invalidateChildren();
                         }
                     });
                 }
@@ -509,22 +503,204 @@ public class DocumentView extends View implements ZoomListener
 
         public void draw(Canvas canvas)
         {
-            if (getBitmap() == null)
+            if (getBitmap() != null)
+            {
+                canvas.drawBitmap(getBitmap(), new Rect(0, 0, getBitmap().getWidth(), getBitmap().getHeight()), getTargetRect(), new Paint(Paint.FILTER_BITMAP_FLAG));
+            }
+            if (children == null)
             {
                 return;
             }
-            final Matrix matrix = new Matrix();
-            matrix.postScale(page.bounds.width(), page.bounds.height());
-            matrix.postTranslate(page.bounds.left, page.bounds.top);
-            final RectF targetRect = new RectF();
-            matrix.mapRect(targetRect, pageSliceBounds);
-            canvas.drawBitmap(getBitmap(), new Rect(0, 0, getBitmap().getWidth(), getBitmap().getHeight()), targetRect, new Paint(Paint.FILTER_BITMAP_FLAG));    
+            for (PageTreeNode child : children)
+            {
+                child.draw(canvas);
+            }
+        }
+
+        private RectF getTargetRect()
+        {
+            if (targetRect == null)
+            {
+                matrix.reset();
+                matrix.postScale(page.bounds.width(), page.bounds.height());
+                matrix.postTranslate(page.bounds.left, page.bounds.top);
+                targetRect = new RectF();
+                matrix.mapRect(targetRect, pageSliceBounds);
+            }
+            return targetRect;
         }
 
         private void stopDecoding()
         {
+            invalidateChildren();
+            if (children != null)
+            {
+                for (PageTreeNode child : children)
+                {
+                    child.stopDecoding();
+                }
+            }
+            if (!isDecodingNow())
+            {
+                return;
+            }
             decodeService.stopDecoding(this);
             setDecodingNow(false);
+        }
+
+        private boolean isVisible()
+        {
+            return RectF.intersects(getViewRect(), getTargetRect());
+        }
+
+        private void removeInvisibleBitmaps()
+        {
+            invalidateChildren();
+            if (children != null)
+            {
+                for (PageTreeNode child : children)
+                {
+                    child.removeInvisibleBitmaps();
+                }
+            }
+            if (isVisibleAndNotHiddenByChildren())
+            {
+                return;
+            }
+            setBitmap(null);
+        }
+
+        private boolean isHiddenByChildren()
+        {
+            if (children == null)
+            {
+                return false;
+            }
+            for (PageTreeNode child : children)
+            {
+                if (child.getBitmap() == null)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void startDecodingVisibleNodes(boolean invalidate)
+        {
+            if (!isVisible())
+            {
+                return;
+            }
+            invalidateChildren();
+            if (thresholdHit())
+            {
+                for (PageTreeNode child : children)
+                {
+                    child.startDecodingVisibleNodes(invalidate);
+                }
+            }
+            else
+            {
+                if (getBitmap() != null && !invalidate)
+                {
+                    restoreBitmapReference();
+                    return;
+                }
+                decodePageTreeNode();
+            }
+        }
+
+        private void restoreBitmapReference()
+        {
+            setBitmap(getBitmap());
+        }
+
+        private void invalidateChildren()
+        {
+            if (thresholdHit() && children == null && isVisible())
+            {
+                final float newThreshold = childrenZoomThreshold * 2;
+                children = new PageTreeNode[]
+                        {
+                                new PageTreeNode(new RectF(0, 0, 0.5f, 0.5f), page, newThreshold, this),
+                                new PageTreeNode(new RectF(0.5f, 0, 1.0f, 0.5f), page, newThreshold, this),
+                                new PageTreeNode(new RectF(0, 0.5f, 0.5f, 1.0f), page, newThreshold, this),
+                                new PageTreeNode(new RectF(0.5f, 0.5f, 1.0f, 1.0f), page, newThreshold, this)
+                        };
+            }
+            if (!thresholdHit() && getBitmap() != null || !isVisible())
+            {
+                recycleChildren();
+            }
+        }
+
+        private void recycleChildren()
+        {
+            if (children == null)
+            {
+                return;
+            }
+            for (PageTreeNode child : children)
+            {
+                child.recycle();
+            }
+            children = null;
+        }
+
+        private boolean thresholdHit()
+        {
+            return zoomModel.getZoom() >= childrenZoomThreshold;
+        }
+
+        private void recycle()
+        {
+            if (isDecodingNow())
+            {
+                stopDecoding();
+            }
+            setBitmap(null);
+            if (children != null)
+            {
+                for (PageTreeNode child : children)
+                {
+                    child.recycle();
+                }
+            }
+        }
+
+        public void stopDecodingInvisibleNodes()
+        {
+            invalidateChildren();
+            if (children != null)
+            {
+                for (PageTreeNode child : children)
+                {
+                    child.stopDecodingInvisibleNodes();
+                }
+            }
+            if (isVisibleAndNotHiddenByChildren())
+            {
+                return;
+            }
+            stopDecoding();
+        }
+
+        private boolean isVisibleAndNotHiddenByChildren()
+        {
+            return isVisible() && !isHiddenByChildren();
+        }
+
+        private void invalidateNodeBounds()
+        {
+            targetRect = null;
+            if (children != null)
+            {
+                for (PageTreeNode child : children)
+                {
+                    child.invalidateNodeBounds();
+                }
+            }
         }
     }
 }
