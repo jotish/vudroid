@@ -410,11 +410,6 @@ public class DocumentView extends View implements ZoomListener
             setAspectRatio(width * 1.0f / height);
         }
 
-        public void setPageSizeByBitmap(Bitmap bitmap)
-        {
-            setAspectRatio(bitmap.getWidth(), bitmap.getHeight());
-        }
-
         public void removeInvisibleBitmaps()
         {
             node.removeInvisibleBitmaps();
@@ -494,10 +489,6 @@ public class DocumentView extends View implements ZoomListener
                     postInvalidate();
                 }
                 this.bitmap = bitmap;
-//            if (bitmap != null)
-//            {
-//                setPageSizeByBitmap(bitmap);
-//            } //TODO
             }
         }
 
@@ -543,6 +534,7 @@ public class DocumentView extends View implements ZoomListener
                         {
                             setBitmap(bitmap);
                             setDecodingNow(false);
+                            page.setAspectRatio(decodeService.getPageWidth(page.index), decodeService.getPageHeight(page.index));
                             invalidateChildren();
                         }
                     });

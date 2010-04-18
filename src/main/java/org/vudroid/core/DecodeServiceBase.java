@@ -194,6 +194,16 @@ public class DecodeServiceBase implements DecodeService
         return getScaledHeight(page, calculateScale(page));
     }
 
+    public int getPageWidth(int pageIndex)
+    {
+        return getPage(pageIndex).getWidth();
+    }
+
+    public int getPageHeight(int pageIndex)
+    {
+        return getPage(pageIndex).getHeight();
+    }
+
     private void updateImage(final DecodeTask currentDecodeTask, Bitmap bitmap)
     {
         currentDecodeTask.decodeCallback.decodeComplete(bitmap);
