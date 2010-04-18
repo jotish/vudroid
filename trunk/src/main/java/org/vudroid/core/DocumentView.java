@@ -30,6 +30,7 @@ public class DocumentView extends View implements ZoomListener
     private float firstX;
     private float firstY;
     private RectF viewRect;
+    private boolean inZoom;
 
     public DocumentView(Context context, final ZoomModel zoomModel, DecodingProgressModel progressModel)
     {
@@ -58,9 +59,9 @@ public class DocumentView extends View implements ZoomListener
             pages.put(i, new Page(i));
             pages.get(i).setAspectRatio(width, height);
         }
+        isInitialized = true;
         invalidatePageSizes();
         goToPageImpl(pageToGoTo);
-        isInitialized = true;
     }
 
     private void goToPageImpl(final int toPage)
@@ -78,6 +79,10 @@ public class DocumentView extends View implements ZoomListener
     protected void onScrollChanged(int l, int t, int oldl, int oldt)
     {
         super.onScrollChanged(l, t, oldl, oldt);
+        if (inZoom)
+        {
+            return;
+        }
         // on scrollChanged can be called from scrollTo just after new layout applied so we should wait for relayout
         post(new Runnable()
         {
@@ -170,6 +175,8 @@ public class DocumentView extends View implements ZoomListener
 
     public void zoomChanged(float newZoom, float oldZoom)
     {
+        inZoom = true;
+        stopScroller();
         final float ratio = newZoom / oldZoom;
         scrollTo((int) ((getScrollX() + getWidth() / 2) * ratio - getWidth() / 2), (int) ((getScrollY() + getHeight() / 2) * ratio - getHeight() / 2));
         invalidatePageSizes();
@@ -179,7 +186,9 @@ public class DocumentView extends View implements ZoomListener
     public void commitZoom()
     {
         stopDecodingAllPages();
+        removeImageFromInvisiblePages();
         startDecodingVisiblePages(true);
+        inZoom = false;
     }
 
     @Override
@@ -196,10 +205,7 @@ public class DocumentView extends View implements ZoomListener
         switch (ev.getAction())
         {
             case MotionEvent.ACTION_DOWN:
-                if (!scroller.isFinished())
-                {
-                    scroller.abortAnimation();
-                }
+                stopScroller();
                 firstX = ev.getX();
                 firstY = ev.getY();
                 lastX = ev.getX();
@@ -280,8 +286,21 @@ public class DocumentView extends View implements ZoomListener
         }
     }
 
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom)
+    {
+        super.onLayout(changed, left, top, right, bottom);
+        invalidateScroll();        
+        invalidatePageSizes();
+        commitZoom();
+    }
+
     private void invalidatePageSizes()
     {
+        if (!isInitialized)
+        {
+            return;
+        }
         float heightAccum = 0;
         int width = getWidth();
         float zoom = zoomModel.getZoom();
@@ -291,6 +310,31 @@ public class DocumentView extends View implements ZoomListener
             float pageHeight = page.getPageHeight(width, zoom);
             page.setBounds(new RectF(0, heightAccum, width * zoom, heightAccum + pageHeight));
             heightAccum += pageHeight;
+        }
+    }
+
+    private void invalidateScroll()
+    {
+        if (!isInitialized)
+        {
+            return;
+        }
+        stopScroller();
+        final Page page = pages.get(0);
+        if (page == null || page.bounds == null)
+        {
+            return;
+        }
+        final float v = zoomModel.getZoom();
+        float ratio = getWidth() * v / page.bounds.width();
+        scrollTo((int) (getScrollX() * ratio), (int) (getScrollY() * ratio));
+    }
+
+    private void stopScroller()
+    {
+        if (!scroller.isFinished())
+        {
+            scroller.abortAnimation();
         }
     }
 
@@ -434,6 +478,10 @@ public class DocumentView extends View implements ZoomListener
 
         public void setBitmap(Bitmap bitmap)
         {
+            if (bitmap != null && bitmap.getWidth() == -1 && bitmap.getHeight() == -1)
+            {
+                return;
+            }
             if (this.bitmap != bitmap)
             {
                 if (bitmap != null)
@@ -541,6 +589,11 @@ public class DocumentView extends View implements ZoomListener
                     child.stopDecoding();
                 }
             }
+            stopDecodingThisNode();
+        }
+
+        private void stopDecodingThisNode()
+        {
             if (!isDecodingNow())
             {
                 return;
@@ -656,10 +709,7 @@ public class DocumentView extends View implements ZoomListener
 
         private void recycle()
         {
-            if (isDecodingNow())
-            {
-                stopDecoding();
-            }
+            stopDecodingThisNode();
             setBitmap(null);
             if (children != null)
             {
@@ -684,7 +734,7 @@ public class DocumentView extends View implements ZoomListener
             {
                 return;
             }
-            stopDecoding();
+            stopDecodingThisNode();
         }
 
         private boolean isVisibleAndNotHiddenByChildren()

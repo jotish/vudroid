@@ -3,7 +3,7 @@
           package="org.vudroid" android:versionCode="1" android:versionName="1.0">
     <uses-sdk android:minSdkVersion="3"/>
     <application android:icon="@drawable/icon" android:label="VuDroid" android:debuggable="true">
-        <activity android:name=".pdfdroid.PdfViewerActivity">
+        <activity android:name=".pdfdroid.PdfViewerActivity" android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -11,7 +11,7 @@
                 <!--<data android:mimeType="application/pdf" />-->
             </intent-filter>
         </activity>
-        <activity android:name=".djvudroid.DjvuViewerActivity">
+        <activity android:name=".djvudroid.DjvuViewerActivity" android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
