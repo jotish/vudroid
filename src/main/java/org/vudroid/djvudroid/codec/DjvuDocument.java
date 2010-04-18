@@ -2,13 +2,11 @@ package org.vudroid.djvudroid.codec;
 
 import org.vudroid.core.codec.CodecDocument;
 
-import java.util.HashMap;
 import java.util.concurrent.Semaphore;
 
 public class DjvuDocument implements CodecDocument
 {
     private final long documentHandle;
-    private final HashMap<Integer, DjvuPage> pages = new HashMap<Integer, DjvuPage>();
     private final Semaphore pagesSemaphore;
     private final Object waitObject;
 
@@ -31,26 +29,24 @@ public class DjvuDocument implements CodecDocument
 
     public DjvuPage getPage(int pageNumber)
     {
-        if (!pages.containsKey(pageNumber))
+        try
         {
+            final DjvuPage value;
+            pagesSemaphore.acquire();
             try
             {
-                pagesSemaphore.acquire();
-                try
-                {
-                    pages.put(pageNumber, new DjvuPage(getPage(documentHandle, pageNumber), waitObject));
-                }
-                finally
-                {
-                    pagesSemaphore.release();    
-                }
+                value = new DjvuPage(getPage(documentHandle, pageNumber), waitObject);
             }
-            catch (InterruptedException e)
+            finally
             {
-                throw new RuntimeException(e);
+                pagesSemaphore.release();
             }
+            return value;
         }
-        return pages.get(pageNumber);
+        catch (InterruptedException e)
+        {
+            throw new RuntimeException(e);
+        }
     }
 
     public int getPageCount()
