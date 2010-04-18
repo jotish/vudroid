@@ -24,6 +24,10 @@ public interface DecodeService
 
     int getPageCount();
 
+    int getPageWidth(int pageIndex);
+
+    int getPageHeight(int pageIndex);
+
     public interface DecodeCallback
     {
         void decodeComplete(Bitmap bitmap);
