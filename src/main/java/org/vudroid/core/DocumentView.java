@@ -8,6 +8,7 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.widget.Scroller;
 import org.vudroid.core.events.ZoomListener;
+import org.vudroid.core.models.CurrentPageModel;
 import org.vudroid.core.models.DecodingProgressModel;
 import org.vudroid.core.models.ZoomModel;
 
@@ -18,6 +19,7 @@ import java.util.Map;
 public class DocumentView extends View implements ZoomListener
 {
     private final ZoomModel zoomModel;
+    private final CurrentPageModel currentPageModel;
     private DecodeService decodeService;
     private final HashMap<Integer, Page> pages = new HashMap<Integer, Page>();
     private boolean isInitialized = false;
@@ -32,11 +34,12 @@ public class DocumentView extends View implements ZoomListener
     private RectF viewRect;
     private boolean inZoom;
 
-    public DocumentView(Context context, final ZoomModel zoomModel, DecodingProgressModel progressModel)
+    public DocumentView(Context context, final ZoomModel zoomModel, DecodingProgressModel progressModel, CurrentPageModel currentPageModel)
     {
         super(context);
         this.zoomModel = zoomModel;
         this.progressModel = progressModel;
+        this.currentPageModel = currentPageModel;
         setKeepScreenOn(true);
         scroller = new Scroller(getContext());
     }
@@ -79,6 +82,7 @@ public class DocumentView extends View implements ZoomListener
     protected void onScrollChanged(int l, int t, int oldl, int oldt)
     {
         super.onScrollChanged(l, t, oldl, oldt);
+        currentPageModel.setCurrentPageIndex(getCurrentPage());        
         if (inZoom)
         {
             return;

@@ -6,12 +6,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.FrameLayout;
+import android.widget.Toast;
+import org.vudroid.core.events.CurrentPageListener;
 import org.vudroid.core.events.DecodingProgressListener;
+import org.vudroid.core.models.CurrentPageModel;
 import org.vudroid.core.models.DecodingProgressModel;
 import org.vudroid.core.models.ZoomModel;
 import org.vudroid.core.views.PageViewZoomControls;
 
-public abstract class BaseViewerActivity extends Activity implements DecodingProgressListener
+public abstract class BaseViewerActivity extends Activity implements DecodingProgressListener, CurrentPageListener
 {
     private static final int MENU_EXIT = 0;
     private static final int MENU_GOTO = 1;
@@ -21,6 +24,7 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
     private DecodeService decodeService;
     private DocumentView documentView;
     private ViewerPreferences viewerPreferences;
+    private Toast pageNumberToast;
 
     /**
      * Called when the activity is first created.
@@ -33,7 +37,9 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
         final ZoomModel zoomModel = new ZoomModel();
         final DecodingProgressModel progressModel = new DecodingProgressModel();
         progressModel.addEventListener(this);
-        documentView = new DocumentView(this, zoomModel, progressModel);
+        final CurrentPageModel currentPageModel = new CurrentPageModel();
+        currentPageModel.addEventListener(this);
+        documentView = new DocumentView(this, zoomModel, progressModel, currentPageModel);
         zoomModel.addEventListener(documentView);
         documentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
         decodeService.setContentResolver(getContentResolver());
@@ -59,6 +65,34 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
     public void decodingProgressChanged(int currentlyDecoding)
     {
         getWindow().setFeatureInt(Window.FEATURE_INDETERMINATE_PROGRESS, currentlyDecoding == 0 ? 10000 : currentlyDecoding);
+    }
+
+    public void currentPageChanged(int pageIndex)
+    {
+        final String pageText = (pageIndex + 1) + "/" + decodeService.getPageCount();
+        if (pageNumberToast != null)
+        {
+            pageNumberToast.setText(pageText);
+        }
+        else
+        {
+            pageNumberToast = Toast.makeText(this, pageText, 300);
+        }
+        pageNumberToast.setGravity(Gravity.TOP | Gravity.LEFT,0,0);
+        pageNumberToast.show();
+    }
+
+    private void setWindowTitle()
+    {
+        final String name = getIntent().getData().getLastPathSegment();
+        getWindow().setTitle(name);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState)
+    {
+        super.onPostCreate(savedInstanceState);
+        setWindowTitle();
     }
 
     private void setFullScreen()
