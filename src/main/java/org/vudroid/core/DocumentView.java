@@ -14,7 +14,9 @@ import org.vudroid.core.models.ZoomModel;
 
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 
 public class DocumentView extends View implements ZoomListener
 {
@@ -33,6 +35,8 @@ public class DocumentView extends View implements ZoomListener
     private float firstY;
     private RectF viewRect;
     private boolean inZoom;
+    private final Queue<Bitmap> bitmapGuardQueue = new LinkedList<Bitmap>();
+    private static final int MAX_GUARDED_BITMAP_REFERENCES = 8;
 
     public DocumentView(Context context, final ZoomModel zoomModel, DecodingProgressModel progressModel, CurrentPageModel currentPageModel)
     {
@@ -342,6 +346,19 @@ public class DocumentView extends View implements ZoomListener
         }
     }
 
+    private void guardBitmapReference(Bitmap bitmap)
+    {
+        if (bitmapGuardQueue.contains(bitmap))
+        {
+            bitmapGuardQueue.remove(bitmap);
+        }
+        bitmapGuardQueue.offer(bitmap);
+        while (bitmapGuardQueue.size() > MAX_GUARDED_BITMAP_REFERENCES)
+        {
+            bitmapGuardQueue.poll();
+        }
+    }
+
     private class Page
     {
         private final int index;
@@ -490,6 +507,7 @@ public class DocumentView extends View implements ZoomListener
                         this.bitmap.recycle();
                     }
                     bitmapWeakReference = new SoftReference<Bitmap>(bitmap);
+                    guardBitmapReference(bitmap);
                     postInvalidate();
                 }
                 this.bitmap = bitmap;
@@ -695,7 +713,30 @@ public class DocumentView extends View implements ZoomListener
             {
                 child.recycle();
             }
-            children = null;
+            if (!containsBitmaps())
+            {
+                children = null;
+            }
+        }
+
+        private boolean containsBitmaps()
+        {
+            if (getBitmap() != null)
+            {
+                return true;
+            }
+            if (children == null)
+            {
+                return false;
+            }
+            for (PageTreeNode child : children)
+            {
+                if (child.containsBitmaps())
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private boolean thresholdHit()
