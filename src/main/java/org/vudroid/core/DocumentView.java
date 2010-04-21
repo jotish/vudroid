@@ -3,6 +3,7 @@ package org.vudroid.core;
 import android.content.Context;
 import android.graphics.*;
 import android.text.TextPaint;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -46,6 +47,8 @@ public class DocumentView extends View implements ZoomListener
         this.currentPageModel = currentPageModel;
         setKeepScreenOn(true);
         scroller = new Scroller(getContext());
+        setFocusable(true);
+        setFocusableInTouchMode(true);
     }
 
     public void setDecodeService(DecodeService decodeService)
@@ -86,7 +89,7 @@ public class DocumentView extends View implements ZoomListener
     protected void onScrollChanged(int l, int t, int oldl, int oldt)
     {
         super.onScrollChanged(l, t, oldl, oldt);
-        currentPageModel.setCurrentPageIndex(getCurrentPage());        
+        currentPageModel.setCurrentPageIndex(getCurrentPage());
         if (inZoom)
         {
             return;
@@ -239,6 +242,37 @@ public class DocumentView extends View implements ZoomListener
         return true;
     }
 
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event)
+    {
+        if (event.getAction() == KeyEvent.ACTION_DOWN)
+        {
+            switch (event.getKeyCode())
+            {
+                case KeyEvent.KEYCODE_DPAD_RIGHT:
+                    lineByLineMoveTo(1);
+                    return true;
+                case KeyEvent.KEYCODE_DPAD_LEFT:
+                    lineByLineMoveTo(-1);
+                    return true;
+            }
+        }
+        return super.dispatchKeyEvent(event);
+    }
+
+    private void lineByLineMoveTo(int direction)
+    {
+        if (direction == 1 ? getScrollX() == getRightLimit() : getScrollX() == getLeftLimit())
+        {
+            scroller.startScroll(getScrollX(), getScrollY(), direction * (getLeftLimit()-getRightLimit()), (int) (direction * pages.get(getCurrentPage()).bounds.height()/50));
+        }
+        else
+        {
+            scroller.startScroll(getScrollX(), getScrollY(), direction * getWidth() / 2, 0);
+        }
+        invalidate();
+    }
+
     private int getTopLimit()
     {
         return 0;
@@ -298,7 +332,7 @@ public class DocumentView extends View implements ZoomListener
     protected void onLayout(boolean changed, int left, int top, int right, int bottom)
     {
         super.onLayout(changed, left, top, right, bottom);
-        invalidateScroll();        
+        invalidateScroll();
         invalidatePageSizes();
         commitZoom();
     }
@@ -368,7 +402,7 @@ public class DocumentView extends View implements ZoomListener
         private Page(int index)
         {
             this.index = index;
-            node = new PageTreeNode(new RectF(0,0,1,1), this, 1, null);
+            node = new PageTreeNode(new RectF(0, 0, 1, 1), this, 1, null);
         }
 
         private float aspectRatio;
@@ -473,7 +507,7 @@ public class DocumentView extends View implements ZoomListener
 
         private PageTreeNode(RectF localPageSliceBounds, Page page, float childrenZoomThreshold, PageTreeNode parent)
         {
-            this.pageSliceBounds = evaluatePageSliceBounds(localPageSliceBounds,parent);
+            this.pageSliceBounds = evaluatePageSliceBounds(localPageSliceBounds, parent);
             this.page = page;
             this.childrenZoomThreshold = childrenZoomThreshold;
         }
@@ -667,8 +701,7 @@ public class DocumentView extends View implements ZoomListener
                 {
                     child.startDecodingVisibleNodes(invalidate);
                 }
-            }
-            else
+            } else
             {
                 if (getBitmap() != null && !invalidate)
                 {
@@ -713,7 +746,7 @@ public class DocumentView extends View implements ZoomListener
             {
                 child.recycle();
             }
-            if (!containsBitmaps())
+            if (!childrenContainBitmaps())
             {
                 children = null;
             }
@@ -721,10 +754,11 @@ public class DocumentView extends View implements ZoomListener
 
         private boolean containsBitmaps()
         {
-            if (getBitmap() != null)
-            {
-                return true;
-            }
+            return getBitmap() != null || childrenContainBitmaps();
+        }
+
+        private boolean childrenContainBitmaps()
+        {
             if (children == null)
             {
                 return false;
