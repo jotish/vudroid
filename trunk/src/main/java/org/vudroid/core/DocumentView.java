@@ -255,9 +255,21 @@ public class DocumentView extends View implements ZoomListener
                 case KeyEvent.KEYCODE_DPAD_LEFT:
                     lineByLineMoveTo(-1);
                     return true;
+                case KeyEvent.KEYCODE_DPAD_DOWN:
+                    verticalDpadScroll(1);
+                    return true;
+                case KeyEvent.KEYCODE_DPAD_UP:
+                    verticalDpadScroll(-1);
+                    return true;
             }
         }
         return super.dispatchKeyEvent(event);
+    }
+
+    private void verticalDpadScroll(int direction)
+    {
+        scroller.startScroll(getScrollX(), getScrollY(), 0, direction * getHeight()/2);
+        invalidate();
     }
 
     private void lineByLineMoveTo(int direction)
