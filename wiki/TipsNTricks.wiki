@@ -1,0 +1,3 @@
+#Tips & tricks
+= Zoom =
+Zoom controls is shown by single tap on touch screen. Zoom controls doesn't appear while scroll for better usability.
