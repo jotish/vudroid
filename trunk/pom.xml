@@ -21,7 +21,7 @@
     <artifactId>vudroid</artifactId>
     <packaging>apk</packaging>
     <name>VuDroid</name>
-    <version>1.0</version>
+    <version>1.1</version>
 
     <dependencies>
         <dependency>
