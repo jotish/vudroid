@@ -1,3 +1,6 @@
 #summary Tips & tricks
-= Zoom =
+==Zoom==
 Zoom controls is shown by single tap on touch screen. Zoom controls doesn't appear while scroll for better usability.
+
+==Line by line reading with DPAD==
+You can read text line by line with high zoom ratio using DPAD keys. Right DPAD key scrolls to the right and Left DPAD key scrolls to the left. If Right DPAD key pressed at the edge of the page it will scroll to the left and down by line. Though you can read text line by line by pressing only Right DPAD key without touching screen.
