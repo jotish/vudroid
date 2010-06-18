@@ -61,6 +61,7 @@ public class DecodeServiceBase implements DecodeService
                 {
                     try
                     {
+                        Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
                         performDecode(decodeTask);
                     }
                     catch (IOException e)
