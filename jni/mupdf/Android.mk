@@ -148,7 +148,7 @@ MY_MUPDF_C_INCLUDES := \
 # of Androids own droid.ttf ... Maybe resort to pointing
 # to it in the filesystem? But this would violate proper
 # API use. Bleh.
-MY_MUPDF_CFLAGS := -Drestrict=
+MY_MUPDF_CFLAGS := -Drestrict= -DNOCJK
 
 MY_MUPDF_SRC_FILES := \
 	mupdf/mupdf/pdf_crypt.c \
@@ -246,7 +246,6 @@ MY_MUPDF_SRC_FILES := \
 	mupdf/mupdf/font_serif.c \
 	mupdf/mupdf/font_sans.c \
 	mupdf/mupdf/font_misc.c \
-	mupdf/mupdf/font_cjk.c \
 	mupdf/mupdf/cmap_cns.c \
 	mupdf/mupdf/cmap_korea.c \
 	mupdf/mupdf/cmap_tounicode.c \
