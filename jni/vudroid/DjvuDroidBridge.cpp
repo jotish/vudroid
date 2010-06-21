@@ -34,25 +34,25 @@ extern "C" jlong
 Java_org_vudroid_djvudroid_codec_DjvuDocument_open(JNIEnv *env,
                                     jclass cls,
                                     jlong contextHandle,
-                                    jstring url)
+                                    jstring fileName)
 {
-    const char* urlString = env->GetStringUTFChars(url, NULL);
-	DEBUG_PRINT("Opening document: %s", urlString);
-    jlong docHandle = (jlong)(ddjvu_document_create((ddjvu_context_t*)(contextHandle), urlString, TRUE));
-	env->ReleaseStringUTFChars(url, urlString);
+    const char* fileNameString = env->GetStringUTFChars(fileName, NULL);
+	DEBUG_PRINT("Opening document: %s", fileNameString);
+    jlong docHandle = (jlong)(ddjvu_document_create_by_filename((ddjvu_context_t*)(contextHandle), fileNameString, TRUE));
+	env->ReleaseStringUTFChars(fileName, fileNameString);
     return docHandle;
 }
 
-void CallNewStreamCallback(JNIEnv* env, jobject thiz, const ddjvu_message_t* msg)
+void CallDocInfoCallback(JNIEnv* env, jobject thiz, const ddjvu_message_t* msg)
 {
-	DEBUG_WRITE("Calling handleNewStream callback");
+	DEBUG_WRITE("Calling handleDocInfo callback");
 	jclass cls = env->GetObjectClass(thiz);
 	if (!cls)
 		return;
-    jmethodID handleNewStreamId = env->GetMethodID(cls, "handleNewStream", "(Ljava/lang/String;IJ)V");
-    if (!handleNewStreamId)
+    jmethodID handleDocInfoId = env->GetMethodID(cls, "handleDocInfo", "()V");
+    if (!handleDocInfoId)
     	return;
-    env->CallVoidMethod(thiz, handleNewStreamId, env->NewStringUTF(msg->m_newstream.url), msg->m_newstream.streamid, (jlong)msg->m_any.document);
+    env->CallVoidMethod(thiz, handleDocInfoId);
 }
 
 void ThrowDjvuError(JNIEnv* env, const ddjvu_message_t* msg)
@@ -60,7 +60,11 @@ void ThrowDjvuError(JNIEnv* env, const ddjvu_message_t* msg)
     jclass exceptionClass = env->FindClass("java/lang/RuntimeException");
     if (!exceptionClass)
     	return;
-    DEBUG_PRINT("Error: %s, %s:%s-%s", msg->m_error.message, msg->m_error.filename, msg->m_error.lineno, msg->m_error.function);
+    if (!msg || !msg->m_error.message)
+    {
+    	env->ThrowNew(exceptionClass, "Djvu decoding error!");
+    	return;
+    }
     env->ThrowNew(exceptionClass, msg->m_error.message);
 }
 
@@ -81,35 +85,14 @@ Java_org_vudroid_djvudroid_codec_DjvuContext_handleMessage(JNIEnv *env,
                 break;
             case DDJVU_INFO:
                 break;
-            case DDJVU_NEWSTREAM:
-            	CallNewStreamCallback(env, thiz, msg);
-                break;
+            case DDJVU_DOCINFO:
+            	CallDocInfoCallback(env, thiz, msg);
+            	break;
             default:
                 break;
         }
         ddjvu_message_pop(ctx);
 	}
-}
-
-extern "C" void
-Java_org_vudroid_djvudroid_codec_DjvuContext_streamWrite(JNIEnv *env,
-                                    jclass cls,
-                                    jlong docHandle,
-                                    jint streamId,
-                                    jobject buffer,
-                                    jint dataLen)
-{
-	ddjvu_stream_write((ddjvu_document_t*)docHandle, streamId, (const char *)env->GetDirectBufferAddress(buffer), dataLen);
-}
-
-extern "C" void
-Java_org_vudroid_djvudroid_codec_DjvuContext_streamClose(JNIEnv *env,
-                                    jclass cls,
-                                    jlong docHandle,
-                                    jint streamId,
-                                    jboolean stop)
-{
-	ddjvu_stream_close((ddjvu_document_t*)docHandle, streamId, stop);
 }
 
 extern "C" jlong

@@ -53,12 +53,48 @@ public class DjvuPage implements CodecPage
 
     public int getWidth()
     {
-        return getWidth(pageHandle);
+        for (;;)
+        {
+            synchronized (waitObject)
+            {
+                final int width = getWidth(pageHandle);
+                if (width != 0)
+                {
+                    return width;
+                }
+                try
+                {
+                    waitObject.wait(200);
+                }
+                catch (InterruptedException e)
+                {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
     }
 
     public int getHeight()
     {
-        return getHeight(pageHandle);
+        for (;;)
+        {
+            synchronized (waitObject)
+            {
+                final int height = getHeight(pageHandle);
+                if (height != 0)
+                {
+                    return height;
+                }
+                try
+                {
+                    waitObject.wait(200);
+                }
+                catch (InterruptedException e)
+                {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
     }
 
     public Bitmap renderBitmap(int width, int height, RectF pageSliceBounds)

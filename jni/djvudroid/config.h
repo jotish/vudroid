@@ -267,9 +267,7 @@
 
 /* - Miscellaneous */
 #define AUTOCONF 1
-#if defined(__CYGWIN32__) || !defined(WIN32)
-# define UNIX 1
-#endif
+#define UNIX 1
 
 /* - BOOL */
 #if !defined(HAVE_BOOL) && !defined(bool)

@@ -669,7 +669,10 @@ urlfopen(const GURL &url,const char mode[])
   }
   return retval?retval:fopen((const char *)url.NativeFilename(),mode);
 #else
-  return fopen((const char *)url.NativeFilename(),mode);
+  // looks like GUTF8String destructor called just after cast
+  GUTF8String fileNameString = url.UTF8Filename();
+  const char *nativeFilename = (const char *)fileNameString;
+  return fopen(nativeFilename,mode);
 #endif
 }
 
