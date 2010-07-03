@@ -4,34 +4,21 @@ import android.content.Context;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import org.vudroid.core.events.BringUpZoomControlsListener;
 import org.vudroid.core.models.ZoomModel;
 
 public class PageViewZoomControls extends LinearLayout implements BringUpZoomControlsListener
 {
-    private int atomicShowCounter = 0;
-
     public PageViewZoomControls(Context context, final ZoomModel zoomModel)
     {
         super(context);
-        hide();
+        show();
         setOrientation(LinearLayout.HORIZONTAL);
         setGravity(Gravity.BOTTOM);
         addView(new ZoomRoll(context, zoomModel));
-    }
-
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev)
-    {
-        final boolean inControlsArea = ev.getX() > getLeft() && ev.getX() < getRight() &&
-                ev.getY() > getTop() && ev.getY() < getBottom();
-        if (inControlsArea)
-        {
-            bringUpZoomControls();
-        }
-        return !inControlsArea;
     }
 
     @Override
@@ -40,40 +27,31 @@ public class PageViewZoomControls extends LinearLayout implements BringUpZoomCon
         return false;
     }
 
-    public void bringUpZoomControls()
+    public void toggleZoomControls()
     {
-        if (atomicShowCounter == 0)
+        if (getVisibility() == View.VISIBLE)
+        {
+            hide();
+        }
+        else
         {
             show();
         }
-        final int currentCounter = ++atomicShowCounter;
-        postDelayed(new Runnable()
-        {
-            public void run()
-            {
-                if (currentCounter != atomicShowCounter)
-                {
-                    return;
-                }
-                hide();
-                atomicShowCounter = 0;
-            }
-        }, 2000);
     }
 
     private void show()
     {
-        fade(View.VISIBLE, 0.0f, 1.0f);
+        fade(View.VISIBLE, getWidth(), 0.0f);
     }
 
     private void hide()
     {
-        fade(View.GONE, 1.0f, 0.0f);
+        fade(View.GONE, 0.0f, getWidth());
     }
 
-    private void fade(int visibility, float startAlpha, float endAlpha)
+    private void fade(int visibility, float startDelta, float endDelta)
     {
-        AlphaAnimation anim = new AlphaAnimation(startAlpha, endAlpha);
+        Animation anim = new TranslateAnimation(0,0, startDelta, endDelta);
         anim.setDuration(500);
         startAnimation(anim);
         setVisibility(visibility);
