@@ -37,7 +37,7 @@ public class ZoomModel extends EventDispatcher
         setZoom(getZoom() - INCREMENT_DELTA);
     }
 
-    public void bringUpZoomControls()
+    public void toggleZoomControls()
     {
         dispatch(new BringUpZoomControlsEvent());
     }

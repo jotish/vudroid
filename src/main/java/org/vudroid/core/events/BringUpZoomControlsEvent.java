@@ -5,6 +5,6 @@ public class BringUpZoomControlsEvent extends SafeEvent<BringUpZoomControlsListe
     @Override
     public void dispatchSafely(BringUpZoomControlsListener listener)
     {
-        listener.bringUpZoomControls();
+        listener.toggleZoomControls();
     }
 }
