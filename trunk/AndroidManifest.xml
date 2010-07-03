@@ -8,7 +8,7 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-                <!--<data android:mimeType="application/pdf" />-->
+                <data android:mimeType="application/pdf" />
             </intent-filter>
         </activity>
         <activity android:name=".djvudroid.DjvuViewerActivity" android:configChanges="orientation|keyboardHidden">
@@ -16,6 +16,7 @@
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:mimeType="image/djvu" />                
             </intent-filter>
         </activity>
         <activity android:name=".core.MainBrowserActivity" android:label="VuDroid">
