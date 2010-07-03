@@ -9,6 +9,7 @@ import android.view.View;
 import org.vudroid.core.codec.CodecContext;
 import org.vudroid.core.codec.CodecDocument;
 import org.vudroid.core.codec.CodecPage;
+import org.vudroid.core.utils.PathFromUri;
 
 import java.io.IOException;
 import java.lang.ref.SoftReference;
@@ -29,6 +30,7 @@ public class DecodeServiceBase implements DecodeService
     public static final String DECODE_SERVICE = "ViewDroidDecodeService";
     private final Map<Object, Future<?>> decodingFutures = new ConcurrentHashMap<Object, Future<?>>();
     private final HashMap<Integer, SoftReference<CodecPage>> pages = new HashMap<Integer, SoftReference<CodecPage>>();
+    private ContentResolver contentResolver;
 
     public DecodeServiceBase(CodecContext codecContext)
     {
@@ -37,6 +39,7 @@ public class DecodeServiceBase implements DecodeService
 
     public void setContentResolver(ContentResolver contentResolver)
     {
+        this.contentResolver = contentResolver;
         codecContext.setContentResolver(contentResolver);
     }
 
@@ -47,7 +50,7 @@ public class DecodeServiceBase implements DecodeService
 
     public void open(Uri fileUri)
     {
-        document = codecContext.openDocument(fileUri);
+        document = codecContext.openDocument(PathFromUri.retrieve(contentResolver, fileUri));
     }
 
     public void decodePage(Object decodeKey, int pageNum, final DecodeCallback decodeCallback, float zoom, RectF pageSliceBounds)

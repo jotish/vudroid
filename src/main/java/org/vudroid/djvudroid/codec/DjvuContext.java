@@ -1,7 +1,6 @@
 package org.vudroid.djvudroid.codec;
 
 import android.content.ContentResolver;
-import android.net.Uri;
 import android.util.Log;
 import org.vudroid.core.VuDroidLibraryLoader;
 import org.vudroid.core.codec.CodecContext;
@@ -26,9 +25,9 @@ public class DjvuContext implements Runnable, CodecContext
         new Thread(this).start();
     }
 
-    public DjvuDocument openDocument(Uri uri)
+    public DjvuDocument openDocument(String fileName)
     {
-        final DjvuDocument djvuDocument = DjvuDocument.openDocument(uri.getPath(), this, waitObject);
+        final DjvuDocument djvuDocument = DjvuDocument.openDocument(fileName, this, waitObject);
         try
         {
             docSemaphore.acquire();
