@@ -77,7 +77,15 @@ public abstract class BaseBrowserActivity extends Activity
     protected void onPostCreate(Bundle savedInstanceState)
     {
         super.onPostCreate(savedInstanceState);
-        setCurrentDir(new File("/sdcard"));
+        final File sdcardPath = new File("/sdcard");
+        if (sdcardPath.exists())
+        {
+            setCurrentDir(sdcardPath);
+        }
+        else
+        {
+            setCurrentDir(new File("/"));
+        }
         if (savedInstanceState != null)
         {
             final String absolutePath = savedInstanceState.getString(CURRENT_DIRECTORY);
