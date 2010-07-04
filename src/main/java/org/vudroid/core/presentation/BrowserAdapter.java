@@ -11,10 +11,7 @@ import org.vudroid.R;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class BrowserAdapter extends BaseAdapter
 {
@@ -71,6 +68,15 @@ public class BrowserAdapter extends BaseAdapter
     {
         ArrayList<File> files = new ArrayList<File>(Arrays.asList(currentDirectory.listFiles(filter)));
         this.currentDirectory = currentDirectory;
+        Collections.sort(files, new Comparator<File>()
+        {
+            public int compare(File o1, File o2)
+            {
+                if (o1.isDirectory() && o2.isFile()) return -1;
+                if (o1.isFile() && o2.isDirectory()) return 1;
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
         if (currentDirectory.getParentFile() != null)
         {
             files.add(0, currentDirectory.getParentFile());
