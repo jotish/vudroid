@@ -33,6 +33,7 @@ public class DocumentView extends View implements ZoomListener
     private RectF viewRect;
     private boolean inZoom;
     private long lastDownEventTime;
+    private static final int DOUBLE_TAP_TIME = 500;
 
     public DocumentView(Context context, final ZoomModel zoomModel, DecodingProgressModel progressModel, CurrentPageModel currentPageModel)
     {
@@ -208,7 +209,7 @@ public class DocumentView extends View implements ZoomListener
                 stopScroller();
                 lastX = ev.getX();
                 lastY = ev.getY();
-                if (ev.getEventTime() - lastDownEventTime < 1000)
+                if (ev.getEventTime() - lastDownEventTime < DOUBLE_TAP_TIME)
                 {
                     zoomModel.toggleZoomControls();
                 }
@@ -573,16 +574,11 @@ public class DocumentView extends View implements ZoomListener
             {
                 public void decodeComplete(final Bitmap bitmap)
                 {
-                    post(new Runnable()
-                    {
-                        public void run()
-                        {
-                            setBitmap(bitmap);
-                            setDecodingNow(false);
-                            page.setAspectRatio(decodeService.getPageWidth(page.index), decodeService.getPageHeight(page.index));
-                            invalidateChildren();
-                        }
-                    });
+                    // TODO: this code doesn't support concurrency
+                    setBitmap(bitmap);
+                    setDecodingNow(false);
+                    page.setAspectRatio(decodeService.getPageWidth(page.index), decodeService.getPageHeight(page.index));
+                    invalidateChildren();
                 }
             }, zoomModel.getZoom(), pageSliceBounds);
         }

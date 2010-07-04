@@ -10,6 +10,7 @@ public class ZoomModel extends EventDispatcher
     private float zoom = 1.0f;
     private static final float INCREMENT_DELTA = 0.05f;
     private boolean horizontalScrollEnabled;
+    private boolean isCommited;
 
     public void setZoom(float zoom)
     {
@@ -18,6 +19,7 @@ public class ZoomModel extends EventDispatcher
         {
             float oldZoom = this.zoom;
             this.zoom = zoom;
+            isCommited = false;
             dispatch(new ZoomChangedEvent(zoom, oldZoom));
         }
     }
@@ -59,6 +61,10 @@ public class ZoomModel extends EventDispatcher
 
     public void commit()
     {
-        dispatch(new ZoomListener.CommitZoomEvent());
+        if (!isCommited)
+        {
+            isCommited = true;
+            dispatch(new ZoomListener.CommitZoomEvent());
+        }
     }
 }

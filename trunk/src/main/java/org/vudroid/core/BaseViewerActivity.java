@@ -62,9 +62,15 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
         viewerPreferences.addRecent(getIntent().getData());
     }
 
-    public void decodingProgressChanged(int currentlyDecoding)
+    public void decodingProgressChanged(final int currentlyDecoding)
     {
-        getWindow().setFeatureInt(Window.FEATURE_INDETERMINATE_PROGRESS, currentlyDecoding == 0 ? 10000 : currentlyDecoding);
+        runOnUiThread(new Runnable()
+        {
+            public void run()
+            {
+                getWindow().setFeatureInt(Window.FEATURE_INDETERMINATE_PROGRESS, currentlyDecoding == 0 ? 10000 : currentlyDecoding);
+            }
+        });
     }
 
     public void currentPageChanged(int pageIndex)
