@@ -66,7 +66,8 @@ public class BrowserAdapter extends BaseAdapter
 
     public void setCurrentDirectory(File currentDirectory)
     {
-        ArrayList<File> files = new ArrayList<File>(Arrays.asList(currentDirectory.listFiles(filter)));
+        final File[] fileArray = currentDirectory.listFiles(filter);
+        ArrayList<File> files = new ArrayList<File>(fileArray != null ? Arrays.asList(fileArray) : Collections.<File>emptyList());
         this.currentDirectory = currentDirectory;
         Collections.sort(files, new Comparator<File>()
         {
