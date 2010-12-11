@@ -10,13 +10,14 @@ class PageTreeNode {
     private boolean decodingNow;
     private final RectF pageSliceBounds;
     private final Page page;
-    private RectF targetRect;
     private PageTreeNode[] children;
     private final float childrenZoomThreshold;
     private Matrix matrix = new Matrix();
     private final Paint bitmapPaint = new Paint();
     private DocumentView documentView;
     private boolean invalidateFlag;
+    private Rect targetRect;
+    private RectF targetRectF;
 
     PageTreeNode(DocumentView documentView, RectF localPageSliceBounds, Page page, float childrenZoomThreshold, PageTreeNode parent) {
         this.documentView = documentView;
@@ -65,6 +66,7 @@ class PageTreeNode {
 
     void invalidateNodeBounds() {
         targetRect = null;
+        targetRectF = null;
         if (children != null) {
             for (PageTreeNode child : children) {
                 child.invalidateNodeBounds();
@@ -86,7 +88,14 @@ class PageTreeNode {
     }
 
     private boolean isVisible() {
-        return RectF.intersects(documentView.getViewRect(), getTargetRect());
+        return RectF.intersects(documentView.getViewRect(), getTargetRectF());
+    }
+
+    private RectF getTargetRectF() {
+        if (targetRectF == null) {
+            targetRectF = new RectF(getTargetRect());
+        }
+        return targetRectF;
     }
 
     private void invalidateChildren() {
@@ -177,13 +186,14 @@ class PageTreeNode {
         }
     }
 
-    private RectF getTargetRect() {
+    private Rect getTargetRect() {
         if (targetRect == null) {
             matrix.reset();
             matrix.postScale(page.bounds.width(), page.bounds.height());
             matrix.postTranslate(page.bounds.left, page.bounds.top);
-            targetRect = new RectF();
-            matrix.mapRect(targetRect, pageSliceBounds);
+            RectF targetRectF = new RectF();
+            matrix.mapRect(targetRectF, pageSliceBounds);
+            targetRect = new Rect((int) targetRectF.left, (int) targetRectF.top, (int) targetRectF.right, (int) targetRectF.bottom);
         }
         return targetRect;
     }
