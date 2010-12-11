@@ -16,6 +16,7 @@ class PageTreeNode {
     private Matrix matrix = new Matrix();
     private final Paint bitmapPaint = new Paint();
     private DocumentView documentView;
+    private boolean invalidateFlag;
 
     PageTreeNode(DocumentView documentView, RectF localPageSliceBounds, Page page, float childrenZoomThreshold, PageTreeNode parent) {
         this.documentView = documentView;
@@ -24,42 +25,39 @@ class PageTreeNode {
         this.childrenZoomThreshold = childrenZoomThreshold;
     }
 
-    void startDecodingVisibleNodes(boolean invalidate) {
-        if (!isVisible()) {
-            return;
-        }
-        invalidateChildren();
-        if (thresholdHit()) {
-            for (PageTreeNode child : children) {
-                child.startDecodingVisibleNodes(invalidate);
-            }
-        } else {
-            if (getBitmap() != null && !invalidate) {
-                restoreBitmapReference();
-                return;
-            }
-            decodePageTreeNode();
-        }
-    }
-
-    void stopDecodingInvisibleNodes() {
+    public void updateVisibility() {
         invalidateChildren();
         if (children != null) {
             for (PageTreeNode child : children) {
-                child.stopDecodingInvisibleNodes();
+                child.updateVisibility();
             }
         }
-        if (isVisibleAndNotHiddenByChildren()) {
-            return;
+        if (isVisible()) {
+            if (!thresholdHit()) {
+                if (getBitmap() != null && !invalidateFlag) {
+                    restoreBitmapReference();
+                } else {
+                    decodePageTreeNode();
+                }
+            }
         }
-        stopDecodingThisNode();
+        if (!isVisibleAndNotHiddenByChildren()) {
+            stopDecodingThisNode();
+            setBitmap(null);
+        }
     }
 
-    void stopDecoding() {
+    public void invalidate() {
         invalidateChildren();
+        invalidateRecursive();
+        updateVisibility();
+    }
+
+    private void invalidateRecursive() {
+        invalidateFlag = true;
         if (children != null) {
             for (PageTreeNode child : children) {
-                child.stopDecoding();
+                child.invalidateRecursive();
             }
         }
         stopDecodingThisNode();
@@ -72,19 +70,6 @@ class PageTreeNode {
                 child.invalidateNodeBounds();
             }
         }
-    }
-
-    void removeInvisibleBitmaps() {
-        invalidateChildren();
-        if (children != null) {
-            for (PageTreeNode child : children) {
-                child.removeInvisibleBitmaps();
-            }
-        }
-        if (isVisibleAndNotHiddenByChildren()) {
-            return;
-        }
-        setBitmap(null);
     }
 
 
@@ -141,6 +126,7 @@ class PageTreeNode {
             public void decodeComplete(final Bitmap bitmap) {
                 // TODO: this code doesn't support concurrency
                 setBitmap(bitmap);
+                invalidateFlag = false;
                 setDecodingNow(false);
                 page.setAspectRatio(documentView.decodeService.getPageWidth(page.index), documentView.decodeService.getPageHeight(page.index));
                 invalidateChildren();
