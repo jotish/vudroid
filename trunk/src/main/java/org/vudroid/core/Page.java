@@ -80,30 +80,17 @@ class Page
         setAspectRatio(width * 1.0f / height);
     }
 
-    public void removeInvisibleBitmaps()
-    {
-        node.removeInvisibleBitmaps();
-    }
-
-    void startDecodingVisibleNodes(boolean invalidate)
-    {
-        node.startDecodingVisibleNodes(invalidate);
-    }
-
-    void stopDecodingInvisibleNodes()
-    {
-        node.stopDecodingInvisibleNodes();
-    }
-
-    void stopDecoding()
-    {
-        node.stopDecoding();
-    }
-
     void setBounds(RectF pageBounds)
     {
         bounds = pageBounds;
         node.invalidateNodeBounds();
     }
 
+    public void updateVisibility() {
+        node.updateVisibility();
+    }
+
+    public void invalidate() {
+        node.invalidate();
+    }
 }

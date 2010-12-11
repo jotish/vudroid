@@ -83,10 +83,8 @@ public class DocumentView extends View implements ZoomListener
             return;
         }
         // on scrollChanged can be called from scrollTo just after new layout applied so we should wait for relayout
-        post(new Runnable()
-        {
-            public void run()
-            {
+        post(new Runnable() {
+            public void run() {
                 updatePageVisibility();
             }
         });
@@ -94,46 +92,17 @@ public class DocumentView extends View implements ZoomListener
 
     private void updatePageVisibility()
     {
-        stopDecodingInvisiblePages();
-        removeImageFromInvisiblePages();
-        startDecodingVisiblePages();
-    }
-
-    private void startDecodingVisiblePages()
-    {
-        startDecodingVisiblePages(false);
-    }
-
-    private void startDecodingVisiblePages(boolean invalidate)
-    {
-        for (final Map.Entry<Integer, Page> pageNumToPage : pages.entrySet())
-        {
-            pageNumToPage.getValue().startDecodingVisibleNodes(invalidate);
+        for (Page page : pages.values()) {
+            page.updateVisibility();
         }
     }
 
-    private void removeImageFromInvisiblePages()
+    public void commitZoom()
     {
-        for (Integer visiblePageNum : pages.keySet())
-        {
-            pages.get(visiblePageNum).removeInvisibleBitmaps();
+        for (Page page : pages.values()) {
+            page.invalidate();
         }
-    }
-
-    private void stopDecodingInvisiblePages()
-    {
-        for (Integer decodingPageNum : pages.keySet())
-        {
-            pages.get(decodingPageNum).stopDecodingInvisibleNodes();
-        }
-    }
-
-    private void stopDecodingAllPages()
-    {
-        for (Integer decodingPageNum : pages.keySet())
-        {
-            pages.get(decodingPageNum).stopDecoding();
-        }
+        inZoom = false;
     }
 
     public void showDocument()
@@ -180,14 +149,6 @@ public class DocumentView extends View implements ZoomListener
         scrollTo((int) ((getScrollX() + getWidth() / 2) * ratio - getWidth() / 2), (int) ((getScrollY() + getHeight() / 2) * ratio - getHeight() / 2));
         invalidatePageSizes();
         postInvalidate();
-    }
-
-    public void commitZoom()
-    {
-        stopDecodingAllPages();
-        removeImageFromInvisiblePages();
-        startDecodingVisiblePages(true);
-        inZoom = false;
     }
 
     @Override
