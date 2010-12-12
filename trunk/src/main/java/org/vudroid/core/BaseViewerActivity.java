@@ -3,6 +3,7 @@ package org.vudroid.core;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.FrameLayout;
@@ -25,6 +26,7 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
     private DocumentView documentView;
     private ViewerPreferences viewerPreferences;
     private Toast pageNumberToast;
+    private CurrentPageModel currentPageModel;
 
     /**
      * Called when the activity is first created.
@@ -37,7 +39,7 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
         final ZoomModel zoomModel = new ZoomModel();
         final DecodingProgressModel progressModel = new DecodingProgressModel();
         progressModel.addEventListener(this);
-        final CurrentPageModel currentPageModel = new CurrentPageModel();
+        currentPageModel = new CurrentPageModel();
         currentPageModel.addEventListener(this);
         documentView = new DocumentView(this, zoomModel, progressModel, currentPageModel);
         zoomModel.addEventListener(documentView);
@@ -86,6 +88,7 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
         }
         pageNumberToast.setGravity(Gravity.TOP | Gravity.LEFT,0,0);
         pageNumberToast.show();
+        saveCurrentPage();
     }
 
     private void setWindowTitle()
@@ -141,7 +144,6 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
     protected void onStop()
     {
         super.onStop();
-        saveCurrentPage();
     }
 
     private void saveCurrentPage()
@@ -173,7 +175,6 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
         switch (item.getItemId())
         {
             case MENU_EXIT:
-                saveCurrentPage();
                 System.exit(0);
                 return true;
             case MENU_GOTO:
