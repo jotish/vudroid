@@ -11,6 +11,8 @@ import org.vudroid.core.events.ZoomListener;
 import org.vudroid.core.models.CurrentPageModel;
 import org.vudroid.core.models.DecodingProgressModel;
 import org.vudroid.core.models.ZoomModel;
+import org.vudroid.core.multitouch.MultiTouchZoom;
+import org.vudroid.core.multitouch.MultiTouchZoomImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +33,7 @@ public class DocumentView extends View implements ZoomListener {
     private boolean inZoom;
     private long lastDownEventTime;
     private static final int DOUBLE_TAP_TIME = 500;
+    private MultiTouchZoom multiTouchZoom;
 
     public DocumentView(Context context, final ZoomModel zoomModel, DecodingProgressModel progressModel, CurrentPageModel currentPageModel) {
         super(context);
@@ -41,6 +44,15 @@ public class DocumentView extends View implements ZoomListener {
         scroller = new Scroller(getContext());
         setFocusable(true);
         setFocusableInTouchMode(true);
+        initMultiTouchZoomIfAvailable(zoomModel);
+    }
+
+    private void initMultiTouchZoomIfAvailable(ZoomModel zoomModel) {
+        try {
+            multiTouchZoom = (MultiTouchZoom) Class.forName("org.vudroid.core.multitouch.MultiTouchZoomImpl").getConstructor(ZoomModel.class).newInstance(zoomModel);
+        } catch (Exception e) {
+            System.out.println("Multi touch zoom is not available: " + e);
+        }
     }
 
     public void setDecodeService(DecodeService decodeService) {
@@ -139,6 +151,17 @@ public class DocumentView extends View implements ZoomListener {
     public boolean onTouchEvent(MotionEvent ev) {
         super.onTouchEvent(ev);
 
+        if (multiTouchZoom != null) {
+            if (multiTouchZoom.onTouchEvent(ev)) {
+                return true;
+            }
+
+            if (multiTouchZoom.isResetLastPointAfterZoom()) {
+                setLastPosition(ev);
+                multiTouchZoom.setResetLastPointAfterZoom(false);
+            }
+        }
+
         if (velocityTracker == null) {
             velocityTracker = VelocityTracker.obtain();
         }
@@ -147,8 +170,7 @@ public class DocumentView extends View implements ZoomListener {
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 stopScroller();
-                lastX = ev.getX();
-                lastY = ev.getY();
+                setLastPosition(ev);
                 if (ev.getEventTime() - lastDownEventTime < DOUBLE_TAP_TIME) {
                     zoomModel.toggleZoomControls();
                 } else {
@@ -157,8 +179,7 @@ public class DocumentView extends View implements ZoomListener {
                 break;
             case MotionEvent.ACTION_MOVE:
                 scrollBy((int) (lastX - ev.getX()), (int) (lastY - ev.getY()));
-                lastX = ev.getX();
-                lastY = ev.getY();
+                setLastPosition(ev);
                 break;
             case MotionEvent.ACTION_UP:
                 velocityTracker.computeCurrentVelocity(1000);
@@ -169,6 +190,11 @@ public class DocumentView extends View implements ZoomListener {
                 break;
         }
         return true;
+    }
+
+    private void setLastPosition(MotionEvent ev) {
+        lastX = ev.getX();
+        lastY = ev.getY();
     }
 
     @Override
