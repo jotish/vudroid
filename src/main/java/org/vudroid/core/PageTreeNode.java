@@ -5,13 +5,14 @@ import android.graphics.*;
 import java.lang.ref.SoftReference;
 
 class PageTreeNode {
+    private static final int SLICE_SIZE = 32768;
     private Bitmap bitmap;
     private SoftReference<Bitmap> bitmapWeakReference;
     private boolean decodingNow;
     private final RectF pageSliceBounds;
     private final Page page;
     private PageTreeNode[] children;
-    private final float childrenZoomThreshold;
+    private final int treeNodeDepthLevel;
     private Matrix matrix = new Matrix();
     private final Paint bitmapPaint = new Paint();
     private DocumentView documentView;
@@ -19,11 +20,11 @@ class PageTreeNode {
     private Rect targetRect;
     private RectF targetRectF;
 
-    PageTreeNode(DocumentView documentView, RectF localPageSliceBounds, Page page, float childrenZoomThreshold, PageTreeNode parent) {
+    PageTreeNode(DocumentView documentView, RectF localPageSliceBounds, Page page, int treeNodeDepthLevel, PageTreeNode parent) {
         this.documentView = documentView;
         this.pageSliceBounds = evaluatePageSliceBounds(localPageSliceBounds, parent);
         this.page = page;
-        this.childrenZoomThreshold = childrenZoomThreshold;
+        this.treeNodeDepthLevel = treeNodeDepthLevel;
     }
 
     public void updateVisibility() {
@@ -100,7 +101,7 @@ class PageTreeNode {
 
     private void invalidateChildren() {
         if (thresholdHit() && children == null && isVisible()) {
-            final float newThreshold = childrenZoomThreshold * 2;
+            final int newThreshold = treeNodeDepthLevel * 2;
             children = new PageTreeNode[]
                     {
                             new PageTreeNode(documentView, new RectF(0, 0, 0.5f, 0.5f), page, newThreshold, this),
@@ -115,7 +116,8 @@ class PageTreeNode {
     }
 
     private boolean thresholdHit() {
-        return documentView.zoomModel.getZoom() >= childrenZoomThreshold;
+        float zoom = documentView.zoomModel.getZoom();
+        return (documentView.getWidth() * zoom * documentView.getHeight() * zoom) / (treeNodeDepthLevel * treeNodeDepthLevel) > SLICE_SIZE;
     }
 
     public Bitmap getBitmap() {
