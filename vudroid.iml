@@ -30,7 +30,12 @@
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/r" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/combined-resources" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/combined-assets" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/target/android-classes" />
+      <excludeFolder url="file://$MODULE_DIR$/target/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/combined-resources" />
+      <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/extracted-dependencies" />
+      <excludeFolder url="file://$MODULE_DIR$/target/maven-archiver" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -33,6 +33,11 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
+    <option name="activeProfiles">
+      <list>
+        <option value="Android" />
+      </list>
+    </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/pom.xml" />
