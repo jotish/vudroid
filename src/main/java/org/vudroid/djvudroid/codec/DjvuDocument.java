@@ -4,7 +4,7 @@ import org.vudroid.core.codec.CodecDocument;
 
 public class DjvuDocument implements CodecDocument
 {
-    private final long documentHandle;
+    private long documentHandle;
     private final Object waitObject;
 
     private DjvuDocument(long documentHandle, Object waitObject)
@@ -36,7 +36,15 @@ public class DjvuDocument implements CodecDocument
     @Override
     protected void finalize() throws Throwable
     {
-        free(documentHandle);
+        recycle();
         super.finalize();
+    }
+
+    public synchronized void recycle() {
+        if (documentHandle == 0) {
+            return;
+        }
+        free(documentHandle);
+        documentHandle = 0;
     }
 }

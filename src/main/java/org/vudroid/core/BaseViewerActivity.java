@@ -146,6 +146,13 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
         super.onStop();
     }
 
+    @Override
+    protected void onDestroy() {
+        decodeService.recycle();
+        decodeService = null;
+        super.onDestroy();
+    }
+
     private void saveCurrentPage()
     {
         final SharedPreferences sharedPreferences = getSharedPreferences(DOCUMENT_VIEW_STATE_PREFERENCES, 0);

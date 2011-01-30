@@ -57,12 +57,15 @@ public class PdfPage implements CodecPage
     @Override
     protected void finalize() throws Throwable
     {
-        if (pageHandle != 0)
-        {
+        recycle();
+        super.finalize();
+    }
+
+    public synchronized void recycle() {
+        if (pageHandle != 0) {
             free(pageHandle);
             pageHandle = 0;
         }
-        super.finalize();
     }
 
     private RectF getMediaBox()
