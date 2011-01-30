@@ -117,7 +117,9 @@ class PageTreeNode {
 
     private boolean thresholdHit() {
         float zoom = documentView.zoomModel.getZoom();
-        return (documentView.getWidth() * zoom * documentView.getHeight() * zoom) / (treeNodeDepthLevel * treeNodeDepthLevel) > SLICE_SIZE;
+        int mainWidth = documentView.getWidth();
+        float height = page.getPageHeight(mainWidth, zoom);
+        return (mainWidth * zoom * height) / (treeNodeDepthLevel * treeNodeDepthLevel) > SLICE_SIZE;
     }
 
     public Bitmap getBitmap() {
@@ -135,12 +137,15 @@ class PageTreeNode {
         setDecodingNow(true);
         documentView.decodeService.decodePage(this, page.index, new DecodeService.DecodeCallback() {
             public void decodeComplete(final Bitmap bitmap) {
-                // TODO: this code doesn't support concurrency
-                setBitmap(bitmap);
-                invalidateFlag = false;
-                setDecodingNow(false);
-                page.setAspectRatio(documentView.decodeService.getPageWidth(page.index), documentView.decodeService.getPageHeight(page.index));
-                invalidateChildren();
+                documentView.post(new Runnable() {
+                    public void run() {
+                        setBitmap(bitmap);
+                        invalidateFlag = false;
+                        setDecodingNow(false);
+                        page.setAspectRatio(documentView.decodeService.getPageWidth(page.index), documentView.decodeService.getPageHeight(page.index));
+                        invalidateChildren();
+                    }
+                });
             }
         }, documentView.zoomModel.getZoom(), pageSliceBounds);
     }

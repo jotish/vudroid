@@ -14,7 +14,9 @@ import org.vudroid.core.utils.PathFromUri;
 import java.io.IOException;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,6 +24,7 @@ import java.util.concurrent.Future;
 
 public class DecodeServiceBase implements DecodeService
 {
+    private static final int PAGE_POOL_SIZE = 16;
     private final CodecContext codecContext;
 
     private View containerView;
@@ -31,6 +34,7 @@ public class DecodeServiceBase implements DecodeService
     private final Map<Object, Future<?>> decodingFutures = new ConcurrentHashMap<Object, Future<?>>();
     private final HashMap<Integer, SoftReference<CodecPage>> pages = new HashMap<Integer, SoftReference<CodecPage>>();
     private ContentResolver contentResolver;
+    private Queue<Integer> pageEvictionQueue = new LinkedList<Integer>();
 
     public DecodeServiceBase(CodecContext codecContext)
     {
@@ -172,6 +176,15 @@ public class DecodeServiceBase implements DecodeService
         if (!pages.containsKey(pageIndex) || pages.get(pageIndex).get() == null)
         {
             pages.put(pageIndex, new SoftReference<CodecPage>(document.getPage(pageIndex)));
+            pageEvictionQueue.remove(pageIndex);
+            pageEvictionQueue.offer(pageIndex);
+            if (pageEvictionQueue.size() > PAGE_POOL_SIZE) {
+                Integer evictedPageIndex = pageEvictionQueue.poll();
+                CodecPage evictedPage = pages.remove(evictedPageIndex).get();
+                if (evictedPage != null) {
+                    evictedPage.recycle();
+                }
+            }
         }
         return pages.get(pageIndex).get();
     }
@@ -244,4 +257,17 @@ public class DecodeServiceBase implements DecodeService
         }
     }
 
+    public void recycle() {
+        for (Object key : decodingFutures.keySet()) {
+            stopDecoding(key);
+        }
+        for (SoftReference<CodecPage> codecPageSoftReference : pages.values()) {
+            CodecPage page = codecPageSoftReference.get();
+            if (page != null) {
+                page.recycle();
+            }
+        }
+        document.recycle();
+        codecContext.recycle();
+    }
 }

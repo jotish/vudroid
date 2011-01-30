@@ -9,7 +9,7 @@ import java.nio.ByteBuffer;
 
 public class DjvuPage implements CodecPage
 {
-    private final long pageHandle;
+    private long pageHandle;
     private final Object waitObject;
 
     DjvuPage(long pageHandle, Object waitObject)
@@ -109,7 +109,15 @@ public class DjvuPage implements CodecPage
     @Override
     protected void finalize() throws Throwable
     {
-        free(pageHandle);
+        recycle();
         super.finalize();
+    }
+
+    public synchronized void recycle() {
+        if (pageHandle == 0) {
+            return;
+        }
+        free(pageHandle);
+        pageHandle = 0;
     }
 }

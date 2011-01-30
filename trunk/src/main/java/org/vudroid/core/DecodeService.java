@@ -28,6 +28,8 @@ public interface DecodeService
 
     int getPageHeight(int pageIndex);
 
+    void recycle();
+
     public interface DecodeCallback
     {
         void decodeComplete(Bitmap bitmap);

@@ -14,7 +14,7 @@ public class DjvuContext implements Runnable, CodecContext
         VuDroidLibraryLoader.load();        
     }
 
-    private final long contextHandle;
+    private long contextHandle;
     private static final String DJVU_DROID_CODEC_LIBRARY = "DjvuDroidCodecLibrary";
     private final Object waitObject = new Object();
     private final Semaphore docSemaphore = new Semaphore(0);
@@ -25,7 +25,7 @@ public class DjvuContext implements Runnable, CodecContext
         new Thread(this).start();
     }
 
-    public DjvuDocument openDocument(String fileName)
+    public DjvuDocument  openDocument(String fileName)
     {
         final DjvuDocument djvuDocument = DjvuDocument.openDocument(fileName, this, waitObject);
         try
@@ -75,8 +75,16 @@ public class DjvuContext implements Runnable, CodecContext
     @Override
     protected void finalize() throws Throwable
     {
-        free(contextHandle);
+        recycle();
         super.finalize();
+    }
+
+    public synchronized void recycle() {
+        if (contextHandle == 0) {
+            return;
+        }
+        free(contextHandle);
+        contextHandle = 0;
     }
 
     private static native long create();

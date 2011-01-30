@@ -37,11 +37,14 @@ public class PdfDocument implements CodecDocument
     @Override
     protected void finalize() throws Throwable
     {
-        if (docHandle != 0)
-        {
+        recycle();
+        super.finalize();
+    }
+
+    public synchronized void recycle() {
+        if (docHandle != 0) {
             free(docHandle);
             docHandle = 0;
         }
-        super.finalize();
     }
 }

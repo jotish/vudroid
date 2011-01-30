@@ -38,7 +38,7 @@ Java_org_vudroid_djvudroid_codec_DjvuDocument_open(JNIEnv *env,
 {
     const char* fileNameString = env->GetStringUTFChars(fileName, NULL);
 	DEBUG_PRINT("Opening document: %s", fileNameString);
-    jlong docHandle = (jlong)(ddjvu_document_create_by_filename((ddjvu_context_t*)(contextHandle), fileNameString, TRUE));
+    jlong docHandle = (jlong)(ddjvu_document_create_by_filename((ddjvu_context_t*)(contextHandle), fileNameString, FALSE));
 	env->ReleaseStringUTFChars(fileName, fileNameString);
     return docHandle;
 }
