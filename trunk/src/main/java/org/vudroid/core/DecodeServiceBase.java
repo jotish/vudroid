@@ -17,10 +17,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 public class DecodeServiceBase implements DecodeService
 {
@@ -35,6 +32,7 @@ public class DecodeServiceBase implements DecodeService
     private final HashMap<Integer, SoftReference<CodecPage>> pages = new HashMap<Integer, SoftReference<CodecPage>>();
     private ContentResolver contentResolver;
     private Queue<Integer> pageEvictionQueue = new LinkedList<Integer>();
+    private boolean isRecycled;
 
     public DecodeServiceBase(CodecContext codecContext)
     {
@@ -62,13 +60,15 @@ public class DecodeServiceBase implements DecodeService
         final DecodeTask decodeTask = new DecodeTask(pageNum, decodeCallback, zoom, decodeKey, pageSliceBounds);
         synchronized (decodingFutures)
         {
+            if (isRecycled) {
+                return;
+            }
             final Future<?> future = executorService.submit(new Runnable()
             {
                 public void run()
                 {
                     try
                     {
-                        Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
                         performDecode(decodeTask);
                     }
                     catch (IOException e)
@@ -106,14 +106,6 @@ public class DecodeServiceBase implements DecodeService
         CodecPage vuPage = getPage(currentDecodeTask.pageNumber);
         preloadNextPage(currentDecodeTask.pageNumber);
 
-        while (vuPage.isDecoding())
-        {
-            if (isTaskDead(currentDecodeTask))
-            {
-                break;
-            }
-            waitForDecode(vuPage);
-        }
         if (isTaskDead(currentDecodeTask))
         {
             return;
@@ -258,16 +250,24 @@ public class DecodeServiceBase implements DecodeService
     }
 
     public void recycle() {
+        synchronized (decodingFutures) {
+            isRecycled = true;
+        }
         for (Object key : decodingFutures.keySet()) {
             stopDecoding(key);
         }
-        for (SoftReference<CodecPage> codecPageSoftReference : pages.values()) {
-            CodecPage page = codecPageSoftReference.get();
-            if (page != null) {
-                page.recycle();
+        executorService.submit(new Runnable() {
+            public void run() {
+                for (SoftReference<CodecPage> codecPageSoftReference : pages.values()) {
+                    CodecPage page = codecPageSoftReference.get();
+                    if (page != null) {
+                        page.recycle();
+                    }
+                }
+                document.recycle();
+                codecContext.recycle();
             }
-        }
-        document.recycle();
-        codecContext.recycle();
+        });
+        executorService.shutdown();
     }
 }
