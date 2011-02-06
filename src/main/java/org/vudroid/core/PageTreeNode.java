@@ -5,7 +5,7 @@ import android.graphics.*;
 import java.lang.ref.SoftReference;
 
 class PageTreeNode {
-    private static final int SLICE_SIZE = 32768;
+    private static final int SLICE_SIZE = 65535;
     private Bitmap bitmap;
     private SoftReference<Bitmap> bitmapWeakReference;
     private boolean decodingNow;
