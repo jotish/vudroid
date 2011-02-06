@@ -76,7 +76,7 @@ Java_org_vudroid_djvudroid_codec_DjvuContext_handleMessage(JNIEnv *env,
 	const ddjvu_message_t *msg;
 	ddjvu_context_t* ctx = (ddjvu_context_t*)(contextHandle);
 	DEBUG_PRINT("handleMessage for ctx: %x",ctx);
-	if(msg = ddjvu_message_wait(ctx))
+	if(msg = ddjvu_message_peek(ctx))
     {
         switch (msg->m_any.tag)
         {
@@ -155,7 +155,7 @@ Java_org_vudroid_djvudroid_codec_DjvuPage_renderPage(JNIEnv *env,
                                     jfloat pageSliceY,
                                     jfloat pageSliceWidth,
                                     jfloat pageSliceHeight,
-                                    jobject buffer)
+                                    jintArray buffer)
 {
 	DEBUG_WRITE("Rendering page");
 	ddjvu_page_t* page = (ddjvu_page_t*)((pageHangle));
@@ -169,11 +169,15 @@ Java_org_vudroid_djvudroid_codec_DjvuPage_renderPage(JNIEnv *env,
     targetRect.y = pageSliceY * targetHeight / pageSliceHeight;
     targetRect.w = targetWidth;
     targetRect.h = targetHeight;
-    unsigned int masks[] = {0xF800, 0x07E0, 0x001F};
-    ddjvu_format_t* pixelFormat = ddjvu_format_create(DDJVU_FORMAT_RGBMASK16, 3, masks);
+    unsigned int masks[] = {0xFF0000, 0x00FF00, 0x0000FF};
+    ddjvu_format_t* pixelFormat = ddjvu_format_create(DDJVU_FORMAT_RGBMASK32, 3, masks);
     ddjvu_format_set_row_order(pixelFormat, TRUE);
     ddjvu_format_set_y_direction(pixelFormat, TRUE);
-    jboolean result = ddjvu_page_render(page, DDJVU_RENDER_COLOR, &pageRect, &targetRect, pixelFormat, targetWidth * 2, (char*)env->GetDirectBufferAddress(buffer));
+
+    char *pBuffer = (char *)env->GetPrimitiveArrayCritical(buffer, 0);
+    jboolean result = ddjvu_page_render(page, DDJVU_RENDER_COLOR, &pageRect, &targetRect, pixelFormat, targetWidth * 4, pBuffer);
+    env->ReleasePrimitiveArrayCritical(buffer, pBuffer, 0);
+
     ddjvu_format_release(pixelFormat);
     return result;
 }

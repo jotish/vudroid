@@ -10,6 +10,7 @@ import java.nio.ByteBuffer;
 public class DjvuPage implements CodecPage
 {
     private long pageHandle;
+    //TODO: remove all async operations
     private final Object waitObject;
 
     DjvuPage(long pageHandle, Object waitObject)
@@ -20,7 +21,8 @@ public class DjvuPage implements CodecPage
 
     public boolean isDecoding()
     {
-        return !isDecodingDone(pageHandle);
+        return false;
+//        return !isDecodingDone(pageHandle);
     }
 
     private static native int getWidth(long pageHandle);
@@ -32,78 +34,29 @@ public class DjvuPage implements CodecPage
     private static native boolean renderPage(long pageHandle, int targetWidth, int targetHeight, float pageSliceX,
                                     float pageSliceY,
                                     float pageSliceWidth,
-                                    float pageSliceHeight, Buffer buffer);
+                                    float pageSliceHeight, int[] buffer);
 
     private static native void free(long pageHandle);
 
     public void waitForDecode()
     {
-        synchronized (waitObject)
-        {
-            try
-            {
-                waitObject.wait(200);
-            }
-            catch (InterruptedException e)
-            {
-                throw new RuntimeException(e);
-            }
-        }
     }
 
     public int getWidth()
     {
-        for (;;)
-        {
-            synchronized (waitObject)
-            {
-                final int width = getWidth(pageHandle);
-                if (width != 0)
-                {
-                    return width;
-                }
-                try
-                {
-                    waitObject.wait(200);
-                }
-                catch (InterruptedException e)
-                {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
+        return getWidth(pageHandle);
     }
 
     public int getHeight()
     {
-        for (;;)
-        {
-            synchronized (waitObject)
-            {
-                final int height = getHeight(pageHandle);
-                if (height != 0)
-                {
-                    return height;
-                }
-                try
-                {
-                    waitObject.wait(200);
-                }
-                catch (InterruptedException e)
-                {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
+        return getHeight(pageHandle);
     }
 
     public Bitmap renderBitmap(int width, int height, RectF pageSliceBounds)
     {
-        final ByteBuffer buffer = ByteBuffer.allocateDirect(width * height * 2);
+        final int[] buffer = new int[width * height];
         renderPage(pageHandle, width, height, pageSliceBounds.left, pageSliceBounds.top, pageSliceBounds.width(), pageSliceBounds.height(), buffer);
-        final Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-        bitmap.copyPixelsFromBuffer(buffer);
-        return bitmap;
+        return Bitmap.createBitmap(buffer, width, height, Bitmap.Config.RGB_565);
     }
 
     @Override

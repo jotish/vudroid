@@ -49,7 +49,11 @@ public class DjvuContext implements Runnable, CodecContext
         {
             try
             {
-                handleMessage(contextHandle);
+                synchronized (this) {
+                    if (isRecycled()) return;
+                    handleMessage(contextHandle);
+                    wait(200);
+                }
                 synchronized (waitObject)
                 {
                     waitObject.notifyAll();
@@ -80,11 +84,15 @@ public class DjvuContext implements Runnable, CodecContext
     }
 
     public synchronized void recycle() {
-        if (contextHandle == 0) {
+        if (isRecycled()) {
             return;
         }
         free(contextHandle);
         contextHandle = 0;
+    }
+
+    private boolean isRecycled() {
+        return contextHandle == 0;
     }
 
     private static native long create();
