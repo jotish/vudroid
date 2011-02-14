@@ -2,12 +2,15 @@ package org.vudroid.core;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.*;
 import android.widget.FrameLayout;
 import android.widget.Toast;
+
 import org.vudroid.core.events.CurrentPageListener;
 import org.vudroid.core.events.DecodingProgressListener;
 import org.vudroid.core.models.CurrentPageModel;
@@ -19,15 +22,19 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
 {
     private static final int MENU_EXIT = 0;
     private static final int MENU_GOTO = 1;
-    private static final int MENU_FULL_SCREEN = 2;
+    private static final int MENU_SETTINGS = 2;
     private static final int DIALOG_GOTO = 0;
     private static final String DOCUMENT_VIEW_STATE_PREFERENCES = "DjvuDocumentViewState";
     private DecodeService decodeService;
     private DocumentView documentView;
-    private ViewerPreferences viewerPreferences;
     private Toast pageNumberToast;
     private CurrentPageModel currentPageModel;
-
+    
+    //TODO: get this constants from array
+    
+    public static final String ROTATION_AUTOMATIC = "Automatic";
+    public static final String ROTATION_LANDSCAPE = "Force landscape";
+    public static final String ROTATION_PORTRAIT = "Force portrait";
     /**
      * Called when the activity is first created.
      */
@@ -46,15 +53,24 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
         documentView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
         decodeService.setContentResolver(getContentResolver());
         decodeService.setContainerView(documentView);
-        documentView.setDecodeService(decodeService);
-        decodeService.open(getIntent().getData());
-
-        viewerPreferences = new ViewerPreferences(this);
+        documentView.setDecodeService(decodeService);   
+        final ViewerPreferences viewerPreferences = new ViewerPreferences(this); 
+        try
+        {
+        		decodeService.open(getIntent().getData()); 
+        }
+        catch(Exception e) 
+        {
+        	Toast.makeText(this, e.getMessage(), 300).show(); 
+        	finish();
+        	viewerPreferences.delRecent(getIntent().getData()); 
+        	return;
+        }
 
         final FrameLayout frameLayout = createMainContainer();
         frameLayout.addView(documentView);
         frameLayout.addView(createZoomControls(zoomModel));
-        setFullScreen();
+        setShowTitle();
         setContentView(frameLayout);
 
         final SharedPreferences sharedPreferences = getSharedPreferences(DOCUMENT_VIEW_STATE_PREFERENCES, 0);
@@ -104,17 +120,24 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
         setWindowTitle();
     }
 
+    private void setShowTitle()
+    {
+    	 if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("title", false))
+         {
+             getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+         }
+         else
+         {
+             getWindow().requestFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+         }
+    }
+    
     private void setFullScreen()
     {
-        if (viewerPreferences.isFullScreen())
-        {
-            getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("fullscreen", false))
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
         else
-        {
-            getWindow().requestFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-        }
+        	getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     private PageViewZoomControls createZoomControls(ZoomModel zoomModel)
@@ -146,12 +169,37 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
         super.onStop();
     }
 
-    @Override
+
+    private void setOrientation() 
+    {
+		String rotate = PreferenceManager.getDefaultSharedPreferences(this).getString("rotation","");
+		if (ROTATION_LANDSCAPE.equals(rotate)) {
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		} else if (ROTATION_PORTRAIT.equals(rotate)) {
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		} else {
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+		}
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		setOrientation();
+		setFullScreen();
+	}
+
+	@Override
     protected void onDestroy() {
-        decodeService.recycle();
-        decodeService = null;
-        super.onDestroy();
-    }
+	    decodeService.recycle();
+	    decodeService = null;
+	    super.onDestroy();
+	}
 
     private void saveCurrentPage()
     {
@@ -164,16 +212,14 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        menu.add(0, MENU_EXIT, 0, "Exit");
-        menu.add(0, MENU_GOTO, 0, "Go to page");
-        final MenuItem menuItem = menu.add(0, MENU_FULL_SCREEN, 0, "Full screen").setCheckable(true).setChecked(viewerPreferences.isFullScreen());
-        setFullScreenMenuItemText(menuItem);
+    	final MenuItem menuExit = menu.add(0, MENU_EXIT, 0, "Exit");
+    	menuExit.setAlphabeticShortcut('e');
+    	final MenuItem menuGoto = menu.add(0, MENU_GOTO, 0, "Go to page");
+    	menuGoto.setAlphabeticShortcut('g');
+    	MenuItem menuSettings = menu.add(0, MENU_SETTINGS, 0, "Settings");
+    	menuSettings.setAlphabeticShortcut('s');
+    	menuSettings.setIntent(new Intent(this, SettingsActivity.class));
         return true;
-    }
-
-    private void setFullScreenMenuItemText(MenuItem menuItem)
-    {
-        menuItem.setTitle("Full screen " + (menuItem.isChecked() ? "on" : "off"));
     }
 
     @Override
@@ -187,16 +233,17 @@ public abstract class BaseViewerActivity extends Activity implements DecodingPro
             case MENU_GOTO:
                 showDialog(DIALOG_GOTO);
                 return true;
-            case MENU_FULL_SCREEN:
-                item.setChecked(!item.isChecked());
-                setFullScreenMenuItemText(item);
-                viewerPreferences.setFullScreen(item.isChecked());
+       //     case MENU_SETTINGS:
+//                item.setChecked(!item.isChecked());
+//                setFullScreenMenuItemText(item);
+  //              viewerPreferences.setFullScreen(item.isChecked());
 
-                finish();
-                startActivity(getIntent());
-                return true;
+    //            finish();
+      //          startActivity(getIntent());
+          //      return true;
         }
         return false;
+        //return super.onOptionsItemSelected(item);
     }
 
     @Override

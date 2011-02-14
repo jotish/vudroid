@@ -14,6 +14,6 @@ public interface CodecPage
     int getHeight();
 
     Bitmap renderBitmap(int width, int height, RectF pageSliceBounds);
-
+    
     void recycle();
 }

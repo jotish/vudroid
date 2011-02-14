@@ -6,8 +6,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import org.vudroid.core.codec.CodecPage;
 
-import java.nio.ByteBuffer;
-
 public class PdfPage implements CodecPage
 {
     private long pageHandle;
@@ -42,6 +40,7 @@ public class PdfPage implements CodecPage
     public Bitmap renderBitmap(int width, int height, RectF pageSliceBounds)
     {
         Matrix matrix = new Matrix();
+        matrix.postTranslate(-getMediaBox().left, -getMediaBox().top);
         matrix.postScale(width / getMediaBox().width(), -height / getMediaBox().height());
         matrix.postTranslate(0, height);
         matrix.postTranslate(-pageSliceBounds.left*width, -pageSliceBounds.top*height);
@@ -60,13 +59,13 @@ public class PdfPage implements CodecPage
         recycle();
         super.finalize();
     }
-
+    
     public synchronized void recycle() {
-        if (pageHandle != 0) {
-            free(pageHandle);
-            pageHandle = 0;
-        }
-    }
+    	if (pageHandle != 0) {
+    		free(pageHandle);
+    		pageHandle = 0;
+    	}
+	}
 
     private RectF getMediaBox()
     {
@@ -96,13 +95,8 @@ public class PdfPage implements CodecPage
         int width = viewbox.width();
         int height = viewbox.height();
         int[] bufferarray = new int[width * height];
-        nativeCreateView(docHandle, pageHandle, mRect, matrixArray, bufferarray);
+        renderPage(docHandle, pageHandle, mRect, matrixArray, bufferarray);
         return Bitmap.createBitmap(bufferarray, width, height, Bitmap.Config.RGB_565);
-        /*ByteBuffer buffer = ByteBuffer.allocateDirect(width * height * 2);
-        render(docHandle, docHandle, mRect, matrixArray, buffer, ByteBuffer.allocateDirect(width * height * 8));
-        final Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-        bitmap.copyPixelsFromBuffer(buffer);
-        return bitmap;*/
 	}
 
     private static native void getMediaBox(long handle, float[] mediabox);
@@ -111,11 +105,7 @@ public class PdfPage implements CodecPage
 
     private static native long open(long dochandle, int pageno);
 
-    private static native void render(long dochandle, long pagehandle,
-		int[] viewboxarray, float[] matrixarray,
-		ByteBuffer byteBuffer, ByteBuffer tempBuffer);
-
-    private native void nativeCreateView(long dochandle, long pagehandle,
-		int[] viewboxarray, float[] matrixarray,
-		int[] bufferarray);
+    private static native void renderPage(long dochandle, long pagehandle,
+    		int[] viewboxarray, float[] matrixarray,
+    		int[] bufferarray);
 }

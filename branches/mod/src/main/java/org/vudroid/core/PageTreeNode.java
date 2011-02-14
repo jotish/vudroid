@@ -1,6 +1,7 @@
 package org.vudroid.core;
 
 import android.graphics.*;
+import android.preference.PreferenceManager;
 
 import java.lang.ref.SoftReference;
 
@@ -12,19 +13,24 @@ class PageTreeNode {
     private final RectF pageSliceBounds;
     private final Page page;
     private PageTreeNode[] children;
-    private final int treeNodeDepthLevel;
+    private final float childrenZoomThreshold;
+    //private final int treeNodeDepthLevel;
     private Matrix matrix = new Matrix();
     private final Paint bitmapPaint = new Paint();
     private DocumentView documentView;
     private boolean invalidateFlag;
     private Rect targetRect;
     private RectF targetRectF;
+    private final boolean slice_limit;
 
-    PageTreeNode(DocumentView documentView, RectF localPageSliceBounds, Page page, int treeNodeDepthLevel, PageTreeNode parent) {
+    PageTreeNode(DocumentView documentView, RectF localPageSliceBounds, Page page, float childrenZoomThreshold, PageTreeNode parent) {
+    //PageTreeNode(DocumentView documentView, RectF localPageSliceBounds, Page page, int treeNodeDepthLevel, PageTreeNode parent) {
         this.documentView = documentView;
         this.pageSliceBounds = evaluatePageSliceBounds(localPageSliceBounds, parent);
         this.page = page;
-        this.treeNodeDepthLevel = treeNodeDepthLevel;
+        this.childrenZoomThreshold = childrenZoomThreshold;
+        //this.treeNodeDepthLevel = treeNodeDepthLevel;
+        this.slice_limit = PreferenceManager.getDefaultSharedPreferences(documentView.getContext()).getBoolean("slicelimit", true);
     }
 
     public void updateVisibility() {
@@ -101,7 +107,8 @@ class PageTreeNode {
 
     private void invalidateChildren() {
         if (thresholdHit() && children == null && isVisible()) {
-            final int newThreshold = treeNodeDepthLevel * 2;
+        	final float newThreshold = childrenZoomThreshold * 2;
+            //final int newThreshold = treeNodeDepthLevel * 2;
             children = new PageTreeNode[]
                     {
                             new PageTreeNode(documentView, new RectF(0, 0, 0.5f, 0.5f), page, newThreshold, this),
@@ -109,6 +116,7 @@ class PageTreeNode {
                             new PageTreeNode(documentView, new RectF(0, 0.5f, 0.5f, 1.0f), page, newThreshold, this),
                             new PageTreeNode(documentView, new RectF(0.5f, 0.5f, 1.0f, 1.0f), page, newThreshold, this)
                     };
+
         }
         if (!thresholdHit() && getBitmap() != null || !isVisible()) {
             recycleChildren();
@@ -116,10 +124,17 @@ class PageTreeNode {
     }
 
     private boolean thresholdHit() {
-        float zoom = documentView.zoomModel.getZoom();
-        int mainWidth = documentView.getWidth();
-        float height = page.getPageHeight(mainWidth, zoom);
-        return (mainWidth * zoom * height) / (treeNodeDepthLevel * treeNodeDepthLevel) > SLICE_SIZE;
+    	if (slice_limit)
+    	{
+    		float zoom = documentView.zoomModel.getZoom();
+    		int mainWidth = documentView.getWidth();
+    		float height = page.getPageHeight(mainWidth, zoom);
+    		return (mainWidth * zoom * height) / (childrenZoomThreshold * childrenZoomThreshold) > SLICE_SIZE;
+    	}
+    	else
+    		return documentView.zoomModel.getZoom() >= childrenZoomThreshold;
+ //       float zoom = documentView.zoomModel.getZoom();
+//        return (documentView.getWidth() * zoom * documentView.getHeight() * zoom) / (treeNodeDepthLevel * treeNodeDepthLevel) > SLICE_SIZE;
     }
 
     public Bitmap getBitmap() {
@@ -137,15 +152,15 @@ class PageTreeNode {
         setDecodingNow(true);
         documentView.decodeService.decodePage(this, page.index, new DecodeService.DecodeCallback() {
             public void decodeComplete(final Bitmap bitmap) {
-                documentView.post(new Runnable() {
-                    public void run() {
-                        setBitmap(bitmap);
-                        invalidateFlag = false;
-                        setDecodingNow(false);
-                        page.setAspectRatio(documentView.decodeService.getPageWidth(page.index), documentView.decodeService.getPageHeight(page.index));
-                        invalidateChildren();
-                    }
-                });
+            	documentView.post(new Runnable() {
+            		public void run() {
+            			setBitmap(bitmap);
+            			invalidateFlag = false;
+            			setDecodingNow(false);
+            			page.setAspectRatio(documentView.decodeService.getPageWidth(page.index), documentView.decodeService.getPageHeight(page.index));
+            			invalidateChildren();
+            		}
+            	});
             }
         }, documentView.zoomModel.getZoom(), pageSliceBounds);
     }

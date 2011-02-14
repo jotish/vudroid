@@ -27,7 +27,7 @@ public interface DecodeService
     int getPageWidth(int pageIndex);
 
     int getPageHeight(int pageIndex);
-
+    
     void recycle();
 
     public interface DecodeCallback

@@ -3,6 +3,7 @@ package org.vudroid.core;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+
 import org.vudroid.djvudroid.DjvuViewerActivity;
 import org.vudroid.pdfdroid.PdfViewerActivity;
 

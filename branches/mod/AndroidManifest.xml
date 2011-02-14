@@ -4,7 +4,7 @@
     <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="7"/>
     <uses-permission android:name="com.android.email.permission.ACCESS_PROVIDER"/>
     <uses-permission android:name="com.android.email.permission.READ_ATTACHMENT"/>
-    <application android:icon="@drawable/icon" android:label="VuDroid" android:debuggable="true">
+    <application android:icon="@drawable/icon" android:label="VuDroid" android:debuggable="false">
         <activity android:name=".pdfdroid.PdfViewerActivity" android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -27,5 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".core.SettingsActivity" android:configChanges="keyboardHidden|orientation" />
+
     </application>
 </manifest>

@@ -12,29 +12,22 @@ import java.util.TreeMap;
 public class ViewerPreferences
 {
     private SharedPreferences sharedPreferences;
-    private static final String FULL_SCREEN = "FullScreen";
 
     public ViewerPreferences(Context context)
     {
         sharedPreferences = context.getSharedPreferences("ViewerPreferences", 0);
     }
 
-    public void setFullScreen(boolean fullscreen)
-    {
-        final SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(FULL_SCREEN, fullscreen);
-        editor.commit();
-    }
-
-    public boolean isFullScreen()
-    {
-        return sharedPreferences.getBoolean(FULL_SCREEN, false);
-    }
-
     public void addRecent(Uri uri)
     {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("recent:" + uri.toString(), uri.toString() + "\n" + System.currentTimeMillis());
+        editor.commit();
+    }
+    public void delRecent(Uri uri)
+    {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("recent:" + uri.toString());
         editor.commit();
     }
 
