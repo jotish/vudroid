@@ -1094,6 +1094,7 @@ copy_line(const GPixel *s, int smin, int smax,
   while (x < dmax)              
   {
     d[x] = s[smax-1]; 
+//    d[x] = s[smax]; // proposed in WinDJVU.. Commented because not tested!!!!
     x++; 
   }
 }

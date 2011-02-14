@@ -1,7 +1,7 @@
-/*        This code illustrates a sample implementation
- *                 of the Arcfour algorithm
- *         Copyright (c) April 29, 1997 Kalle Kaukonen.
- *                    All Rights Reserved.
+/* This code illustrates a sample implementation
+ * of the Arcfour algorithm
+ * Copyright (c) April 29, 1997 Kalle Kaukonen.
+ * All Rights Reserved.
  *
  * Redistribution and use in source and binary forms, with or
  * without modification, are permitted provided that this copyright
@@ -10,7 +10,7 @@
  * THIS SOFTWARE IS PROVIDED BY KALLE KAUKONEN AND CONTRIBUTORS ``AS
  * IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
- * FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL KALLE
+ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL KALLE
  * KAUKONEN OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
@@ -21,8 +21,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fitz_base.h"
-#include "fitz_stream.h"
+#include "fitz.h"
 
 void
 fz_arc4init(fz_arc4 *arc4, const unsigned char *key, const unsigned keylen)
@@ -62,7 +61,7 @@ fz_arc4init(fz_arc4 *arc4, const unsigned char *key, const unsigned keylen)
 	}
 }
 
-unsigned char
+static unsigned char
 fz_arc4next(fz_arc4 *arc4)
 {
 	unsigned int x;
@@ -97,4 +96,3 @@ fz_arc4encrypt(fz_arc4 *arc4, unsigned char *dest, const unsigned char *src, con
 		dest[i] = src[i] ^ x;
 	}
 }
-

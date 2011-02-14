@@ -2,7 +2,10 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
+
 LOCAL_MODULE    := vudroid
+
+LOCAL_ARM_MODE := arm
 
 LOCAL_SRC_FILES := \
 	pdfdroidbridge.c \
@@ -16,7 +19,7 @@ LOCAL_C_INCLUDES := \
 LOCAL_CXX_INCLUDES := \
 	$(LOCAL_PATH)/../djvudroid
 
-LOCAL_STATIC_LIBRARIES := mupdf djvudroid
+LOCAL_STATIC_LIBRARIES := mupdf djvudroid jpeg
 
 # uses Android log and z library (Android-3 Native API)
 LOCAL_LDLIBS := -llog -lz

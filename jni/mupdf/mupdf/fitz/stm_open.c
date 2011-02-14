@@ -1,26 +1,27 @@
-/*
- * Creation and destruction.
- */
+#include "fitz.h"
 
-#include "fitz_base.h"
-#include "fitz_stream.h"
-
-static fz_stream *
-newstm(int kind)
+fz_stream *
+fz_newstream(void *state,
+	int(*read)(fz_stream *stm, unsigned char *buf, int len),
+	void(*close)(fz_stream *stm))
 {
 	fz_stream *stm;
 
 	stm = fz_malloc(sizeof(fz_stream));
 
 	stm->refs = 1;
-	stm->kind = kind;
 	stm->dead = 0;
-	stm->error = fz_okay;
-	stm->buffer = nil;
+	stm->pos = 0;
 
-	stm->chain = nil;
-	stm->filter = nil;
-	stm->file = -1;
+	stm->bp = stm->buf;
+	stm->rp = stm->bp;
+	stm->wp = stm->bp;
+	stm->ep = stm->buf + sizeof stm->buf;
+
+	stm->state = state;
+	stm->read = read;
+	stm->close = close;
+	stm->seek = nil;
 
 	return stm;
 }
@@ -33,86 +34,97 @@ fz_keepstream(fz_stream *stm)
 }
 
 void
-fz_dropstream(fz_stream *stm)
+fz_close(fz_stream *stm)
 {
 	stm->refs --;
 	if (stm->refs == 0)
 	{
-		if (stm->error)
-		{
-			fz_catch(stm->error, "dropped unhandled ioerror");
-			stm->error = fz_okay;
-		}
-
-		switch (stm->kind)
-		{
-		case FZ_SFILE:
-			close(stm->file);
-			break;
-		case FZ_SFILTER:
-			fz_dropfilter(stm->filter);
-			fz_dropstream(stm->chain);
-			break;
-		case FZ_SBUFFER:
-			break;
-		}
-
-		fz_dropbuffer(stm->buffer);
+		if (stm->close)
+			stm->close(stm);
 		fz_free(stm);
 	}
 }
 
-fz_error fz_openrfile(fz_stream **stmp, char *path)
+/* File stream */
+
+static int readfile(fz_stream *stm, unsigned char *buf, int len)
 {
-	fz_stream *stm;
-
-	stm = newstm(FZ_SFILE);
-
-	stm->buffer = fz_newbuffer(FZ_BUFSIZE);
-
-	stm->file = open(path, O_BINARY | O_RDONLY, 0666);
-	if (stm->file < 0)
-	{
-		fz_dropbuffer(stm->buffer);
-		fz_free(stm);
-		return fz_throw("syserr: open '%s': %s", path, strerror(errno));
-	}
-
-	*stmp = stm;
-	return fz_okay;
+	int n = read(*(int*)stm->state, buf, len);
+	if (n < 0)
+		return fz_throw("read error: %s", strerror(errno));
+	return n;
 }
 
-fz_stream * fz_openrfilter(fz_filter *flt, fz_stream *src)
+static void seekfile(fz_stream *stm, int offset, int whence)
+{
+	int n = lseek(*(int*)stm->state, offset, whence);
+	if (n < 0)
+		fz_warn("cannot lseek: %s", strerror(errno));
+	stm->pos = n;
+	stm->rp = stm->bp;
+	stm->wp = stm->bp;
+}
+
+static void closefile(fz_stream *stm)
+{
+	int n = close(*(int*)stm->state);
+	if (n < 0)
+		fz_warn("close error: %s", strerror(errno));
+	fz_free(stm->state);
+}
+
+fz_stream *
+fz_openfile(int fd)
 {
 	fz_stream *stm;
+	int *state;
 
-	stm = newstm(FZ_SFILTER);
-	stm->buffer = fz_newbuffer(FZ_BUFSIZE);
-	stm->chain = fz_keepstream(src);
-	stm->filter = fz_keepfilter(flt);
+	state = fz_malloc(sizeof(int));
+	*state = fd;
+
+	stm = fz_newstream(state, readfile, closefile);
+	stm->seek = seekfile;
 
 	return stm;
 }
 
-fz_stream * fz_openrbuffer(fz_buffer *buf)
+/* Memory stream */
+
+static int readbuffer(fz_stream *stm, unsigned char *buf, int len)
 {
-	fz_stream *stm;
-
-	stm = newstm(FZ_SBUFFER);
-	stm->buffer = fz_keepbuffer(buf);
-	stm->buffer->eof = 1;
-
-	return stm;
+	return 0;
 }
 
-fz_stream * fz_openrmemory(unsigned char *mem, int len)
+static void seekbuffer(fz_stream *stm, int offset, int whence)
 {
-	fz_buffer *buf;
+	if (whence == 0)
+		stm->rp = stm->bp + offset;
+	if (whence == 1)
+		stm->rp += offset;
+	if (whence == 2)
+		stm->rp = stm->wp - offset;
+	stm->rp = CLAMP(stm->rp, stm->bp, stm->wp);
+}
+
+static void closebuffer(fz_stream *stm)
+{
+	fz_dropbuffer(stm->state);
+}
+
+fz_stream *
+fz_openbuffer(fz_buffer *buf)
+{
 	fz_stream *stm;
 
-	buf = fz_newbufferwithmemory(mem, len);
-	stm = fz_openrbuffer(buf);
-	fz_dropbuffer(buf);
+	stm = fz_newstream(fz_keepbuffer(buf), readbuffer, closebuffer);
+	stm->seek = seekbuffer;
+
+	stm->bp = buf->data;
+	stm->rp = buf->data;
+	stm->wp = buf->data + buf->len;
+	stm->ep = buf->data + buf->len;
+
+	stm->pos = buf->len;
 
 	return stm;
 }

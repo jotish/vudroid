@@ -78,7 +78,7 @@
 #define HAVE_ISWSPACE 1
 
 /* Define if you have the IJG JPEG library. */
-//#define HAVE_JPEG 1
+#define HAVE_JPEG 1
 
 /* Define to 1 if you have the `m' library (-lm). */
 #define HAVE_LIBM 1

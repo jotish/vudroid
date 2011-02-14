@@ -3,11 +3,12 @@
 font_files: font_misc.c font_mono.c font_serif.c font_sans.c font_cjk.c cmap_tounicode.c cmap_cns.c cmap_gb.c cmap_japan.c cmap_korea.c
 
 clean:
-	@rm -v font_misc.c font_mono.c font_serif.c font_sans.c font_cjk.c cmap_tounicode.c cmap_cns.c cmap_gb.c cmap_japan.c cmap_korea.c
+	@rm -v font_misc.c font_mono.c font_serif.c font_sans.c font_cjk.c cmap_tounicode.c cmap_cns.c cmap_gb.c cmap_japan.c cmap_korea.c \
+		fontdump cmapdump
 
 
-cmapdump: cmapdump.c
-	gcc -o cmapdump cmapdump.c ../fitz/base_error.c ../fitz/base_memory.c ../fitz/base_string.c ../fitz/stm_read.c ../fitz/stm_open.c ../fitz/stm_buffer.c ../fitz/stm_misc.c ../fitz/stm_filter.c -I../fitz
+cmapdump: cmapdump.c pdf_debug.c
+	gcc -o cmapdump cmapdump.c pdf_debug.c -I../fitz
 
 
 fonttump: fontdump.c

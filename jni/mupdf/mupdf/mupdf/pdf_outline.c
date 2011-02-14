@@ -2,10 +2,13 @@
 #include "mupdf.h"
 
 static pdf_outline *
-loadoutline(pdf_xref *xref, fz_obj *dict)
+pdf_loadoutlineimp(pdf_xref *xref, fz_obj *dict)
 {
 	pdf_outline *node;
 	fz_obj *obj;
+
+	if (fz_isnull(dict))
+		return nil;
 
 	node = fz_malloc(sizeof(pdf_outline));
 	node->title = nil;
@@ -37,7 +40,7 @@ loadoutline(pdf_xref *xref, fz_obj *dict)
 	obj = fz_dictgets(dict, "First");
 	if (obj)
 	{
-		node->child = loadoutline(xref, obj);
+		node->child = pdf_loadoutlineimp(xref, obj);
 	}
 
 	pdf_logpage("}\n");
@@ -45,7 +48,7 @@ loadoutline(pdf_xref *xref, fz_obj *dict)
 	obj = fz_dictgets(dict, "Next");
 	if (obj)
 	{
-		node->next = loadoutline(xref, obj);
+		node->next = pdf_loadoutlineimp(xref, obj);
 	}
 
 	return node;
@@ -55,21 +58,19 @@ pdf_outline *
 pdf_loadoutline(pdf_xref *xref)
 {
 	pdf_outline *node;
-	fz_obj *obj;
-	fz_obj *first;
+	fz_obj *root, *obj, *first;
 
 	pdf_logpage("load outlines {\n");
 
 	node = nil;
 
-	obj = fz_dictgets(xref->root, "Outlines");
+	root = fz_dictgets(xref->trailer, "Root");
+	obj = fz_dictgets(root, "Outlines");
 	if (obj)
 	{
 		first = fz_dictgets(obj, "First");
 		if (first)
-		{
-			node = loadoutline(xref, first);
-		}
+			node = pdf_loadoutlineimp(xref, first);
 	}
 
 	pdf_logpage("}\n");
@@ -78,14 +79,14 @@ pdf_loadoutline(pdf_xref *xref)
 }
 
 void
-pdf_dropoutline(pdf_outline *outline)
+pdf_freeoutline(pdf_outline *outline)
 {
 	if (outline->child)
-		pdf_dropoutline(outline->child);
+		pdf_freeoutline(outline->child);
 	if (outline->next)
-		pdf_dropoutline(outline->next);
+		pdf_freeoutline(outline->next);
 	if (outline->link)
-		pdf_droplink(outline->link);
+		pdf_freelink(outline->link);
 	fz_free(outline->title);
 	fz_free(outline);
 }
@@ -115,4 +116,3 @@ pdf_debugoutline(pdf_outline *outline, int level)
 		outline = outline->next;
 	}
 }
-

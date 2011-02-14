@@ -1,5 +1,4 @@
-#include "fitz_base.h"
-#include "fitz_stream.h"
+#include "fitz.h"
 
 /* dicts may only have names as keys! */
 
@@ -25,15 +24,15 @@ fz_newdict(int initialcap)
 	fz_obj *obj;
 	int i;
 
-	obj = fz_malloc(sizeof (fz_obj));
+	obj = fz_malloc(sizeof(fz_obj));
 	obj->refs = 1;
 	obj->kind = FZ_DICT;
 
 	obj->u.d.sorted = 1;
 	obj->u.d.len = 0;
-	obj->u.d.cap = initialcap > 0 ? initialcap : 10;
+	obj->u.d.cap = initialcap > 1 ? initialcap : 10;
 
-	obj->u.d.items = fz_malloc(sizeof(fz_keyval) * obj->u.d.cap);
+	obj->u.d.items = fz_calloc(obj->u.d.cap, sizeof(fz_keyval));
 	for (i = 0; i < obj->u.d.cap; i++)
 	{
 		obj->u.d.items[i].k = nil;
@@ -49,10 +48,10 @@ fz_copydict(fz_obj *obj)
 	fz_obj *new;
 	int i;
 
-	if (!fz_isdict(obj))
+	if (fz_isindirect(obj) || !fz_isdict(obj))
 		fz_throw("assert: not a dict (%s)", fz_objkindstr(obj));
 
-	new = fz_newdict(obj->u.d.cap);
+	new = fz_newdict(fz_dictlen(obj));
 	for (i = 0; i < fz_dictlen(obj); i++)
 		fz_dictput(new, fz_dictgetkey(obj, i), fz_dictgetval(obj, i));
 
@@ -201,7 +200,7 @@ fz_dictput(fz_obj *obj, fz_obj *key, fz_obj *val)
 	if (obj->u.d.len + 1 > obj->u.d.cap)
 	{
 		obj->u.d.cap = (obj->u.d.cap * 3) / 2;
-		obj->u.d.items = fz_realloc(obj->u.d.items, sizeof(fz_keyval) * obj->u.d.cap);
+		obj->u.d.items = fz_realloc(obj->u.d.items, obj->u.d.cap, sizeof(fz_keyval));
 		for (i = obj->u.d.len; i < obj->u.d.cap; i++)
 		{
 			obj->u.d.items[i].k = nil;
@@ -290,4 +289,3 @@ fz_sortdict(fz_obj *obj)
 		obj->u.d.sorted = 1;
 	}
 }
-
