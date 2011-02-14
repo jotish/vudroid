@@ -9,39 +9,37 @@
 
 /* Debugging helper */
 
-
 #define DEBUG(args...) \
 	__android_log_print(ANDROID_LOG_DEBUG, "PdfDroid", args)
 
-//#define DEBUG(args...) {}
 #define ERROR(args...) \
 	__android_log_print(ANDROID_LOG_ERROR, "PdfDroid", args)
 
 #define INFO(args...) \
 	__android_log_print(ANDROID_LOG_INFO, "PdfDroid", args)
-//#define INFO(args...) {}
+
 
 typedef struct renderdocument_s renderdocument_t;
 struct renderdocument_s
 {
 	pdf_xref *xref;
-	fz_renderer *rast;
+	pdf_outline *outline;
+	fz_glyphcache *drawcache;
 };
 
 typedef struct renderpage_s renderpage_t;
 struct renderpage_s
 {
 	pdf_page *page;
+//New draw page
+	fz_displaylist *pageList;
+//
 };
 
 JNI_OnLoad(JavaVM *jvm, void *reserved)
 {
 	DEBUG("initializing PdfRender JNI library based on MuPDF");
-
-	/* Fitz library setup */
-	fz_cpudetect();
 	fz_accelerate();
-
 	return JNI_VERSION_1_2;
 }
 
@@ -58,7 +56,6 @@ void throw_exception(JNIEnv *env, char *message)
 	(*env)->ThrowNew(env, new_exception, message);
 }
 
-
 JNIEXPORT jlong JNICALL
 	Java_org_vudroid_pdfdroid_codec_PdfDocument_open
 	(JNIEnv *env, jclass clazz,
@@ -73,19 +70,21 @@ JNIEXPORT jlong JNICALL
 	char *filename;
 	char *password;
 
-	filename = (*env)->GetStringUTFChars(env, fname, &iscopy);
-	password = (*env)->GetStringUTFChars(env, pwd, &iscopy);
+	filename = (char*)(*env)->GetStringUTFChars(env, fname, &iscopy);
+	password = (char*)(*env)->GetStringUTFChars(env, pwd, &iscopy);
 
 	doc = fz_malloc(sizeof(renderdocument_t));
-	if(!doc) {
+	if(!doc) 
+	{
 		throw_exception(env, "Out of Memory");
 		goto cleanup;
 	}
 
 	/* initialize renderer */
 
-	error = fz_newrenderer(&doc->rast, pdf_devicergb, 0, (int) fitzmemory);
-	if (error) {
+	doc->drawcache = fz_newglyphcache();
+	if (!doc->drawcache) 
+	{
 		throw_exception(env, "Cannot create new renderer");
 		goto cleanup;
 	}
@@ -93,25 +92,12 @@ JNIEXPORT jlong JNICALL
 	/*
 	 * Open PDF and load xref table
 	 */
+//	error = pdf_openxref(&(doc->xref), filename, password);
+	error = pdf_openxref(&(doc->xref), filename, NULL);
 
-	doc->xref = pdf_newxref();
-	error = pdf_loadxref(doc->xref, filename);
-	if (error) {
-		/* TODO: plug into fitz error handling */
-		fz_catch(error, "trying to repair");
-		INFO("Corrupted file '%s', trying to repair", filename);
-		error = pdf_repairxref(doc->xref, filename);
-		if (error) {
-			throw_exception(env,
-					"PDF file is corrupted");
-			goto cleanup;
-		}
-	}
-
-	error = pdf_decryptxref(doc->xref);
-	if (error) {
-		throw_exception(env,
-				"Cannot decrypt XRef table");
+	if (error || (!doc->xref)) 
+	{
+		throw_exception(env, "PDF file not found or corrupted");
 		goto cleanup;
 	}
 
@@ -119,64 +105,67 @@ JNIEXPORT jlong JNICALL
 	 * Handle encrypted PDF files
 	 */
 
-	if (pdf_needspassword(doc->xref)) {
-		if(strlen(password)) {
+	if (pdf_needspassword(doc->xref)) 
+	{
+		if(strlen(password)) 
+		{
 			int ok = pdf_authenticatepassword(doc->xref, password);
-			if(!ok) {
-				throw_exception(env,
-						"Wrong password given");
+			if(!ok) 
+			{
+				throw_exception(env, "Wrong password given");
 				goto cleanup;
 			}
-		} else {
-			throw_exception(env,
-					"PDF needs a password!");
+		} 
+		else 
+		{
+			throw_exception(env, "PDF needs a password!");
 			goto cleanup;
 		}
 	}
+	doc->outline = pdf_loadoutline(doc->xref);
 
-	/*
-	 * Load document metadata (at some point this might be implemented
-	 * in the muPDF lib itself)
-	 */
-
-	obj = fz_dictgets(doc->xref->trailer, "Root");
-	doc->xref->root = fz_resolveindirect(obj);
-	if (!doc->xref->root) {
-		fz_throw("syntaxerror: missing Root object");
-		throw_exception(env, "PDF syntax: missing \"Root\" object");
+	error = pdf_loadpagetree(doc->xref);
+	if (error) 
+	{
+    	    	throw_exception(env, "error loading pagetree");
 		goto cleanup;
 	}
-	fz_keepobj(doc->xref->root);
-
-	obj = fz_dictgets(doc->xref->trailer, "Info");
-	doc->xref->info = fz_resolveindirect(obj);
-	if (doc->xref->info)
-		fz_keepobj(doc->xref->info);
-
+	
 cleanup:
 
 	(*env)->ReleaseStringUTFChars(env, fname, filename);
 	(*env)->ReleaseStringUTFChars(env, pwd, password);
 
 	DEBUG("PdfDocument.nativeOpen(): return handle = %p", doc);
-	return (jlong) doc;
+	return (jlong) (long)doc;
 }
 
 JNIEXPORT void JNICALL
 	Java_org_vudroid_pdfdroid_codec_PdfDocument_free
 	(JNIEnv *env, jclass clazz, jlong handle)
 {
-	renderdocument_t *doc = (renderdocument_t*) handle;
+	renderdocument_t *doc = (renderdocument_t*) (long)handle;
 
-	if(doc) {
-		if (doc->xref->store)
-			pdf_dropstore(doc->xref->store);
-
-		pdf_closexref(doc->xref);
-
-		fz_droprenderer(doc->rast);
-
+	if(doc) 
+	{
+		if(doc->outline)
+		      pdf_freeoutline(doc->outline);
+		doc->outline = nil;
+		                          
+		if(doc->xref->store)
+		    pdf_freestore(doc->xref->store);
+		doc->xref->store = nil;
+			
+		if (doc->drawcache) 
+		    fz_freeglyphcache(doc->drawcache);
+		doc->drawcache = nil;
+		
+		if(doc->xref)
+		    pdf_freexref(doc->xref);
+		doc->xref = nil;
+		
 		fz_free(doc);
+		doc = nil;
 	}
 }
 
@@ -184,7 +173,7 @@ JNIEXPORT jint JNICALL
 	Java_org_vudroid_pdfdroid_codec_PdfDocument_getPageCount
 	(JNIEnv *env, jclass clazz, jlong handle)
 {
-	renderdocument_t *doc = (renderdocument_t*) handle;
+	renderdocument_t *doc = (renderdocument_t*) (long)handle;
 	return pdf_getpagecount(doc->xref);
 }
 
@@ -192,7 +181,7 @@ JNIEXPORT jlong JNICALL
 	Java_org_vudroid_pdfdroid_codec_PdfPage_open
 	(JNIEnv *env, jclass clazz, jlong dochandle, jint pageno)
 {
-	renderdocument_t *doc = (renderdocument_t*) dochandle;
+	renderdocument_t *doc = (renderdocument_t*) (long)dochandle;
 	renderpage_t *page;
 	fz_error error;
 	fz_obj *obj;
@@ -200,46 +189,62 @@ JNIEXPORT jlong JNICALL
 	jfieldID fid;
 
 	page = fz_malloc(sizeof(renderpage_t));
-	if(!page) {
+	if(!page) 
+	{
 		throw_exception(env, "Out of Memory");
-		return (jlong) NULL;
+		return (jlong) (long)NULL;
 	}
 
-	pdf_flushxref(doc->xref, 0);
 	obj = pdf_getpageobject(doc->xref, pageno);
 	error = pdf_loadpage(&page->page, doc->xref, obj);
-	if (error) {
+	if (error) 
+	{
 		throw_exception(env, "error loading page");
 		goto cleanup;
 	}
+
+//New draw page
+	page->pageList = fz_newdisplaylist();
+	fz_device *dev = fz_newlistdevice(page->pageList);
+	pdf_runpage(doc->xref, page->page , dev, fz_identity);
+	fz_freedevice(dev);
+//
 
 cleanup:
 	/* nothing yet */
 
 	DEBUG("PdfPage.nativeOpenPage(): return handle = %p", page);
-	return (jlong) page;
+	return (jlong) (long)page;
 }
 
 JNIEXPORT void JNICALL
 	Java_org_vudroid_pdfdroid_codec_PdfPage_free
 	(JNIEnv *env, jclass clazz, jlong handle)
 {
-	renderpage_t *page = (renderpage_t*) handle;
+
+	renderpage_t *page = (renderpage_t*) (long)handle;
+	DEBUG("PdfPage_free(%p)",page);
+
 	if(page) {
 		if (page->page)
-			pdf_droppage(page->page);
-
+			pdf_freepage(page->page);
+//New draw page
+		if (page->pageList)
+		    fz_freedisplaylist(page->pageList);
+//
 		fz_free(page);
 	}
 }
+
 
 JNIEXPORT void JNICALL
 	Java_org_vudroid_pdfdroid_codec_PdfPage_getMediaBox
 	(JNIEnv *env, jclass clazz, jlong handle, jfloatArray mediabox)
 {
-	renderpage_t *page = (renderpage_t*) handle;
+	renderpage_t *page = (renderpage_t*) (long)handle;
 	jfloat *bbox = (*env)->GetPrimitiveArrayCritical(env, mediabox, 0);
 	if(!bbox) return;
+//	DEBUG("Mediabox: %f %f %f %f", page->page->mediabox.x0, page->page->mediabox.y0, page->page->mediabox.x1, page->page->mediabox.y1);
 	bbox[0] = page->page->mediabox.x0;
 	bbox[1] = page->page->mediabox.y0;
 	bbox[2] = page->page->mediabox.x1;
@@ -247,137 +252,29 @@ JNIEXPORT void JNICALL
 	(*env)->ReleasePrimitiveArrayCritical(env, mediabox, bbox, 0);
 }
 
-
-
 JNIEXPORT void JNICALL
-	Java_org_vudroid_pdfdroid_codec_PdfPage_render
-	(JNIEnv *env, jclass clazz, jlong dochandle, jlong pagehandle,
-		jintArray viewboxarray, jfloatArray matrixarray,
-		jobject byteBuffer, jobject tempBuffer)
-{
-	renderdocument_t *doc = (renderdocument_t*) dochandle;
-	renderpage_t *page = (renderpage_t*) pagehandle;
-	fz_error error;
-	fz_matrix ctm;
-	fz_irect viewbox;
-	fz_pixmap *pixmap;
-	jfloat *matrix;
-	jint *viewboxarr;
-	jint *dimen;
-	unsigned short *targetBuffer;
-	int length, val;
-
-	pixmap = fz_malloc(sizeof(fz_pixmap));
-	if(!pixmap) {
-		throw_exception(env, "Out of Memory");
-	}
-
-	/* initialize parameter arrays for MuPDF */
-
-	matrix = (*env)->GetPrimitiveArrayCritical(env, matrixarray, 0);
-	ctm.a = matrix[0];
-	ctm.b = matrix[1];
-	ctm.c = matrix[2];
-	ctm.d = matrix[3];
-	ctm.e = matrix[4];
-	ctm.f = matrix[5];
-	(*env)->ReleasePrimitiveArrayCritical(env, matrixarray, matrix, 0);
-	DEBUG("Matrix: %f %f %f %f %f %f",
-			ctm.a, ctm.b, ctm.c, ctm.d, ctm.e, ctm.f);
-
-	viewboxarr = (*env)->GetPrimitiveArrayCritical(env, viewboxarray, 0);
-	viewbox.x0 = viewboxarr[0];
-	viewbox.y0 = viewboxarr[1];
-	viewbox.x1 = viewboxarr[2];
-	viewbox.y1 = viewboxarr[3];
-	(*env)->ReleasePrimitiveArrayCritical(env, viewboxarray, viewboxarr, 0);
-	DEBUG("Viewbox: %d %d %d %d",
-			viewbox.x0, viewbox.y0, viewbox.x1, viewbox.y1);
-
-	/* do the rendering */
-	DEBUG("doing the rendering...");
-
-	pixmap->x = viewbox.x0;
-	pixmap->y = viewbox.y0;
-	pixmap->w = viewbox.x1 - viewbox.x0;
-	pixmap->h = viewbox.y1 - viewbox.y0;
-	pixmap->n = 4;
-
-	DEBUG("Allocating temp buffer");
-	pixmap->samples = (*env)->GetDirectBufferAddress(env, tempBuffer);
-	if (!pixmap->samples)
-	{
-		goto cleanup;
-	}
-
-	DEBUG("Erasing temp buffer by white: %p", pixmap->samples);
-	// white:
-//	memset(pixmap->samples, 0xff, pixmap->w * pixmap->h * pixmap->n);
-
-	DEBUG("RenderTreeOver rast: %p, tree: %p", doc->rast, page->page->tree);
-	// do the actual rendering:
-	error = fz_rendertreeover(doc->rast, pixmap, page->page->tree, ctm);
-//	error = 0;
-
-	if (error) {
-		DEBUG("error!");
-		throw_exception(env, "error rendering page");
-	}
-
-	DEBUG("Accessing direct buffer");
-
-	targetBuffer = (*env)->GetDirectBufferAddress(env, byteBuffer);
-	if (!targetBuffer)
-	{
-		goto cleanup;
-	}
-
-	/* evil magic: we transform the rendered image's byte order
-	 */
-	if(!error) {
-		DEBUG("Converting image buffer pixel order");
-		length = pixmap->w * pixmap->h;
-		unsigned int *col = pixmap->samples;
-		int c = 0;
-		for(val = 0; val < length; val++) {
-			targetBuffer[val] = (((col[val] & 0xFF000000) >> 16) & 0xF800) |
-					(((col[val] & 0x00FF0000) >> 11) & 0x07E0) |
-					(((col[val] & 0x0000FF00) >> 11) & 0x001E);
-		}
-	}
-
-cleanup:
-
-	fz_free(pixmap);
-
-	DEBUG("PdfView.nativeCreateView() done");
-}
-
-JNIEXPORT void JNICALL
-Java_org_vudroid_pdfdroid_codec_PdfPage_nativeCreateView
+Java_org_vudroid_pdfdroid_codec_PdfPage_renderPage
 	(JNIEnv *env, jobject this, jlong dochandle, jlong pagehandle,
 		jintArray viewboxarray, jfloatArray matrixarray,
 		jintArray bufferarray)
 {
-	renderdocument_t *doc = (renderdocument_t*) dochandle;
-	renderpage_t *page = (renderpage_t*) pagehandle;
-	DEBUG("PdfView(%p).nativeCreateView(%p, %p)", this, doc, page);
+	renderdocument_t *doc = (renderdocument_t*) (long)dochandle;
+	renderpage_t *page = (renderpage_t*) (long)pagehandle;
+	DEBUG("PdfView(%p).renderPage(%p, %p)", this, doc, page);
 	fz_error error;
 	fz_matrix ctm;
-	fz_irect viewbox;
+	fz_bbox viewbox;
 	fz_pixmap *pixmap;
 	jfloat *matrix;
 	jint *viewboxarr;
 	jint *dimen;
 	jint *buffer;
 	int length, val;
-
-	pixmap = fz_malloc(sizeof(fz_pixmap));
-	if(!pixmap) {
-		throw_exception(env, "Out of Memory");
-	}
+	fz_device *dev = NULL;
 
 	/* initialize parameter arrays for MuPDF */
+
+	ctm = fz_identity;
 
 	matrix = (*env)->GetPrimitiveArrayCritical(env, matrixarray, 0);
 	ctm.a = matrix[0];
@@ -387,57 +284,48 @@ Java_org_vudroid_pdfdroid_codec_PdfPage_nativeCreateView
 	ctm.e = matrix[4];
 	ctm.f = matrix[5];
 	(*env)->ReleasePrimitiveArrayCritical(env, matrixarray, matrix, 0);
-	DEBUG("Matrix: %f %f %f %f %f %f",
-			ctm.a, ctm.b, ctm.c, ctm.d, ctm.e, ctm.f);
+	DEBUG("Matrix: %f %f %f %f %f %f", ctm.a, ctm.b, ctm.c, ctm.d, ctm.e, ctm.f);
+
 
 	viewboxarr = (*env)->GetPrimitiveArrayCritical(env, viewboxarray, 0);
 	viewbox.x0 = viewboxarr[0];
 	viewbox.y0 = viewboxarr[1];
 	viewbox.x1 = viewboxarr[2];
 	viewbox.y1 = viewboxarr[3];
+
 	(*env)->ReleasePrimitiveArrayCritical(env, viewboxarray, viewboxarr, 0);
-	DEBUG("Viewbox: %d %d %d %d",
-			viewbox.x0, viewbox.y0, viewbox.x1, viewbox.y1);
-
+	DEBUG("Viewbox: %d %d %d %d", viewbox.x0, viewbox.y0, viewbox.x1, viewbox.y1);
 	/* do the rendering */
-	DEBUG("doing the rendering...");
+
 	buffer = (*env)->GetPrimitiveArrayCritical(env, bufferarray, 0);
+	
+	pixmap = fz_newpixmapwithdata(fz_devicebgr, viewbox.x0, viewbox.y0, viewbox.x1 - viewbox.x0, viewbox.y1 - viewbox.y0, (unsigned char*)buffer);
 
-	pixmap->x = viewbox.x0;
-	pixmap->y = viewbox.y0;
-	pixmap->w = viewbox.x1 - viewbox.x0;
-	pixmap->h = viewbox.y1 - viewbox.y0;
-	pixmap->n = 4;
-	pixmap->samples = (void*)buffer;
+	DEBUG("doing the rendering...");
+	
+	fz_clearpixmapwithcolor(pixmap, 0xff);
 
-	// white:
-	memset(pixmap->samples, 0xff, pixmap->w * pixmap->h * pixmap->n);
+//Old draw page
+//	dev = fz_newdrawdevice(doc->drawcache, pixmap);
+//	error = pdf_runpage(doc->xref, page->page, dev, ctm);
+//	fz_freedevice(dev);
+//
 
-	// do the actual rendering:
-	error = fz_rendertreeover(doc->rast, pixmap, page->page->tree, ctm);
-
-	/* evil magic: we transform the rendered image's byte order
-	 */
-	if(!error) {
-		DEBUG("Converting image buffer pixel order");
-		length = pixmap->w * pixmap->h;
-		unsigned int *col = pixmap->samples;
-		int c = 0;
-		for(val = 0; val < length; val++) {
-			col[val] = ((col[val] & 0xFF000000) >> 24) |
-					((col[val] & 0x00FF0000) >> 8) |
-					((col[val] & 0x0000FF00) << 8);
-		}
-	}
+//New draw page
+	dev = fz_newdrawdevice(doc->drawcache, pixmap);
+        fz_executedisplaylist(page->pageList, dev, ctm);
+        fz_freedevice(dev);
+//
 
 	(*env)->ReleasePrimitiveArrayCritical(env, bufferarray, buffer, 0);
-
-	fz_free(pixmap);
-
-	if (error) {
-		DEBUG("error!");
-		throw_exception(env, "error rendering page");
-	}
-
-	DEBUG("PdfView.nativeCreateView() done");
+	
+	fz_droppixmap(pixmap);
+//Old draw page
+//	if (error) 
+//	{
+//		DEBUG("error!");
+//		throw_exception(env, "error rendering page");
+//	}
+//
+	DEBUG("PdfView.renderPage() done");
 }

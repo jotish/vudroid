@@ -10,6 +10,27 @@
 #include <DjvuDroidTrace.h>
 #include <ddjvuapi.h>
 
+void ThrowError(JNIEnv* env, const char* msg)
+{
+    jclass exceptionClass = env->FindClass("java/lang/RuntimeException");
+    if (!exceptionClass)
+    	return;
+    if (!msg)
+    	env->ThrowNew(exceptionClass, "Djvu decoding error!");
+    else
+	env->ThrowNew(exceptionClass, msg);
+}
+
+
+void ThrowDjvuError(JNIEnv* env, const ddjvu_message_t* msg)
+{
+    if (!msg || !msg->m_error.message)
+	ThrowError(env, "Djvu decoding error!");
+    else
+	ThrowError(env, msg->m_error.message);
+}
+
+
 #define HANDLE_TO_DOC(handle) (ddjvu_document_t*)handle
 #define HANDLE(ptr) (jlong)ptr
 
@@ -37,9 +58,13 @@ Java_org_vudroid_djvudroid_codec_DjvuDocument_open(JNIEnv *env,
                                     jstring fileName)
 {
     const char* fileNameString = env->GetStringUTFChars(fileName, NULL);
-	DEBUG_PRINT("Opening document: %s", fileNameString);
+    DEBUG_PRINT("Opening document: %s", fileNameString);
     jlong docHandle = (jlong)(ddjvu_document_create_by_filename((ddjvu_context_t*)(contextHandle), fileNameString, FALSE));
-	env->ReleaseStringUTFChars(fileName, fileNameString);
+    env->ReleaseStringUTFChars(fileName, fileNameString);
+    if (!docHandle) 
+    {
+	ThrowError(env,"DJVU file not found or corrupted.");
+    }
     return docHandle;
 }
 
@@ -55,18 +80,8 @@ void CallDocInfoCallback(JNIEnv* env, jobject thiz, const ddjvu_message_t* msg)
     env->CallVoidMethod(thiz, handleDocInfoId);
 }
 
-void ThrowDjvuError(JNIEnv* env, const ddjvu_message_t* msg)
-{
-    jclass exceptionClass = env->FindClass("java/lang/RuntimeException");
-    if (!exceptionClass)
-    	return;
-    if (!msg || !msg->m_error.message)
-    {
-    	env->ThrowNew(exceptionClass, "Djvu decoding error!");
-    	return;
-    }
-    env->ThrowNew(exceptionClass, msg->m_error.message);
-}
+
+
 
 extern "C" void
 Java_org_vudroid_djvudroid_codec_DjvuContext_handleMessage(JNIEnv *env,
@@ -173,11 +188,11 @@ Java_org_vudroid_djvudroid_codec_DjvuPage_renderPage(JNIEnv *env,
     ddjvu_format_t* pixelFormat = ddjvu_format_create(DDJVU_FORMAT_RGBMASK32, 3, masks);
     ddjvu_format_set_row_order(pixelFormat, TRUE);
     ddjvu_format_set_y_direction(pixelFormat, TRUE);
-
+    
     char *pBuffer = (char *)env->GetPrimitiveArrayCritical(buffer, 0);
     jboolean result = ddjvu_page_render(page, DDJVU_RENDER_COLOR, &pageRect, &targetRect, pixelFormat, targetWidth * 4, pBuffer);
     env->ReleasePrimitiveArrayCritical(buffer, pBuffer, 0);
-
+    
     ddjvu_format_release(pixelFormat);
     return result;
 }
