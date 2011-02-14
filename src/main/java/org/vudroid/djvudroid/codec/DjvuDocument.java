@@ -39,12 +39,13 @@ public class DjvuDocument implements CodecDocument
         recycle();
         super.finalize();
     }
-
+    
     public synchronized void recycle() {
-        if (documentHandle == 0) {
-            return;
-        }
-        free(documentHandle);
-        documentHandle = 0;
-    }
+    	if (documentHandle == 0) {
+    		return;
+    	}
+    	free(documentHandle);
+    	documentHandle = 0;
+	}
+    
 }

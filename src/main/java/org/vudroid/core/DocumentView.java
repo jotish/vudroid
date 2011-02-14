@@ -2,6 +2,7 @@ package org.vudroid.core;
 
 import android.content.Context;
 import android.graphics.*;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
@@ -12,7 +13,7 @@ import org.vudroid.core.models.CurrentPageModel;
 import org.vudroid.core.models.DecodingProgressModel;
 import org.vudroid.core.models.ZoomModel;
 import org.vudroid.core.multitouch.MultiTouchZoom;
-import org.vudroid.core.multitouch.MultiTouchZoomImpl;
+//import org.vudroid.core.multitouch.MultiTouchZoomImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -186,7 +187,29 @@ public class DocumentView extends View implements ZoomListener {
                 scroller.fling(getScrollX(), getScrollY(), (int) -velocityTracker.getXVelocity(), (int) -velocityTracker.getYVelocity(), getLeftLimit(), getRightLimit(), getTopLimit(), getBottomLimit());
                 velocityTracker.recycle();
                 velocityTracker = null;
-
+                if(PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("tapscroll", false))
+                {
+	                if (ev.getY()/getHeight() > 0.2 && 0.1 < ev.getX()/getWidth() && ev.getX()/getWidth() < 0.9)
+	                {
+	                	scroller.startScroll((int) (getScrollX() ), (int) (getScrollY() ), 0, getHeight()-40); //getHeight()/2
+	                	invalidate();
+	                }
+	                else if (ev.getY()/getHeight() < 0.2 && 0.05 < ev.getX()/getWidth() && ev.getX()/getWidth() < 0.95)
+	                {
+	                	scroller.startScroll((int) (getScrollX() ), (int) (getScrollY() ), 0, -(getHeight()+40)); //getHeight()/2
+	                	invalidate();
+	                }
+	                else if (ev.getX()/getWidth() > 0.95)
+	                {
+	                	scroller.startScroll((int) (getScrollX() ), (int) (getScrollY() ), (getWidth()/2),0); //getHeight()/2
+	                	invalidate(); 
+	                }
+	                else if (ev.getX()/getWidth() < 0.05)
+	                {
+	                	scroller.startScroll((int) (getScrollX() ), (int) (getScrollY() ), -(getWidth()/2),0 ); //getHeight()/2
+	                	invalidate(); 
+	                }
+                }
                 break;
         }
         return true;
@@ -213,6 +236,20 @@ public class DocumentView extends View implements ZoomListener {
                 case KeyEvent.KEYCODE_DPAD_UP:
                     verticalDpadScroll(-1);
                     return true;
+
+                case KeyEvent.KEYCODE_VOLUME_UP:
+              		verticalDpadScroll(-1);
+                	return true;
+                case KeyEvent.KEYCODE_VOLUME_DOWN:
+ 					verticalDpadScroll(1);
+                	return true;
+            }
+        }
+        if (event.getAction() == KeyEvent.ACTION_UP) {
+            switch (event.getKeyCode()) {
+            	case KeyEvent.KEYCODE_VOLUME_DOWN:
+            	case KeyEvent.KEYCODE_VOLUME_UP:
+                     return true;
             }
         }
         return super.dispatchKeyEvent(event);

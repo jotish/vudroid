@@ -55,7 +55,15 @@ public class GoToPageDialog extends Dialog
     private void navigateToPage()
     {
         final EditText text = (EditText) findViewById(R.id.pageNumberTextEdit);
-        final int pageNumber = Integer.parseInt(text.getText().toString());
+        int pageNumber = 0; 
+        try
+        {
+        	pageNumber = Integer.parseInt(text.getText().toString());
+        }
+        catch(Exception e)
+        {
+        	pageNumber = 0;
+        }
         if (pageNumber < 1 || pageNumber > decodeService.getPageCount())
         {
             Toast.makeText(getContext(), "Page number out of range. Valid range: 1-" + decodeService.getPageCount(), 2000).show();

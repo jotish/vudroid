@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TabHost;
+
 import org.vudroid.R;
 import org.vudroid.core.presentation.BrowserAdapter;
 import org.vudroid.core.presentation.UriBrowserAdapter;

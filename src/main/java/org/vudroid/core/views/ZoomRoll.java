@@ -57,6 +57,7 @@ public class ZoomRoll extends View
         }
         canvas.drawBitmap(left, 0, 0, paint);
         canvas.drawBitmap(right, getWidth() - right.getWidth(), getHeight() - right.getHeight(), paint);
+
     }
 
     @Override

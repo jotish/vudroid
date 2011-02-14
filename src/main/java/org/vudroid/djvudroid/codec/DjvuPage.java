@@ -21,8 +21,8 @@ public class DjvuPage implements CodecPage
 
     public boolean isDecoding()
     {
-        return false;
-//        return !isDecodingDone(pageHandle);
+    	return false;
+       // return !isDecodingDone(pageHandle);
     }
 
     private static native int getWidth(long pageHandle);
@@ -40,16 +40,17 @@ public class DjvuPage implements CodecPage
 
     public void waitForDecode()
     {
+  
     }
 
     public int getWidth()
     {
-        return getWidth(pageHandle);
+    	return getWidth(pageHandle);
     }
 
     public int getHeight()
     {
-        return getHeight(pageHandle);
+    	return getHeight(pageHandle);
     }
 
     public Bitmap renderBitmap(int width, int height, RectF pageSliceBounds)
@@ -65,12 +66,13 @@ public class DjvuPage implements CodecPage
         recycle();
         super.finalize();
     }
-
+    
     public synchronized void recycle() {
-        if (pageHandle == 0) {
-            return;
-        }
-        free(pageHandle);
-        pageHandle = 0;
-    }
+    	if (pageHandle == 0) {
+    		return;
+    	}
+    	free(pageHandle);
+    	pageHandle = 0;
+	}
+    
 }

@@ -25,7 +25,7 @@ public class DjvuContext implements Runnable, CodecContext
         new Thread(this).start();
     }
 
-    public DjvuDocument  openDocument(String fileName)
+    public DjvuDocument openDocument(String fileName)
     {
         final DjvuDocument djvuDocument = DjvuDocument.openDocument(fileName, this, waitObject);
         try
@@ -50,9 +50,9 @@ public class DjvuContext implements Runnable, CodecContext
             try
             {
                 synchronized (this) {
-                    if (isRecycled()) return;
-                    handleMessage(contextHandle);
-                    wait(200);
+                	if (isRecycled()) return;
+                	handleMessage(contextHandle);
+                	wait(200);
                 }
                 synchronized (waitObject)
                 {
@@ -82,19 +82,19 @@ public class DjvuContext implements Runnable, CodecContext
         recycle();
         super.finalize();
     }
-
     public synchronized void recycle() {
-        if (isRecycled()) {
-            return;
-        }
-        free(contextHandle);
-        contextHandle = 0;
-    }
-
+    	if (isRecycled()) {
+    		return;
+    	}
+    	free(contextHandle);
+    	contextHandle = 0;
+	 }
+    
     private boolean isRecycled() {
-        return contextHandle == 0;
-    }
-
+    	return contextHandle == 0;
+	}
+    
+    
     private static native long create();
     private static native void free(long contextHandle);
     private native void handleMessage(long contextHandle);

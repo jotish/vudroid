@@ -17,11 +17,14 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
-import java.util.concurrent.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class DecodeServiceBase implements DecodeService
 {
-    private static final int PAGE_POOL_SIZE = 16;
+	private static final int PAGE_POOL_SIZE = 16;
     private final CodecContext codecContext;
 
     private View containerView;
@@ -60,9 +63,9 @@ public class DecodeServiceBase implements DecodeService
         final DecodeTask decodeTask = new DecodeTask(pageNum, decodeCallback, zoom, decodeKey, pageSliceBounds);
         synchronized (decodingFutures)
         {
-            if (isRecycled) {
-                return;
-            }
+        	if (isRecycled) {
+        		return;
+        	}
             final Future<?> future = executorService.submit(new Runnable()
             {
                 public void run()
@@ -172,11 +175,11 @@ public class DecodeServiceBase implements DecodeService
             pageEvictionQueue.remove(pageIndex);
             pageEvictionQueue.offer(pageIndex);
             if (pageEvictionQueue.size() > PAGE_POOL_SIZE) {
-                Integer evictedPageIndex = pageEvictionQueue.poll();
-                CodecPage evictedPage = pages.remove(evictedPageIndex).get();
-                if (evictedPage != null) {
-                    evictedPage.recycle();
-                }
+            	Integer evictedPageIndex = pageEvictionQueue.poll();
+            	CodecPage evictedPage = pages.remove(evictedPageIndex).get();
+            	if (evictedPage != null) {
+            		evictedPage.recycle();
+            	}
             }
         }
         return pages.get(pageIndex).get();
@@ -251,24 +254,24 @@ public class DecodeServiceBase implements DecodeService
     }
 
     public void recycle() {
-        synchronized (decodingFutures) {
-            isRecycled = true;
-        }
-        for (Object key : decodingFutures.keySet()) {
-            stopDecoding(key);
-        }
+    	synchronized (decodingFutures) {
+    		isRecycled = true;
+    	}
+    	for (Object key : decodingFutures.keySet()) {
+    		stopDecoding(key);
+    	}    	
         executorService.submit(new Runnable() {
-            public void run() {
-                for (SoftReference<CodecPage> codecPageSoftReference : pages.values()) {
-                    CodecPage page = codecPageSoftReference.get();
-                    if (page != null) {
-                        page.recycle();
-                    }
-                }
-                document.recycle();
-                codecContext.recycle();
-            }
+        	public void run() {
+        		for (SoftReference<CodecPage> codecPageSoftReference : pages.values()) {
+        			CodecPage page = codecPageSoftReference.get();
+        			if (page != null) {
+        				page.recycle();
+        			}
+        		}
+        		document.recycle();
+        		codecContext.recycle();
+        	}
         });
         executorService.shutdown();
-    }
+	}
 }
