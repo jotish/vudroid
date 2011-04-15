@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory
+		android:title="@string/pref_ui_category">
+
+		<ListPreference
+			android:key="rotation"
+			android:title="@string/pref_rotation_title"
+			android:summary="@string/pref_rotation_summary"
+			android:entries="@array/list_rotation"
+			android:entryValues="@array/list_rotation_values"
+			android:defaultValue="Default"
+			/>
+		<CheckBoxPreference
+			android:key="fullscreen"
+			android:title="@string/pref_fullscreen_title"
+			android:summary="@string/pref_fullscreen_summary"
+			android:defaultValue="false"
+			/>
+		<CheckBoxPreference
+			android:key="title"
+			android:title="@string/pref_title_title"
+			android:summary="@string/pref_title_summary"
+			android:defaultValue="false"
+			/>
+		<CheckBoxPreference
+			android:key="tapscroll"
+			android:title="@string/pref_tap_title"
+			android:summary="@string/pref_tap_summary"
+			android:defaultValue="false"
+			/>
+
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+		android:title="@string/pref_render_category">
+
+		
+		<CheckBoxPreference
+			android:key="slicelimit"
+			android:title="@string/pref_slicelimit_title"
+			android:summary="@string/pref_slicelimit_summary"
+			android:defaultValue="true"
+			/>
+		
+	</PreferenceCategory>
+
+</PreferenceScreen>
