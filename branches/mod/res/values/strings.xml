@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+	<string name="pref_ui_category">"User interface"</string>
+	<string name="pref_rotation_title">"Rotation mode"</string>
+	<string name="pref_rotation_summary">"How to change rotation"</string>
+	<string name="pref_fullscreen_title">"Full screen"</string>
+	<string name="pref_fullscreen_summary">"Hide status bar."</string>
+	<string name="pref_title_title">"Title"</string>
+	<string name="pref_title_summary">"Hide Title. Need Document reopen!!"</string>
+	<string name="pref_tap_title">"Tap scroll"</string>
+	<string name="pref_tap_summary">"Scroll by tab"</string>	
+	<string name="pref_render_category">"Rendering"</string>
+	<string name="pref_slicelimit_title">"Slice limit"</string>
+	<string name="pref_slicelimit_summary">"Slice size limit. Can be slowly but stability."</string>	
+	<string name="list_rotation_auto">"Automatic"</string>
+	<string name="list_rotation_land">"Force landscape"</string>
+	<string name="list_rotation_port">"Force portrait"</string>
+</resources>
